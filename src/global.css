@@ -1,0 +1,21 @@
+:root {
+  --primary-color: ;
+  --secondary-color: ;
+  --text-color: ;
+  --background-color: ;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --primary-color: ;
+    --secondary-color: ;
+    --text-color: ;
+    --background-color: ;
+  }
+}
