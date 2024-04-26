@@ -1,14 +1,17 @@
 import Navbar from "../../Navbar/Navbar";
 import Footer from "../../Footer/Footer";
 import styles from "./MainLayout.module.css";
+import { Outlet } from "react-router-dom";
 
 const MainLayout = ({ children }) => {
   return (
-    <main className={styles.container}>
+    <div className={styles.container}>
       <Navbar />
-      {children}
+      <main>
+        <Outlet />
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 };
 
