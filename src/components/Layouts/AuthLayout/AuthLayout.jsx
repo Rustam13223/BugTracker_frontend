@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./AuthLayout.module.css";
 import { Link } from "react-router-dom";
 import FooterLinks from "./FooterLinks";
+import svg from "@/assets/bugtracker.svg";
+import BugtrackerSvg from "../../../assets/BugtrackerSvg";
 
 const AuthLayout = ({ children, page }) => {
   return (
@@ -9,13 +11,13 @@ const AuthLayout = ({ children, page }) => {
       <div className={styles.content}>
         <div className={styles.header}>
           <Link to="/">
-            <img
-              className={styles.img}
-              src="/bugtracker.svg"
-              alt="bugtracker-logo"
-            />
+            <BugtrackerSvg size="100px" />
           </Link>
-          <p>{page === "login" ? "Sign in" : "Sign up"} to BugTracker</p>
+
+          <p>
+            {page === "login" ? "Sign in" : "Sign up"} to{" "}
+            <span className={styles.title}>BugTracker</span>
+          </p>
         </div>
         <main className={styles.formWrapper}>{children}</main>
       </div>

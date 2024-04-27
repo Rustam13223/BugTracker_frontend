@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import AuthLayout from "@/components/Layouts/AuthLayout/AuthLayout";
 import ReCAPTCHA from "react-google-recaptcha";
 import { Link } from "react-router-dom";
 import styles from "./RegisterPage.module.css";
+import { ThemeContext } from "@/context/themeContext";
 
 const RegisterPage = () => {
+  const { theme } = useContext(ThemeContext);
   return (
     <AuthLayout>
       <form>
@@ -35,7 +37,7 @@ const RegisterPage = () => {
         </div>
 
         <ReCAPTCHA
-          theme="dark"
+          theme={theme}
           className="captcha"
           sitekey={import.meta.env.VITE_CAPTCHA_KEY}
         />

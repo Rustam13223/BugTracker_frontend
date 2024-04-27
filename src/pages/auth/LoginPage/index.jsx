@@ -3,8 +3,11 @@ import AuthLayout from "@/components/Layouts/AuthLayout/AuthLayout";
 import ReCAPTCHA from "react-google-recaptcha";
 import styles from "./LoginPage.module.css";
 import { Link } from "react-router-dom";
+import { ThemeContext } from "@/context/themeContext";
+import { useContext } from "react";
 
 const LoginPage = () => {
+  const { theme } = useContext(ThemeContext);
   const captchaKey = import.meta.env.VITE_CAPTCHA_KEY;
   console.log(captchaKey);
   return (
@@ -19,7 +22,7 @@ const LoginPage = () => {
           <input placeholder="Password" type="password" id="password" />
         </div>
         <ReCAPTCHA
-          theme="dark"
+          theme={theme}
           className={styles.captcha}
           sitekey={captchaKey}
         />

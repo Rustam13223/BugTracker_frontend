@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
-:root {
+:root[data-theme="dark"] {
   /** CSS DARK THEME PRIMARY COLORS */
   --color-primary-100: #cc0000;
   --color-primary-200: #d73a1f;
@@ -29,6 +29,36 @@
   --color-surface-mixed-600: #978e8b;
 }
 
+:root[data-theme="light"] {
+  /** CSS LIGHT THEME PRIMARY COLORS */
+  --color-primary-100: #2bc2f0;
+  --color-primary-200: #56c9f2;
+  --color-primary-300: #73d0f4;
+  --color-primary-400: #8bd6f5;
+  --color-primary-500: #a1ddf7;
+  --color-primary-600: #b5e4f9;
+  /** CSS LIGHT THEME SURFACE COLORS */
+  --color-surface-100: #ffffff; /* White */
+  --color-surface-125: #f7f7f7; /* Very light gray */
+  --color-surface-150: #f2f2f2; /* Light gray */
+  --color-surface-200: #e0e0e0; /* Base gray */
+  --color-surface-300: #cccccc; /* Light shade */
+  --color-surface-400: #b3b3b3; /* Mid shade */
+  --color-surface-500: #999999; /* Dark shade */
+  --color-surface-600: #808080; /* Darker shade */
+  --color-surface-700: #666666; /* Even darker shade */
+  --color-surface-800: #4d4d4d; /* Darkest shade */
+  --color-surface-900: #333333; /* Black */
+  /** CSS LIGHT THEME MIXED SURFACE COLORS */
+  /* You can adjust these based on your desired contrast with the primary color */
+  --color-surface-mixed-100: #f2f2f2; /* Light gray */
+  --color-surface-mixed-200: #e0e0e0; /* Base gray */
+  --color-surface-mixed-300: #cccccc; /* Light shade */
+  --color-surface-mixed-400: #b3b3b3; /* Mid shade */
+  --color-surface-mixed-500: #999999; /* Dark shade */
+  --color-surface-mixed-600: #808080; /* Darker shade */
+}
+
 body {
   background: linear-gradient(
     45deg,
@@ -50,9 +80,18 @@ body {
   flex-direction: column;
 }
 
+svg path{
+  fill: var(--color-primary-100);
+}
+
 a {
   text-decoration: none;
   color: var(--color-surface-500);
+  transition: all 0.2s;
+}
+
+a:hover{
+  color: var(--color-surface-400);
 }
 
 button {
@@ -63,7 +102,7 @@ button {
     var(--color-primary-300)
   );
   padding: 0.75rem 1rem;
-  color: var(--color-surface-900);
+  color: white;
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
@@ -112,9 +151,35 @@ input:focus {
 
 @media (prefers-color-scheme: light) {
   :root {
-    --primary-color: ;
-    --secondary-color: ;
-    --text-color: ;
-    --background-color: ;
+    /** CSS DARK THEME PRIMARY COLORS */
+    /** CSS DARK THEME PRIMARY COLORS */
+--color-primary-100: #2bc2f0;
+--color-primary-200: #56c9f2;
+--color-primary-300: #73d0f4;
+--color-primary-400: #8bd6f5;
+--color-primary-500: #a1ddf7;
+--color-primary-600: #b5e4f9;
+  
+    /** CSS LIGHT THEME SURFACE COLORS */
+    --color-surface-100: #ffffff; /* White */
+    --color-surface-125: #f7f7f7; /* Very light gray */
+    --color-surface-150: #f2f2f2; /* Light gray */
+    --color-surface-200: #e0e0e0; /* Base gray */
+    --color-surface-300: #cccccc; /* Light shade */
+    --color-surface-400: #b3b3b3; /* Mid shade */
+    --color-surface-500: #999999; /* Dark shade */
+    --color-surface-600: #808080; /* Darker shade */
+    --color-surface-700: #666666; /* Even darker shade */
+    --color-surface-800: #4d4d4d; /* Darkest shade */
+    --color-surface-900: #333333; /* Black */
+  
+    /** CSS LIGHT THEME MIXED SURFACE COLORS */
+    /* You can adjust these based on your desired contrast with the primary color */
+    --color-surface-mixed-100: #f2f2f2; /* Light gray */
+    --color-surface-mixed-200: #e0e0e0; /* Base gray */
+    --color-surface-mixed-300: #cccccc; /* Light shade */
+    --color-surface-mixed-400: #b3b3b3; /* Mid shade */
+    --color-surface-mixed-500: #999999; /* Dark shade */
+    --color-surface-mixed-600: #808080; /* Darker shade */
   }
 }
