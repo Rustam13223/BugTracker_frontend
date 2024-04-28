@@ -3,13 +3,11 @@ import AuthLayout from "@/components/Layouts/AuthLayout/AuthLayout";
 import ReCAPTCHA from "react-google-recaptcha";
 import styles from "./LoginPage.module.css";
 import { Link } from "react-router-dom";
-import { ThemeContext } from "@/context/themeContext";
-import { useContext } from "react";
-
+import { useTheme } from "@/context/themeContext";
+import SubmitButton from "@/components/buttons/SubmitButton";
 const LoginPage = () => {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
   const captchaKey = import.meta.env.VITE_CAPTCHA_KEY;
-  console.log(captchaKey);
   return (
     <AuthLayout page="login">
       <form>
@@ -21,12 +19,21 @@ const LoginPage = () => {
           <label htmlFor="password">Password</label>
           <input placeholder="Password" type="password" id="password" />
         </div>
-        <ReCAPTCHA
-          theme={theme}
-          className={styles.captcha}
-          sitekey={captchaKey}
-        />
-        <button type="submit">Sign in</button>
+        {theme === "dark" ? (
+          <ReCAPTCHA
+            theme="dark"
+            className={styles.captcha}
+            sitekey={captchaKey}
+          />
+        ) : (
+          <ReCAPTCHA
+            theme="light"
+            key={theme}
+            className={styles.captcha}
+            sitekey={captchaKey}
+          />
+        )}
+        <SubmitButton type="submit">Sign in</SubmitButton>
         <Link to="/register">
           <p className={styles.p}>Sign up here</p>
         </Link>

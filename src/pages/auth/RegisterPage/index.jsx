@@ -3,10 +3,11 @@ import AuthLayout from "@/components/Layouts/AuthLayout/AuthLayout";
 import ReCAPTCHA from "react-google-recaptcha";
 import { Link } from "react-router-dom";
 import styles from "./RegisterPage.module.css";
-import { ThemeContext } from "@/context/themeContext";
+import { useTheme } from "@/context/themeContext";
+import SubmitButton from "@/components/buttons/SubmitButton";
 
 const RegisterPage = () => {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
   return (
     <AuthLayout>
       <form>
@@ -38,10 +39,11 @@ const RegisterPage = () => {
 
         <ReCAPTCHA
           theme={theme}
+          key={theme}
           className="captcha"
           sitekey={import.meta.env.VITE_CAPTCHA_KEY}
         />
-        <button type="submit">Sign up</button>
+        <SubmitButton type="submit">Sign up</SubmitButton>
         <Link to="/login">
           <p className={styles.p}>Already have an account</p>
         </Link>
