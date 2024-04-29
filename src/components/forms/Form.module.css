@@ -1,0 +1,59 @@
+.p {
+    font-size: 1rem;
+  }
+  
+  .error{
+    color: red;
+    font-size: 0.8rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    padding: 2rem;
+  }
+  
+  form div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  form input {
+    padding: 0.5rem;
+    border: 1px solid var(--color-surface-200);
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    background-color: var(--color-surface-100);
+    color: var(--color-surface-700);
+    transition: all 0.2s;
+  }
+  form label {
+    font-size: 1rem;
+    color: var(--color-surface-700);
+  }
+  
+  input:focus::placeholder {
+    color: transparent;
+  }
+  
+  input:focus {
+    outline: none;
+    border: 1px solid var(--color-primary-100);
+  }
+  
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+      transition: background-color 5000s ease-in-out 0s;
+      /* High transition time to avoid color flicker */
+      -webkit-text-fill-color: var(--color-surface-700) !important;
+      /* Ensures the text color is white */
+      background-color: var(--color-surface-200) !important;
+      /* Change to your desired background color */
+  }

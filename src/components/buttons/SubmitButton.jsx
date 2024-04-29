@@ -1,4 +1,5 @@
 import React from "react";
+import { BarLoader } from "react-spinners";
 
 const SubmitButton = ({
   children,
@@ -9,6 +10,7 @@ const SubmitButton = ({
   background,
   borderRadius,
   border,
+  disabled,
 }) => {
   const styles = {
     width: width || "100%",
@@ -22,9 +24,16 @@ const SubmitButton = ({
     borderRadius: borderRadius || "0.25rem",
     border: border || "none",
     cursor: "pointer",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   };
 
-  return <button style={styles}>{children}</button>;
+  return (
+    <button type="submit" disabled={disabled} style={styles}>
+      {disabled ? <BarLoader color="white" /> : <>{children}</>}
+    </button>
+  );
 };
 
 export default SubmitButton;

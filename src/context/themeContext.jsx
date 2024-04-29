@@ -14,7 +14,12 @@ const ThemeProvider = ({ children, value }) => {
     });
   };
   useEffect(() => {
-    setTheme(localStorage.getItem("theme") || "dark");
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+    setTheme(
+      localStorage.getItem("theme") ||
+        (prefersDarkScheme.matches ? "dark" : "light")
+    );
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 

@@ -1,17 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState, createContext } from "react";
-import { useUser } from "@hooks/useUser";
 
 const UserContext = createContext();
-
-const userContext = ({ children }) => {
-  const { user, setUser } = useUser();
+const useUserContext = () => useContext(UserContext);
+const UserProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    setUser(user);
+  }, []);
+  const logout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+  };
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, logout }}>
       {children}
     </UserContext.Provider>
   );
 };
 
-export default userContext;
+export { UserProvider, useUserContext };

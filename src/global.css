@@ -3,11 +3,13 @@
 :root[data-theme="dark"] {
   /** CSS DARK THEME PRIMARY COLORS */
   --color-primary-100: #cc0000;
+  --color-primary-100-rgb: 204, 0, 0;
   --color-primary-200: #d73a1f;
   --color-primary-300: #e15839;
   --color-primary-400: #e97253;
   --color-primary-500: #f18a6e;
   --color-primary-600: #f7a28a;
+
   /** CSS DARK THEME SURFACE COLORS */
   --color-surface-100: #121212;
   --color-surface-125: #1a1a1a;
@@ -32,6 +34,7 @@
 :root[data-theme="light"] {
   /** CSS LIGHT THEME PRIMARY COLORS */
   --color-primary-100: #2bc2f0;
+  --color-primary-100-rgb: 43, 194, 240;
   --color-primary-200: #56c9f2;
   --color-primary-300: #73d0f4;
   --color-primary-400: #8bd6f5;
@@ -67,12 +70,33 @@ body {
   );
   color: var(--color-surface-900);
   font-family: "Raleway", sans-serif;
+  
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--color-surface-200)
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-100)
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-200)
 }
 
 .flex-col {
@@ -80,9 +104,6 @@ body {
   flex-direction: column;
 }
 
-svg path{
-  fill: var(--color-primary-100);
-}
 
 a {
   text-decoration: none;
@@ -104,83 +125,15 @@ button:hover {
   opacity: 0.9;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-form div {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-form input {
-  padding: 0.5rem;
+textarea{
+  background: var(--color-surface-100);
   border: 1px solid var(--color-surface-200);
-  border-radius: 0.25rem;
+  padding: 0.5rem;
   font-size: 1rem;
-  background-color: var(--color-surface-100);
-  color: var(--color-surface-700);
-}
-form label {
-  font-size: 1rem;
-  color: var(--color-surface-700);
-}
-
-input:focus::placeholder {
-  color: transparent;
+  font-family: inherit;
+  color: var(--color-surface-900);
+  border-radius: 0.5rem;
+  height: 150px;
+  resize: none;
 }
 
-input:focus {
-  outline: none;
-  border: 1px solid var(--color-primary-100);
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    transition: background-color 5000s ease-in-out 0s;
-    /* High transition time to avoid color flicker */
-    -webkit-text-fill-color: var(--color-surface-700) !important;
-    /* Ensures the text color is white */
-    background-color: var(--color-surface-200) !important;
-    /* Change to your desired background color */
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    /** CSS DARK THEME PRIMARY COLORS */
-    /** CSS DARK THEME PRIMARY COLORS */
---color-primary-100: #2bc2f0;
---color-primary-200: #56c9f2;
---color-primary-300: #73d0f4;
---color-primary-400: #8bd6f5;
---color-primary-500: #a1ddf7;
---color-primary-600: #b5e4f9;
-  
-    /** CSS LIGHT THEME SURFACE COLORS */
-    --color-surface-100: #ffffff; /* White */
-    --color-surface-125: #f7f7f7; /* Very light gray */
-    --color-surface-150: #f2f2f2; /* Light gray */
-    --color-surface-200: #e0e0e0; /* Base gray */
-    --color-surface-300: #cccccc; /* Light shade */
-    --color-surface-400: #b3b3b3; /* Mid shade */
-    --color-surface-500: #999999; /* Dark shade */
-    --color-surface-600: #808080; /* Darker shade */
-    --color-surface-700: #666666; /* Even darker shade */
-    --color-surface-800: #4d4d4d; /* Darkest shade */
-    --color-surface-900: #333333; /* Black */
-  
-    /** CSS LIGHT THEME MIXED SURFACE COLORS */
-    /* You can adjust these based on your desired contrast with the primary color */
-    --color-surface-mixed-100: #f2f2f2; /* Light gray */
-    --color-surface-mixed-200: #e0e0e0; /* Base gray */
-    --color-surface-mixed-300: #cccccc; /* Light shade */
-    --color-surface-mixed-400: #b3b3b3; /* Mid shade */
-    --color-surface-mixed-500: #999999; /* Dark shade */
-    --color-surface-mixed-600: #808080; /* Darker shade */
-  }
-}

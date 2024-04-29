@@ -1,8 +1,18 @@
 import React from "react";
 import { useTheme } from "@/context/themeContext";
 import { FaSun, FaMoon } from "react-icons/fa";
+import FadeIn from "@/components/animations/FadeIn";
+import { IconContext } from "react-icons";
 
-const ToggleThemeButton = ({ position, top, left, right, bottom, size }) => {
+const ToggleThemeButton = ({
+  position,
+  top,
+  left,
+  right,
+  bottom,
+  size,
+  color = "var(--color-primary-100)",
+}) => {
   const styles = {
     position: position || "absolute",
     top: top || "auto",
@@ -17,9 +27,13 @@ const ToggleThemeButton = ({ position, top, left, right, bottom, size }) => {
   const { theme, toggleTheme } = useTheme();
   return (
     <>
-      <button style={styles} onClick={toggleTheme}>
-        {theme === "light" ? <FaSun /> : <FaMoon />}
-      </button>
+      <IconContext.Provider value={{ color: color }}>
+        <FadeIn key={theme}>
+          <button style={styles} onClick={toggleTheme}>
+            {theme === "light" ? <FaSun /> : <FaMoon />}
+          </button>
+        </FadeIn>
+      </IconContext.Provider>
     </>
   );
 };
