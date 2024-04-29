@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 import { ParallaxLayer } from "@react-spring/parallax";
 import styles from "./TestimonialSection.module.css";
-import { useOnScreen } from "@/hooks/useOnScreen";
 import testimonials from "@/assets/testimonials";
 import Slider from "react-slick";
 import Testimonial from "./Testimonial";
 import FadeIn from "@/components/animations/FadeIn";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { useInView } from "react-intersection-observer";
 
 function PrevArrow(props) {
   const { className, style, onClick } = props;
@@ -26,7 +26,7 @@ function NextArrow(props) {
 }
 
 const TestimonialSection = ({ options }) => {
-  const [ref, isVisible] = useOnScreen(options);
+  const { ref, inView } = useInView(options);
   const sliderRef = useRef(null);
   const settings = {
     dots: true,
@@ -82,20 +82,18 @@ const TestimonialSection = ({ options }) => {
       speed={0.5}
       className={styles.testimonialSection}
     >
-      <div
-        className={styles.container}
-        ref={ref}
-        style={{ opacity: isVisible ? 1 : 0 }}
-      >
-        <div className={styles.carousel}>
-          <FadeIn duration={1000} key={isVisible}>
-            <Slider ref={sliderRef} {...settings}>
-              {testimonials.testimonials.map((testimonial) => (
-                <Testimonial testimonial={testimonial} key={testimonial.id} />
-              ))}
-            </Slider>
-          </FadeIn>
-        </div>
+      <div className={styles.container} ref={ref}>
+        {inView && (
+          <div className={styles.carousel}>
+            <FadeIn duration={1000}>
+              <Slider ref={sliderRef} {...settings}>
+                {testimonials.testimonials.map((testimonial) => (
+                  <Testimonial testimonial={testimonial} key={testimonial.id} />
+                ))}
+              </Slider>
+            </FadeIn>
+          </div>
+        )}
       </div>
     </ParallaxLayer>
   );
