@@ -38,15 +38,6 @@
 }
 
 
-.contactForm{
-    width: 40%;
-    background-color: rgba(var(--color-primary-100-rgb), 0.3);
-    border-radius: 0.5rem;
-}
-
-.contactForm form{
-    height: 100%;
-}
 
 .footer{
     position: absolute;
@@ -62,6 +53,8 @@
 
 .form{
     width: 100%;
+    background-color: rgba(var(--color-primary-100-rgb), 0.1);
+    border-radius: 0.5rem;
 }
 
 .socialIcon{
@@ -76,9 +69,7 @@
         padding-bottom: 200px;
     }
 
-    .contactForm{
-        width: 100%;
-    }
+    
 
     .info{
         align-items: center;

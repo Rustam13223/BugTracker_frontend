@@ -1,39 +1,24 @@
-import SlideIn from "../../components/animations/SlideIn";
+import React from "react";
+import styles from "./Dashboard.module.css";
+import { useUserContext } from "../../context/userContext";
+import NotAuthenticated from "../../components/redirects/NotAuthenticated/NotAuthenticated";
+import AssignedForUser from "../../components/issues/AssignedForUser/AssignedForUser";
+import CreatedByUser from "../../components/issues/CreatedByUser/CreatedByUser";
 
 function Dashboard() {
-  const items = [
-    { id: 1, name: "John Doe" },
-    { id: 2, name: "Jane Doe" },
-    { id: 3, name: "John Smith" },
-    { id: 4, name: "Jane Smith" },
-    { id: 5, name: "John Johnson" },
-    { id: 6, name: "Jane Johnson" },
-    { id: 7, name: "John Brown" },
-    { id: 8, name: "Jane Brown" },
-    { id: 9, name: "John White" },
-    { id: 10, name: "Jane White" },
-    { id: 11, name: "John Black" },
-    { id: 12, name: "Jane Black" },
-  ];
+  const { user } = useUserContext();
+  if (!user) return <NotAuthenticated />;
   return (
-    <div>
-      {items.map((item, index) => (
-        <SlideIn from="left" key={item.id} delay={index * 50}>
-          <div
-            style={{
-              height: "100px",
-              width: "1000px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              border: "1px solid black",
-              background: "lightgray",
-            }}
-          >
-            {item.name}
-          </div>
-        </SlideIn>
-      ))}
+    <div className={styles.container}>
+      <h2>Welcome {user.firstName}</h2>
+      <div className={styles.content}>
+        <div className={styles.section}>
+          <AssignedForUser />
+        </div>
+        <div className={styles.section}>
+          <CreatedByUser />
+        </div>
+      </div>
     </div>
   );
 }

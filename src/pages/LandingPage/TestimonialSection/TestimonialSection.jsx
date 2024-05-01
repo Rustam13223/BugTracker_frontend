@@ -6,7 +6,6 @@ import Slider from "react-slick";
 import Testimonial from "./Testimonial";
 import FadeIn from "@/components/animations/FadeIn";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { useInView } from "react-intersection-observer";
 
 function PrevArrow(props) {
   const { className, style, onClick } = props;
@@ -25,8 +24,7 @@ function NextArrow(props) {
   );
 }
 
-const TestimonialSection = ({ options }) => {
-  const { ref, inView } = useInView(options);
+const TestimonialSection = ({ offset, speed, options }) => {
   const sliderRef = useRef(null);
   const settings = {
     dots: true,
@@ -78,22 +76,20 @@ const TestimonialSection = ({ options }) => {
   };
   return (
     <ParallaxLayer
-      offset={2.0}
-      speed={0.5}
+      offset={offset}
+      speed={speed}
       className={styles.testimonialSection}
     >
-      <div className={styles.container} ref={ref}>
-        {inView && (
-          <div className={styles.carousel}>
-            <FadeIn duration={1000}>
-              <Slider ref={sliderRef} {...settings}>
-                {testimonials.testimonials.map((testimonial) => (
-                  <Testimonial testimonial={testimonial} key={testimonial.id} />
-                ))}
-              </Slider>
-            </FadeIn>
-          </div>
-        )}
+      <div className={styles.container}>
+        <div className={styles.carousel}>
+          <FadeIn from="bottom" duration={1.5}>
+            <Slider ref={sliderRef} {...settings}>
+              {testimonials.testimonials.map((testimonial) => (
+                <Testimonial testimonial={testimonial} key={testimonial.id} />
+              ))}
+            </Slider>
+          </FadeIn>
+        </div>
       </div>
     </ParallaxLayer>
   );

@@ -27,7 +27,7 @@ const FooterLinks = () => {
   return (
     <>
       {links.map((link) => (
-        <Link key={link.name} to={link.url}>
+        <Link key={link.name} target="_blank" to={link.url}>
           {link.name}
         </Link>
       ))}

@@ -12,10 +12,10 @@ import { useUserContext } from "../../context/userContext";
 const LoginForm = () => {
   const { theme } = useTheme();
   const [captchaValue, setCaptchaValue] = useState(null);
-  const [captchaError, setCaptchaError] = useState(null);
+  const [captchaError, setCaptchaError] = useState("");
   const captchaTheme = ["dark", "light"].includes(theme) ? theme : "light";
   const [submitError, setSubmitError] = useState(null);
-  const { setUser } = useUserContext();
+  const { saveUser } = useUserContext();
   const navigate = useNavigate();
   const recaptchaRef = useRef(null);
   const validationSchema = Yup.object().shape({
@@ -47,7 +47,7 @@ const LoginForm = () => {
           if (response.data.error) {
             setSubmitError(response.data.error);
           } else if (response.data.accessToken) {
-            setUser(response.data);
+            saveUser(response.data);
             navigate("/dashboard");
           }
         } catch (error) {

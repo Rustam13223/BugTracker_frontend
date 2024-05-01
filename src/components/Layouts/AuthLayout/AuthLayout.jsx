@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./AuthLayout.module.css";
 import { Link } from "react-router-dom";
-import FooterLinks from "./FooterLinks";
+import FooterLinks from "@/components/Footer/FooterLinks";
 import svg from "@/assets/bugtracker.svg";
 import BugtrackerSvg from "../../../assets/BugtrackerSvg";
 import ToggleThemeButton from "@/components/buttons/ToggleThemeButton";

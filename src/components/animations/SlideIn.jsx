@@ -1,36 +1,42 @@
-import React from "react";
-import { animated, useSpring } from "@react-spring/web";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 const SlideIn = ({
   children,
-  duration,
-  delay = 0,
   from,
-  offset = 100,
-  style,
+  duration = 0.5,
+  delay = 0,
+  styles,
+  once = false,
 }) => {
-  const getFromStyle = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: once });
+
+  const getPosition = () => {
     switch (from) {
-      case "top":
-        return { transform: `translate3d(0,${-offset}px,0)`, opacity: 0 };
-      case "bottom":
-        return { transform: `translate3d(0,${offset}px,0)`, opacity: 0 };
       case "left":
-        return { transform: `translate3d(${-offset}px,0,0)`, opacity: 0 };
+        return { x: -100, opacity: 0 };
       case "right":
-        return { transform: `translate3d(${offset}px,0,0)`, opacity: 0 };
+        return { x: 100, opacity: 0 };
+      case "top":
+        return { y: -50, opacity: 0 };
+      case "bottom":
+        return { y: 100, opacity: 0 };
       default:
-        return { transform: `translate3d(0,${-offset}px,0)`, opacity: 0 };
+        return { x: 0, y: 0, opacity: 1 }; // No movement if direction is not specified
     }
   };
-  const styles = useSpring({
-    to: { transform: "translate3d(0,0,0)", opacity: 1 },
-    from: getFromStyle(),
-    delay: delay,
-    config: { duration: duration, mass: 1, tension: 210, friction: 20 },
-  });
+
   return (
-    <animated.div style={{ ...styles, ...style }}>{children}</animated.div>
+    <motion.div
+      ref={ref}
+      initial={getPosition()}
+      animate={isInView ? { x: 0, y: 0, opacity: 1 } : {}}
+      transition={{ duration, delay }} // Added delay to the transition
+      style={{ ...styles, overflow: "hidden" }}
+    >
+      {children}
+    </motion.div>
   );
 };
 

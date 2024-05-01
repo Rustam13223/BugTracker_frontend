@@ -13,9 +13,9 @@ import { useNavigate } from "react-router-dom";
 const RegisterForm = () => {
   const { theme } = useTheme();
   const [captchaValue, setCaptchaValue] = useState(null);
-  const [captchaError, setCaptchaError] = useState(null);
+  const [captchaError, setCaptchaError] = useState("");
   const captchaTheme = ["dark", "light"].includes(theme) ? theme : "light";
-  const { user, setUser } = useUserContext();
+  const { saveUser } = useUserContext();
   const [submitError, setSubmitError] = useState(null);
   const navigate = useNavigate();
   const recaptchaRef = useRef(null);
@@ -60,7 +60,7 @@ const RegisterForm = () => {
           if (response.data.error) {
             setSubmitError(response.data.error);
           } else if (response.data.accessToken) {
-            setUser(response.data);
+            saveUser(response.data);
             navigate("/dashboard");
           }
         } catch (error) {

@@ -23,6 +23,9 @@ const ToggleThemeButton = ({
     fontSize: size || "2rem",
     zIndex: "1000",
     background: "transparent",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   };
   const { theme, toggleTheme } = useTheme();
   return (

@@ -6,59 +6,95 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import SubmitButton from "@/components/buttons/SubmitButton";
-import FooterLinks from "@/components/Layouts/AuthLayout/FooterLinks";
+import FooterLinks from "@/components/Footer/FooterLinks";
 import SlideIn from "../../../components/animations/SlideIn";
-import { useInView } from "react-intersection-observer";
-const ContactSection = ({ options }) => {
-  const { ref, inView } = useInView(options);
+import FadeIn from "../../../components/animations/FadeIn";
+const ContactSection = ({ offset, speed, options }) => {
   return (
-    <ParallaxLayer offset={3.0} speed={0.5} className={styles.contactSection}>
-      <div ref={ref} className={styles.container}>
-        {inView && (
+    <>
+      <ParallaxLayer
+        offset={offset}
+        speed={speed}
+        className={styles.contactSection}
+      >
+        <div className={styles.container}>
           <>
-            <SlideIn from="left">
+            <SlideIn
+              from="left"
+              styles={{
+                width: "100%",
+              }}
+            >
               <div className={styles.info}>
-                <h1>Unlock Opportunities - Get in Touch</h1>
+                <SlideIn from="left" delay={0.1}>
+                  <h1>Unlock Opportunities - Get in Touch</h1>
+                </SlideIn>
                 <div className={styles.address}>
-                  <p>
-                    <span>Address: </span> Zielona Góra, Poland
-                  </p>
-                  <p>
-                    <span>Email: </span>contact@bugtracker.com
-                  </p>
-                  <p>
-                    <span>Phone: </span>+48 123 456 789
-                  </p>
-                  <p>
-                    <span>Hours: </span>Mon-Fri, 9:00-17:00
-                  </p>
+                  <SlideIn from="left" delay={0.2}>
+                    <p>
+                      <span>Address: </span> Zielona Góra, Poland
+                    </p>
+                  </SlideIn>
+                  <SlideIn from="left" delay={0.2}>
+                    <p>
+                      <span>Email: </span>contact@bugtracker.com
+                    </p>
+                  </SlideIn>
+                  <SlideIn from="left" delay={0.3}>
+                    <p>
+                      <span>Phone: </span>+48 123 456 789
+                    </p>
+                  </SlideIn>
+                  <SlideIn from="left" delay={0.3}>
+                    <p>
+                      <span>Hours: </span>Mon-Fri, 9:00-17:00
+                    </p>
+                  </SlideIn>
                 </div>
-                <div className={styles.socials}>
-                  <FaFacebookSquare size={40} className={styles.socialIcon} />
-                  <FaSquareXTwitter size={40} className={styles.socialIcon} />
-                  <FaInstagramSquare size={40} className={styles.socialIcon} />
-                  <FaLinkedin size={40} className={styles.socialIcon} />
-                </div>
+                <SlideIn from="left" delay={0.4}>
+                  <div className={styles.socials}>
+                    <FaFacebookSquare size={40} className={styles.socialIcon} />
+                    <FaSquareXTwitter size={40} className={styles.socialIcon} />
+                    <FaInstagramSquare
+                      size={40}
+                      className={styles.socialIcon}
+                    />
+                    <FaLinkedin size={40} className={styles.socialIcon} />
+                  </div>
+                </SlideIn>
               </div>
             </SlideIn>
-            <div className={styles.contactForm}>
-              <SlideIn from="right">
-                <form className={styles.form}>
+            <FadeIn
+              from="right"
+              styles={{
+                width: "100%",
+              }}
+            >
+              <form className={styles.form}>
+                <SlideIn from="right" delay={0.1}>
                   <input type="text" placeholder="Name" />
+                </SlideIn>
+                <SlideIn from="right" delay={0.2}>
                   <input type="email" placeholder="Email" />
+                </SlideIn>
+                <SlideIn from="right" delay={0.3}>
                   <input type="text" placeholder="Subject" />
+                </SlideIn>
+                <SlideIn from="right" delay={0.4}>
                   <textarea rosw="10" placeholder="Message"></textarea>
+                </SlideIn>
+                <SlideIn from="right" delay={0.5}>
                   <SubmitButton>Send</SubmitButton>
-                </form>
-              </SlideIn>
-            </div>
+                </SlideIn>
+              </form>
+            </FadeIn>
           </>
-        )}
-      </div>
+        </div>
+      </ParallaxLayer>
       <footer className={styles.footer}>
         <FooterLinks />
       </footer>
-    </ParallaxLayer>
+    </>
   );
 };
 

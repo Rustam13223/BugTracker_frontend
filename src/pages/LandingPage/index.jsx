@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { Parallax } from "@react-spring/parallax";
-import { FaArrowUp } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
@@ -13,14 +12,11 @@ import FeaturesSection from "./FeaturesSection/FeaturesSection";
 import TestimonialSection from "./TestimonialSection/TestimonialSection";
 import ContactSection from "./ContactSection/ContactSection";
 import MobileNav from "./MobileNav/MobileNav";
+import { useUserContext } from "../../context/userContext";
 
 const index = () => {
   const [mobileNavVisible, setMobileNavVisible] = useState(false);
-  const options = {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.2,
-  };
+  const { user } = useUserContext();
   const parallax = useRef(null);
   const scroll = (to) => {
     if (parallax.current) {
@@ -31,7 +27,7 @@ const index = () => {
     <div className={styles.container}>
       <header className={styles.header}>
         <div onClick={() => scroll(0)} className={styles.logo}>
-          <BugtrackerSvg size={"50px"} />
+          <BugtrackerSvg size={60} />
           <h1>BugTracker</h1>
         </div>
         <nav className={styles.nav}>
@@ -47,12 +43,20 @@ const index = () => {
           <button className={styles.navBtn} onClick={() => scroll(3)}>
             Contact
           </button>
-          <Link to="/login">
-            <button className={styles.loginBtn}>Sign in</button>
-          </Link>
-          <Link to="/register">
-            <button className={styles.registerBtn}>Sign up</button>
-          </Link>
+          {user ? (
+            <Link to="/dashboard">
+              <button className={styles.dashboardBtn}>Go To Dashboard</button>
+            </Link>
+          ) : (
+            <>
+              <Link to="/login">
+                <button className={styles.loginBtn}>Sign in</button>
+              </Link>
+              <Link to="/register">
+                <button className={styles.registerBtn}>Sign up</button>
+              </Link>
+            </>
+          )}
           <ToggleThemeButton
             color="white"
             position="static"
@@ -83,10 +87,10 @@ const index = () => {
         }}
         ref={parallax}
       >
-        <HeroSection options={options} />
-        <FeaturesSection options={options} />
-        <TestimonialSection options={options} />
-        <ContactSection options={options} />
+        <HeroSection offset="0" speed="0.5" />
+        <FeaturesSection offset="1" speed="0.5" />
+        <TestimonialSection offset="2" speed="0.5" />
+        <ContactSection offset="3" speed="0.5" />
       </Parallax>
     </div>
   );

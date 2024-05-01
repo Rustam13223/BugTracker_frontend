@@ -2,8 +2,11 @@ import React from "react";
 import styles from "./MobileNav.module.css";
 import { IoMenu } from "react-icons/io5";
 import ToggleThemeButton from "@/components/buttons/ToggleThemeButton";
+import { useUserContext } from "../../../context/userContext";
+import { Link } from "react-router-dom";
 
 const MobileNav = ({ mobileNavVisible, setMobileNavVisible, scroll }) => {
+  const { user } = useUserContext();
   return (
     <>
       <div
@@ -34,10 +37,20 @@ const MobileNav = ({ mobileNavVisible, setMobileNavVisible, scroll }) => {
               Contact
             </button>
           </nav>
-          <div className={styles.btnGroup}>
-            <button className={styles.loginBtn}>Sign in</button>
-            <button className={styles.registerBtn}>Sign up</button>
-          </div>
+          {user ? (
+            <Link className={styles.link} to="/dashboard">
+              <button className={styles.loginBtn}>Go To Dashboard</button>
+            </Link>
+          ) : (
+            <div className={styles.btnGroup}>
+              <Link className={styles.link} to="/login">
+                <button className={styles.loginBtn}>Sign in</button>
+              </Link>
+              <Link className={styles.link} to="/register">
+                <button className={styles.registerBtn}>Sign up</button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </>
