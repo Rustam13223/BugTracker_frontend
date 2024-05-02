@@ -43,6 +43,7 @@ const SubmitIssueForm = () => {
             setSubmitError(error.message);
           } finally {
             setSubmitting(false);
+            navigate("/dashboard");
           }
         }}
       >

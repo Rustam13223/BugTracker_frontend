@@ -16,17 +16,9 @@ const ListIssues = ({ items: issues }) => {
   return (
     <div className={styles.listIssues}>
       {issues.map((issue) => (
-        <motion.div
-          key={issue.id}
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 100 }}
-          transition={{ duration: 0.5 }}
-          layoutId={issue.id}
-          onClick={() => handleIssueClick(issue.id)}
-        >
+        <div key={issue.id} onClick={() => handleIssueClick(issue.id)}>
           <Issue issue={issue} />
-        </motion.div>
+        </div>
       ))}
 
       <AnimatePresence>

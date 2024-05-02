@@ -12,12 +12,12 @@ const NavbarLinks = () => {
       path: "/all-issues",
     },
     {
-      name: "Statistics",
-      path: "/stats",
-    },
-    {
       name: "Users",
       path: "/users",
+    },
+    {
+      name: "Statistics",
+      path: "/stats",
     },
   ];
   return (

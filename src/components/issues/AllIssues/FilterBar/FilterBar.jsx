@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./FilterBar.module.css";
-import { useFilterContext } from "@/context/filterContext";
+import { useIssueFilterContext } from "@/context/issueFilterContext";
 
 const FilterBar = () => {
-  const { filter, setFilter } = useFilterContext();
+  const { filter, setFilter } = useIssueFilterContext();
   const handleClick = (filter) => {
     setFilter(filter);
     console.log(filter);

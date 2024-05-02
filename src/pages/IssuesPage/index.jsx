@@ -1,12 +1,12 @@
 import React from "react";
 import AllIssues from "../../components/issues/AllIssues/AllIssues";
-import { FilterProvider } from "../../context/filterContext";
+import { IssueFilterProvider } from "../../context/issueFilterContext";
 
 const IssuesPage = () => {
   return (
-    <FilterProvider>
+    <IssueFilterProvider>
       <AllIssues />
-    </FilterProvider>
+    </IssueFilterProvider>
   );
 };
 
