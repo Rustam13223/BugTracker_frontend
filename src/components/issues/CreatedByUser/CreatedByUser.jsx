@@ -66,11 +66,6 @@ const CreatedByUser = () => {
       ) : (
         <ListIssues items={assignedIssues} />
       )}
-      {/* <ul>
-        {assignedIssues.map((issue) => (
-          <li key={issue.id}>{issue.title}</li>
-        ))}
-      </ul> */}
     </div>
   );
 };
