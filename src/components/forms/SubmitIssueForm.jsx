@@ -8,12 +8,14 @@ import styles from "./Form.module.css";
 import SubmitButton from "../buttons/SubmitButton";
 import axios from "axios";
 import { useIssuesContext } from "@/context/issuesContext";
+import { useNavigate } from "react-router-dom";
 
 const SubmitIssueForm = () => {
   const { users, loading: loadingUsers } = useUsersContext();
   const [submitError, setSubmitError] = useState(null);
   const { createIssue, error } = useIssuesContext();
   const [programmers, setProgrammers] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     if (!loadingUsers) {
       const programmers = users.filter((user) => user.role === "programmer");
@@ -36,12 +38,7 @@ const SubmitIssueForm = () => {
         validationSchema={validationSchema}
         onSubmit={async (values, { setSubmitting }) => {
           try {
-            const response = await createIssue(values);
-            if (response.data.error) {
-              setSubmitError(response.data.error);
-            } else {
-              setSubmitError(null);
-            }
+            await createIssue(values);
           } catch (error) {
             setSubmitError(error.message);
           } finally {
@@ -96,8 +93,10 @@ const SubmitIssueForm = () => {
               </UsersProvider>
             </Field>
             <ErrorMessage name="assignee" />
-            <SubmitButton disabled={isSubmitting}>Submit</SubmitButton>
-            {submitError && <p className={styles.error}>{submitError}</p>}
+            <SubmitButton height={"40px"} disabled={isSubmitting}>
+              Submit
+            </SubmitButton>
+            {submitError && <p className={styles.error}>{error}</p>}
           </form>
         )}
       </Formik>

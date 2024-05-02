@@ -1,0 +1,34 @@
+.filterBar{
+    border-bottom: 1px solid var(--color-surface-300);
+}
+
+.filterBar ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 1rem 2rem;
+    flex-wrap: wrap;
+}
+
+.notActive{
+    cursor: pointer;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--color-surface-900);
+    height: 2.5rem;
+    transition : all 0.2s;
+    border-bottom: 2px solid transparent;
+}
+
+.filterBar ul li:hover{
+    color: var(--color-primary-100);
+    border-bottom: 2px solid var(--color-primary-100);
+}
+
+.active{
+    color: var(--color-primary-100);
+    border-bottom: 2px solid var(--color-primary-100);
+    font-size: 1.25rem;
+    font-weight: 500;
+}

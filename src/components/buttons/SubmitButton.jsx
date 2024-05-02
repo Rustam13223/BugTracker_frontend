@@ -12,6 +12,7 @@ const SubmitButton = ({
   borderRadius,
   border,
   disabled,
+  style,
 }) => {
   const [hover, setHover] = useState(false);
 
@@ -31,6 +32,7 @@ const SubmitButton = ({
     justifyContent: "center",
     alignItems: "center",
     backgroundSize: "200% 200%", // Required for the gradient animation
+    ...style,
   };
 
   return (

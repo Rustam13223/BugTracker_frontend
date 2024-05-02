@@ -1,7 +1,13 @@
 import React from "react";
+import AllIssues from "../../components/issues/AllIssues/AllIssues";
+import { FilterProvider } from "../../context/filterContext";
 
 const IssuesPage = () => {
-  return <div>Issues Page</div>;
+  return (
+    <FilterProvider>
+      <AllIssues />
+    </FilterProvider>
+  );
 };
 
 export default IssuesPage;

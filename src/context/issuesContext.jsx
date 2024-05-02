@@ -20,9 +20,13 @@ const IssuesProvider = ({ children }) => {
           Authorization: `Bearer ${user.accessToken}`, // Assuming accessToken is available on user
         },
       });
+      if (response.data.error) {
+        setError(response.data.error);
+        return { error: response.data.error };
+      }
       setIssues(response.data.bugs);
     } catch (error) {
-      setError(error);
+      setError(error.message);
     } finally {
       setLoadingIssues(false);
     }
@@ -43,7 +47,7 @@ const IssuesProvider = ({ children }) => {
         setIssues([...issues, response.data.bug]);
       }
     } catch (error) {
-      setError(error);
+      setError(error.message);
     } finally {
       setLoadingIssues(false);
       return response;
