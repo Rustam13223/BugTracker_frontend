@@ -1,0 +1,96 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    padding-top: 10rem;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+}
+
+.carousel{
+    max-width: 80%;
+    margin-inline: auto;
+    position: relative;
+    
+}
+
+.testimonial{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 10px;
+    margin-inline: 20px;
+}
+
+.content{
+    text-align: center;
+    width: 70%;
+    font-size: 1.25rem;
+}
+
+.testimonial img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+
+.testimonial-carousel .testimonial img{
+    margin-inline: auto;
+}
+
+.dots{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+
+}
+
+.dots ul{
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.dots li{
+    list-style: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+
+.dots li button {
+    font-size: 0; /* Hides the default numbers/text */
+    line-height: 0;
+    width: 10px; /* Dot size */
+    height: 10px; /* Dot size */
+    padding: 0;
+    border-radius: 50%;
+    background: var(--color-surface-600); /* Dot color */
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease; /* Smooth transition for hover effect */
+}
+
+
+@media screen and (max-width: 60em) {
+    .carousel{
+        max-width: 100%;
+    }
+
+    .dots ul{
+        gap: 1rem;
+    }
+    .arrow{
+        display: none;
+    }
+}

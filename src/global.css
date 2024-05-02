@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root[data-theme="dark"] {
+  /** CSS DARK THEME PRIMARY COLORS */
+  --color-primary-100: #cc0000;
+  --color-primary-100-rgb: 204, 0, 0;
+  --color-primary-200: #d73a1f;
+  --color-primary-300: #e15839;
+  --color-primary-400: #e97253;
+  --color-primary-500: #f18a6e;
+  --color-primary-600: #f7a28a;
+
+  /** CSS DARK THEME SURFACE COLORS */
+  --color-surface-100: #121212;
+  --color-surface-125: #1a1a1a;
+  --color-surface-150: #1c1c1c;
+  --color-surface-200: #282828;
+  --color-surface-300: #3f3f3f;
+  --color-surface-400: #575757;
+  --color-surface-500: #717171;
+  --color-surface-600: #8b8b8b;
+  --color-surface-700: #a6a6a6;
+  --color-surface-800: #c2c2c2;
+  --color-surface-900: #dedede;
+  /** CSS DARK THEME MIXED SURFACE COLORS */
+  --color-surface-mixed-100: #251612;
+  --color-surface-mixed-200: #3a2b28;
+  --color-surface-mixed-300: #50423f;
+  --color-surface-mixed-400: #675a57;
+  --color-surface-mixed-500: #7f7371;
+  --color-surface-mixed-600: #978e8b;
+}
+
+:root[data-theme="light"] {
+  /** CSS LIGHT THEME PRIMARY COLORS */
+  --color-primary-100: #2bc2f0;
+  --color-primary-100-rgb: 43, 194, 240;
+  --color-primary-200: #56c9f2;
+  --color-primary-300: #73d0f4;
+  --color-primary-400: #8bd6f5;
+  --color-primary-500: #a1ddf7;
+  --color-primary-600: #b5e4f9;
+  /** CSS LIGHT THEME SURFACE COLORS */
+  --color-surface-100: #ffffff; /* White */
+  --color-surface-125: #f7f7f7; /* Very light gray */
+  --color-surface-150: #f2f2f2; /* Light gray */
+  --color-surface-200: #e0e0e0; /* Base gray */
+  --color-surface-300: #cccccc; /* Light shade */
+  --color-surface-400: #b3b3b3; /* Mid shade */
+  --color-surface-500: #999999; /* Dark shade */
+  --color-surface-600: #808080; /* Darker shade */
+  --color-surface-700: #666666; /* Even darker shade */
+  --color-surface-800: #4d4d4d; /* Darkest shade */
+  --color-surface-900: #333333; /* Black */
+  /** CSS LIGHT THEME MIXED SURFACE COLORS */
+  /* You can adjust these based on your desired contrast with the primary color */
+  --color-surface-mixed-100: #f2f2f2; /* Light gray */
+  --color-surface-mixed-200: #e0e0e0; /* Base gray */
+  --color-surface-mixed-300: #cccccc; /* Light shade */
+  --color-surface-mixed-400: #b3b3b3; /* Mid shade */
+  --color-surface-mixed-500: #999999; /* Dark shade */
+  --color-surface-mixed-600: #808080; /* Darker shade */
+}
+
+body {
+  background: linear-gradient(
+    45deg,
+    var(--color-surface-100),
+    var(--color-surface-200)
+  );
+  color: var(--color-surface-900);
+  font-family: "Raleway", sans-serif;
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--color-surface-200)
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-100)
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-200)
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+
+a {
+  text-decoration: none;
+  color: var(--color-surface-500);
+  transition: all 0.2s;
+}
+
+a:hover{
+  color: var(--color-surface-400);
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+
+
+
+

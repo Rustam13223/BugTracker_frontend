@@ -1,78 +1,60 @@
-import { useEffect, useState } from "react";
-import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
+import "./global.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ThemeProvider } from "./context/themeContext";
+import Dashboard from "./pages/Dashboard/index";
+import MainLayout from "./components/Layouts/MainLayout/MainLayout";
+import LoginPage from "./pages/auth/LoginPage/index";
+import RegisterPage from "./pages/auth/RegisterPage/index";
+import LandingPage from "./pages/LandingPage/index";
+import SubmitIssuePage from "./pages/SubmitIssuePage/index";
 import IssuesPage from "./pages/IssuesPage";
-import IssuePage from "./pages/IssuePage";
-import SubmitIssuePage from "./pages/SubmitIssuePage";
-import LoginPage from "./pages/LoginPage";
-import NavBar from "./components/NavBar";
-import { Typography } from "@mui/joy";
-import ApiService from "./services/ApiService";
+import StatisticsPage from "./pages/StatisticsPage";
+import UsersPage from "./pages/UsersPage";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { UserProvider } from "./context/userContext";
+import { UsersProvider } from "./context/usersContext";
+import { IssuesProvider } from "./context/issuesContext";
+
+function Router() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/dashboard" element={<MainLayout />}>
+          <Route index element={<Dashboard />} />
+        </Route>
+        <Route path="/all-issues" element={<MainLayout />}>
+          <Route index element={<IssuesPage />} />
+        </Route>
+        <Route path="/stats" element={<MainLayout />}>
+          <Route index element={<StatisticsPage />} />
+        </Route>
+        <Route path="/users" element={<MainLayout />}>
+          <Route index element={<UsersPage />} />
+        </Route>
+        <Route path="/submit" element={<MainLayout />}>
+          <Route index element={<SubmitIssuePage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
 function App() {
-  const [userData, setUserData] = useState({
-    firstName: "",
-    secondName: "",
-    email: "",
-  });
-  const [authorised, setAuthorised] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
-    async function checkAuth() {
-      setIsLoading(true);
-
-      const res = await ApiService.getIssues();
-
-      if (res == 500) {
-        setAuthorised(false);
-        setIsLoading(false);
-        return;
-      }
-      setUserData((prev) => {
-        return { ...prev, ...JSON.parse(localStorage.getItem("userData")) };
-      });
-      setAuthorised(true);
-
-      setIsLoading(false);
-    }
-
-    checkAuth();
-  }, [authorised]);
-
-  if (isLoading) {
-    return (
-      <>
-        <Typography level="h1">Loading...</Typography>
-      </>
-    );
-  }
-  if (!authorised) {
-    return (
-      <>
-        <NavBar
-          userData={userData}
-          authorised={authorised}
-          setAuthorised={setAuthorised}
-        />
-        <LoginPage userData={userData} setAuthorised={setAuthorised} />
-      </>
-    );
-  }
   return (
-    <>
-      <NavBar
-        userData={userData}
-        authorised={authorised}
-        setAuthorised={setAuthorised}
-      />
-      <Routes>
-        <Route path="/" element={<HomePage userData={userData} />} />
-        <Route path="/issues" element={<IssuesPage />} />
-        <Route path="/issues/:issueId" element={<IssuePage />} />
-        <Route path="/report" element={<SubmitIssuePage />} />
-      </Routes>
-    </>
+    <UserProvider>
+      <IssuesProvider>
+        <UsersProvider>
+          <ThemeProvider>
+            <Router />
+          </ThemeProvider>
+        </UsersProvider>
+      </IssuesProvider>
+    </UserProvider>
   );
 }
 

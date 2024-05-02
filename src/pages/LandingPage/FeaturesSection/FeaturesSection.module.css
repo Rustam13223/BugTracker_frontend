@@ -1,0 +1,98 @@
+.featuresSection{
+    background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    justify-content: center;
+
+}
+
+.featuresGrid{
+    width: 80%;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    margin-inline: auto;
+
+}
+.feature{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 70%;
+    
+}
+
+.p{
+    font-size: 1.25rem;
+    font-weight: 300;
+    text-align: center;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+.featureDesc h2{
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.featureDesc{
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.icon{
+    color: var(--color-primary-100)
+}
+
+@media screen and (max-width: 80em) {
+
+    .featuresGrid{
+        flex-direction: column;
+        gap: 2rem;
+        width: 95%;
+    }
+
+    .feature{
+        flex-direction: row-reverse;
+        flex: 1;
+        gap: 4rem;
+        
+    }
+   
+
+    
+
+}
+
+@media screen and (max-width: 45em) {
+    .p{
+        font-size: 0.85rem;
+    }
+    .feature{
+        gap: 0;
+        max-width: 100%;
+    }
+
+    .featureDesc h2{
+        font-size: 1.25rem;
+    }
+
+}
+
+@media screen and (max-width: 30em){
+    .icon{
+        display: none;
+    }
+    .feature{
+        max-width: 80%;
+    }
+}
