@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import Issue from "./Issue/Issue";
-import IssueModal from "./IssueModal/IssueModal";
+import IssueModal from "../../modals/IssueModal/IssueModal";
 import styles from "./ListIssues.module.css";
 
 const ListIssues = ({ items: issues }) => {

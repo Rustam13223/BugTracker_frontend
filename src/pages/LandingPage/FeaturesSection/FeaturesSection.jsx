@@ -1,4 +1,3 @@
-import React from "react";
 import { ParallaxLayer } from "@react-spring/parallax";
 import styles from "./FeaturesSection.module.css";
 import SlideIn from "@/components/animations/SlideIn";
@@ -7,7 +6,7 @@ import { RiFlowChart } from "react-icons/ri";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { PiUsersThreeLight } from "react-icons/pi";
 
-const FeaturesSection = ({ offset, speed, options }) => {
+const FeaturesSection = ({ offset, speed }) => {
   return (
     <ParallaxLayer
       offset={offset}
@@ -28,7 +27,7 @@ const FeaturesSection = ({ offset, speed, options }) => {
               </div>
             </SlideIn>
             <SlideIn from="right" duration={0.9} className={styles.featureIcon}>
-              <AiOutlineDashboard size={280} className={styles.icon} />
+              <AiOutlineDashboard className={styles.icon} />
             </SlideIn>
           </div>
           <div className={styles.feature}>
@@ -43,7 +42,7 @@ const FeaturesSection = ({ offset, speed, options }) => {
               </div>
             </SlideIn>
             <SlideIn from="right" duration={0.9} className={styles.featureIcon}>
-              <RiFlowChart size={280} className={styles.icon} />
+              <RiFlowChart className={styles.icon} />
             </SlideIn>
           </div>
           <div className={styles.feature}>
@@ -58,7 +57,7 @@ const FeaturesSection = ({ offset, speed, options }) => {
               </div>
             </SlideIn>
             <SlideIn from="right" duration={0.9} className={styles.featureIcon}>
-              <IoIosNotificationsOutline size={280} className={styles.icon} />
+              <IoIosNotificationsOutline className={styles.icon} />
             </SlideIn>
           </div>
           <div className={styles.feature}>
@@ -73,7 +72,7 @@ const FeaturesSection = ({ offset, speed, options }) => {
               </div>
             </SlideIn>
             <SlideIn from="right" duration={0.9} className={styles.featureIcon}>
-              <PiUsersThreeLight size={280} className={styles.icon} />
+              <PiUsersThreeLight className={styles.icon} />
             </SlideIn>
           </div>
         </div>

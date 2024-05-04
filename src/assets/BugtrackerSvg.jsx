@@ -1,5 +1,4 @@
-import React from "react";
-import styles from "./svg.module.css";
+import PropTypes from "prop-types";
 
 const BugtrackerSvg = ({ size, color = "var(--color-primary-100)" }) => {
   const styles = {
@@ -210,6 +209,11 @@ const BugtrackerSvg = ({ size, color = "var(--color-primary-100)" }) => {
       </svg>
     </div>
   );
+};
+
+BugtrackerSvg.propTypes = {
+  size: PropTypes.string,
+  color: PropTypes.string,
 };
 
 export default BugtrackerSvg;

@@ -10,6 +10,7 @@ import SubmitIssuePage from "./pages/SubmitIssuePage/index";
 import IssuesPage from "./pages/IssuesPage";
 import StatisticsPage from "./pages/StatisticsPage";
 import UsersPage from "./pages/UsersPage";
+import SingleIssuePage from "./pages/SingleIssuePage/index";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -38,6 +39,9 @@ function Router() {
         </Route>
         <Route path="/submit" element={<MainLayout />}>
           <Route index element={<SubmitIssuePage />} />
+        </Route>
+        <Route path="/issue/:issueId" element={<MainLayout />}>
+          <Route index element={<SingleIssuePage />} />
         </Route>
       </Routes>
     </BrowserRouter>

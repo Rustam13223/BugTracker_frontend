@@ -3,11 +3,14 @@
     justify-content: space-between;   
     flex-wrap: wrap;
     gap: 1rem;
-    background: var(--color-surface-100);
+    background: var(--color-surface-150);
     padding: 2rem 1rem;
-    border-radius: 0.5rem;
+    border-radius: 0.2rem;
     align-items: center;
     cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    position: relative; /* Needed for absolute positioning of the pseudo-element */
+    overflow: hidden; /* Ensures the pseudo-element does not show outside the container */
 }
 
 .container p{
@@ -15,15 +18,35 @@
     text-wrap: wrap;
 }
 
+.id{
+    max-width: 50px;
+}
+
 .tag{
     padding: 0.5rem;
-    border-radius: 0.5rem;
+    border-radius: 0.2rem;
     text-align: center;
     font-weight: 500;
     transition: all 0.2s;
+    color: white;
 }
 
 .tag:hover{
     cursor: pointer;
     opacity: 0.8;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 0%;
+    background: var(--color-primary-100);
+    transition: height 0.2s ease-in-out;
+}
+
+.container:hover::before {
+    height: 100%;
 }

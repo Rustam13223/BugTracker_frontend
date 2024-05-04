@@ -1,4 +1,3 @@
-import React from "react";
 import { useTheme } from "@/context/themeContext";
 import { FaSun, FaMoon } from "react-icons/fa";
 import FadeIn from "@/components/animations/FadeIn";

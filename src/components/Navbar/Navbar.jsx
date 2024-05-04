@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Navbar.module.css";
 import { useUserContext } from "@/context/userContext";
 import BugtrackerSvg from "../../assets/BugtrackerSvg";
@@ -19,7 +18,7 @@ const Navbar = () => {
     <header className={styles.header}>
       <Link to="/">
         <div className={styles.logo}>
-          <BugtrackerSvg size={60} />
+          <BugtrackerSvg size="60px" />
           <h1>BugTracker</h1>
         </div>
       </Link>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { BarLoader } from "react-spinners";
 import classNames from "./SubmitButton.module.css";
 
@@ -25,7 +25,7 @@ const SubmitButton = ({
       background ||
       "linear-gradient(45deg, var(--color-primary-100), var(--color-primary-200), var(--color-primary-300))",
     color: "white",
-    borderRadius: borderRadius || "0.25rem",
+    borderRadius: borderRadius || "var(--border-radius)",
     border: border || "none",
     cursor: "pointer",
     display: "flex",

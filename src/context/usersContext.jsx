@@ -1,7 +1,7 @@
-import React from "react";
 import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useUserContext } from "./userContext";
+
 const UsersContext = createContext();
 const useUsersContext = () => useContext(UsersContext);
 
@@ -32,9 +32,7 @@ const UsersProvider = ({ children }) => {
       fetchUsers();
     }
   }, [user, loadingUser]);
-  useEffect(() => {
-    console.log(users);
-  }, [users]);
+
   return (
     <UsersContext.Provider value={{ users, loading, error }}>
       {children}

@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
     justify-content: center;
-
+    
 }
 
 .featuresGrid{
@@ -24,6 +24,10 @@
     justify-content: space-between;
     max-width: 70%;
     
+}
+
+.feature svg, .feature div{
+    flex: 1;
 }
 
 .p{
@@ -50,7 +54,8 @@
 }
 
 .icon{
-    color: var(--color-primary-100)
+    color: var(--color-primary-100);
+    font-size: 280px;
 }
 
 @media screen and (max-width: 80em) {
@@ -65,7 +70,8 @@
         flex-direction: row-reverse;
         flex: 1;
         gap: 4rem;
-        
+        justify-content: space-between;
+        max-width: 80%;
     }
    
 
@@ -79,7 +85,7 @@
     }
     .feature{
         gap: 0;
-        max-width: 100%;
+        
     }
 
     .featureDesc h2{
@@ -95,4 +101,8 @@
     .feature{
         max-width: 80%;
     }
+    .feature svg, .feature div{
+        flex: auto;
+    }
+    
 }

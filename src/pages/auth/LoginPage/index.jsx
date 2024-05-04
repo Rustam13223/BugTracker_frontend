@@ -1,4 +1,3 @@
-import React from "react";
 import AuthLayout from "@/components/Layouts/AuthLayout/AuthLayout";
 import LoginForm from "@/components/forms/LoginForm";
 import FadeIn from "@/components/animations/FadeIn";

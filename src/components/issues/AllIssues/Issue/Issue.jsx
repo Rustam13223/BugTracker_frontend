@@ -1,41 +1,35 @@
-import React from "react";
 import styles from "./Issue.module.css";
 import { useIssueFilterContext } from "../../../../context/issueFilterContext";
 import { useNavigate } from "react-router-dom";
+import {
+  statusStyles,
+  severityStyles,
+} from "../../../../utils/IssueUtils/tagsStyles";
 
 const Issue = ({
-  issue: {
-    id,
-    title,
-    description,
-    status,
-    severity,
-    created,
-    assigned_to,
-    reporter,
-  },
+  issue: { id, title, status, severity, created, assigned_to, reporter },
 }) => {
-  const statusStyles = {
-    background: status.toLowerCase() === "opened" ? "green" : "black",
-  };
-  const severityStyles = {
-    background:
-      severity.toLowerCase() === "low"
-        ? "green"
-        : severity.toLowerCase() === "medium"
-        ? "orange"
-        : "red",
-  };
   const { setFilter } = useIssueFilterContext();
   const navigate = useNavigate();
   return (
     <div className={styles.container} onClick={() => navigate(`/issue/${id}`)}>
+      <p className={styles.id}>{id}</p>
       <p>{title}</p>
-      <p>{reporter}</p>
-      <p>{assigned_to}</p>
+      <p>
+        Created by <span>{reporter}</span>
+      </p>
+      <p>
+        {assigned_to ? (
+          <>
+            Assigned to <span>{assigned_to}</span>
+          </>
+        ) : (
+          "Not assigned"
+        )}
+      </p>
       <p>{`${created.slice(0, 10)} ${created.slice(12, 16)}`}</p>
       <p
-        style={{ ...statusStyles }}
+        style={{ ...statusStyles(status) }}
         className={styles.tag}
         onClick={(e) => {
           setFilter(e.target.innerText.toLowerCase());
@@ -46,7 +40,7 @@ const Issue = ({
       </p>
       <p
         className={styles.tag}
-        style={{ ...severityStyles }}
+        style={{ ...severityStyles(severity) }}
         onClick={(e) => {
           setFilter(e.target.innerText.toLowerCase());
           e.stopPropagation();

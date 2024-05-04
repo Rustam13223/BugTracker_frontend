@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, createContext } from "react";
+import { useContext, useEffect, useState, createContext } from "react";
 import axios from "axios";
 import { useUserContext } from "./userContext"; // Import user context
 
@@ -34,9 +34,10 @@ const IssuesProvider = ({ children }) => {
 
   const createIssue = async (issueData) => {
     if (!user) return; // Only create issues if there is a user
+    let response;
     try {
       setLoadingIssues(true);
-      const response = await axios.post("/api/bugs/create", issueData, {
+      response = await axios.post("/api/bugs/create", issueData, {
         headers: {
           Authorization: `Bearer ${user.accessToken}`, // Assuming accessToken is available on user
         },
@@ -44,14 +45,14 @@ const IssuesProvider = ({ children }) => {
       if (response.data.error) {
         setError(response.data.error);
       } else {
-        setIssues([...issues, response.data.bug]);
+        fetchIssues(); // Re-fetch issues after creating a new issue
       }
     } catch (error) {
       setError(error.message);
     } finally {
       setLoadingIssues(false);
-      return response;
     }
+    return response;
   };
 
   // Effect to fetch issues when user data is loaded and user is authenticated
@@ -60,10 +61,6 @@ const IssuesProvider = ({ children }) => {
       fetchIssues();
     }
   }, [user, loadingUser]); // Re-fetch issues when user or their loading state changes
-
-  useEffect(() => {
-    console.log(issues);
-  }, [issues]);
 
   return (
     <IssuesContext.Provider value={{ issues, error, loading, createIssue }}>

@@ -1,10 +1,9 @@
-import React from "react";
 import { createContext, useState, useEffect, useContext } from "react";
 
 const ThemeContext = createContext();
 const useTheme = () => useContext(ThemeContext);
 
-const ThemeProvider = ({ children, value }) => {
+const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState("");
   const toggleTheme = () => {
     setTheme((prevTheme) => {

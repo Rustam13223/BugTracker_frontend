@@ -1,9 +1,8 @@
-import React from "react";
 import styles from "./Dashboard.module.css";
 import { useUserContext } from "../../context/userContext";
 import NotAuthenticated from "../../components/redirects/NotAuthenticated/NotAuthenticated";
-import AssignedForUser from "../../components/issues/AssignedForUser/AssignedForUser";
-import CreatedByUser from "../../components/issues/CreatedByUser/CreatedByUser";
+import AssignedForUser from "../../components/issues/DashboardIssues/AssignedForUser";
+import CreatedByUser from "../../components/issues/DashboardIssues/CreatedByUser";
 
 function Dashboard() {
   const { user } = useUserContext();

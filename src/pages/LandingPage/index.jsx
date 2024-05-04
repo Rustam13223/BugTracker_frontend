@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Parallax } from "@react-spring/parallax";
 import { IoMenu } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -14,7 +14,7 @@ import ContactSection from "./ContactSection/ContactSection";
 import MobileNav from "./MobileNav/MobileNav";
 import { useUserContext } from "../../context/userContext";
 
-const index = () => {
+const LandingPage = () => {
   const [mobileNavVisible, setMobileNavVisible] = useState(false);
   const { user } = useUserContext();
   const parallax = useRef(null);
@@ -27,7 +27,7 @@ const index = () => {
     <div className={styles.container}>
       <header className={styles.header}>
         <div onClick={() => scroll(0)} className={styles.logo}>
-          <BugtrackerSvg size={60} />
+          <BugtrackerSvg size="60px" />
           <h1>BugTracker</h1>
         </div>
         <nav className={styles.nav}>
@@ -87,13 +87,13 @@ const index = () => {
         }}
         ref={parallax}
       >
-        <HeroSection offset="0" speed="0.5" />
-        <FeaturesSection offset="1" speed="0.5" />
-        <TestimonialSection offset="2" speed="0.5" />
-        <ContactSection offset="3" speed="0.5" />
+        <HeroSection offset={0} speed={0.5} />
+        <FeaturesSection offset={1} speed={0.5} />
+        <TestimonialSection offset={2} speed={0.5} />
+        <ContactSection offset={3} speed={0.5} />
       </Parallax>
     </div>
   );
 };
 
-export default index;
+export default LandingPage;

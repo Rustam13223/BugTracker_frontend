@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./MobileNav.module.css";
 import { IoMenu } from "react-icons/io5";
 import ToggleThemeButton from "@/components/buttons/ToggleThemeButton";

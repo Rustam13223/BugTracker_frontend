@@ -52,7 +52,7 @@ img svg path{
 
 .formWrapper {
   background-color: var(--color-surface-150);
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
   border: 1px solid var(--color-surface-200);
   max-width: 90%;
   transition: all 0.2s;

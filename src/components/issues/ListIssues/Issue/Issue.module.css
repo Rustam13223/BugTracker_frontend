@@ -1,9 +1,12 @@
+
+
 .container{
     display: flex;
     gap: 0.5rem;
     position: relative;
     justify-content: space-between;
     cursor: pointer;
+    font-family: 'Roboto', sans-serif;
 }
 
 .container::after{
@@ -15,6 +18,7 @@
     height: 1px;
     background: var(--color-surface-300);
 }
+
 
 .container:hover > .info > h3{
     color: var(--color-surface-700);
@@ -34,6 +38,11 @@
     flex-direction: column;
 }
 
+.info > p{
+    color: var(--color-surface-700);
+
+}
+
 .tags{
     display: flex;
     gap: 1rem;
@@ -42,10 +51,10 @@
 
 .tag{
     padding: 0.5rem;
-    border-radius: 0.5rem;
+    border-radius: 0.2rem;
     font-weight: 500;
     color: white;
-    
+    text-align: center;
 }
 
 @media screen and (max-width: 40em){

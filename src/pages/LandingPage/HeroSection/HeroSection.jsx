@@ -1,11 +1,10 @@
-import React from "react";
 import { ParallaxLayer } from "@react-spring/parallax";
 import styles from "./HeroSection.module.css";
 import SlideIn from "@/components/animations/SlideIn";
 import BugtrackerSvg from "@/assets/BugtrackerSvg";
 import { Link } from "react-router-dom";
 
-const HeroSection = ({ offset, speed, options }) => {
+const HeroSection = ({ offset, speed }) => {
   return (
     <>
       <ParallaxLayer
@@ -28,8 +27,8 @@ const HeroSection = ({ offset, speed, options }) => {
               <SlideIn from="right" delay={0.3}>
                 <h2>
                   Identify, track, and resolve software bugs faster than ever
-                  with BugTracker, the ultimate tool for enhancing your team's
-                  productivity and software quality.
+                  with BugTracker, the ultimate tool for enhancing your
+                  team&apos;s productivity and software quality.
                 </h2>
               </SlideIn>
               <SlideIn from="right" delay={0.4}>

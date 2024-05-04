@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const FadeIn = ({ children, duration = 0.5, delay = 0, styles }) => {

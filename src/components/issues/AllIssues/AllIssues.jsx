@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useIssuesContext } from "../../../context/issuesContext";
 import FilterBar from "./FilterBar/FilterBar";
 import styles from "./AllIssues.module.css";
@@ -7,23 +7,24 @@ import { useState } from "react";
 import SlideIn from "@/components/animations/SlideIn";
 import Issue from "./Issue/Issue";
 import SearchBar from "./SearchBar/SearchBar";
+import SortBar from "./SortBar/SortBar";
+import TableLabels from "./TableLabels";
+import { sortIssues } from "../../../utils/IssueUtils/sortIssues";
 
 const AllIssues = () => {
   const { issues, loading: loadingIssues, error } = useIssuesContext();
   const [filteredIssues, setFilteredIssues] = useState([]);
-  const { filter, searchTerm } = useIssueFilterContext();
+  const { filters, searchTerm, sortBy, filterIssues, filterBySearchTerm } =
+    useIssueFilterContext();
+
   useEffect(() => {
-    if (!loadingIssues && issues.length > 0) {
-      const filteredIssues = issues.filter(
-        (issue) =>
-          (issue.status.includes(filter) &&
-            issue.title.toLowerCase().includes(searchTerm.toLowerCase())) ||
-          (issue.severity.includes(filter) &&
-            issue.title.toLowerCase().includes(searchTerm.toLowerCase()))
-      );
-      setFilteredIssues(filteredIssues);
+    if (!loadingIssues && issues.length > 0 && !error) {
+      let result = filterIssues(issues); // First apply the filters based on tags
+      result = filterBySearchTerm(result); // Then filter the already filtered result by search term
+      result = sortIssues(result, sortBy); // Finally, sort the result
+      setFilteredIssues(result); // Set the filtered and sorted issues
     }
-  }, [issues, filter, searchTerm]);
+  }, [issues, filters, searchTerm, sortBy, loadingIssues, error]);
 
   return (
     <div className={styles.container}>
@@ -32,7 +33,10 @@ const AllIssues = () => {
       </SlideIn>
       <SearchBar />
 
-      {filteredIssues.map((issue, index) => (
+      <SortBar />
+
+      <TableLabels></TableLabels>
+      {filteredIssues.map((issue) => (
         <Issue key={issue.id} issue={issue} />
       ))}
     </div>

@@ -1,4 +1,3 @@
-import React from "react";
 import { ParallaxLayer } from "@react-spring/parallax";
 import styles from "./ContactSection.module.css";
 import { FaFacebookSquare } from "react-icons/fa";
@@ -9,7 +8,8 @@ import SubmitButton from "@/components/buttons/SubmitButton";
 import FooterLinks from "@/components/Footer/FooterLinks";
 import SlideIn from "../../../components/animations/SlideIn";
 import FadeIn from "../../../components/animations/FadeIn";
-const ContactSection = ({ offset, speed, options }) => {
+
+const ContactSection = ({ offset, speed }) => {
   return (
     <>
       <ParallaxLayer
@@ -81,7 +81,7 @@ const ContactSection = ({ offset, speed, options }) => {
                   <input type="text" placeholder="Subject" />
                 </SlideIn>
                 <SlideIn from="right" delay={0.4}>
-                  <textarea rosw="10" placeholder="Message"></textarea>
+                  <textarea placeholder="Message"></textarea>
                 </SlideIn>
                 <SlideIn from="right" delay={0.5}>
                   <SubmitButton>Send</SubmitButton>
