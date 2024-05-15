@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./Issue.module.css";
 import { useIssueFilterContext } from "../../../../context/issueFilterContext";
 import { useNavigate } from "react-router-dom";
@@ -9,10 +10,13 @@ import {
 const Issue = ({
   issue: { id, title, status, severity, created, assigned_to, reporter },
 }) => {
-  const { setFilter } = useIssueFilterContext();
   const navigate = useNavigate();
   return (
-    <div className={styles.container} onClick={() => navigate(`/issue/${id}`)}>
+    <div
+      data-testid="issue"
+      className={styles.container}
+      onClick={() => navigate(`/issue/${id}`)}
+    >
       <p className={styles.id}>{id}</p>
       <p>{title}</p>
       <p>
@@ -28,24 +32,10 @@ const Issue = ({
         )}
       </p>
       <p>{`${created.slice(0, 10)} ${created.slice(12, 16)}`}</p>
-      <p
-        style={{ ...statusStyles(status) }}
-        className={styles.tag}
-        onClick={(e) => {
-          setFilter(e.target.innerText.toLowerCase());
-          e.stopPropagation();
-        }}
-      >
+      <p style={{ ...statusStyles(status) }} className={styles.tag}>
         {status.toUpperCase()}
       </p>
-      <p
-        className={styles.tag}
-        style={{ ...severityStyles(severity) }}
-        onClick={(e) => {
-          setFilter(e.target.innerText.toLowerCase());
-          e.stopPropagation();
-        }}
-      >
+      <p className={styles.tag} style={{ ...severityStyles(severity) }}>
         {severity.toUpperCase()}
       </p>
     </div>

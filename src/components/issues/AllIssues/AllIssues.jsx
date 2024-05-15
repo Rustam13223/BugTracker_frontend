@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useIssuesContext } from "../../../context/issuesContext";
 import FilterBar from "./FilterBar/FilterBar";
 import styles from "./AllIssues.module.css";
-import { useIssueFilterContext } from "@/context/issueFilterContext";
+import { useIssueFilterContext } from "../../../context/issueFilterContext";
 import { useState } from "react";
-import SlideIn from "@/components/animations/SlideIn";
+import SlideIn from "../../animations/SlideIn";
 import Issue from "./Issue/Issue";
 import SearchBar from "./SearchBar/SearchBar";
 import SortBar from "./SortBar/SortBar";

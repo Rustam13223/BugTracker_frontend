@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomSelect from "../../../forms/Inputs/CustomSelect";
 import { useIssueFilterContext } from "../../../../context/issueFilterContext";
 import { useUsersContext } from "../../../../context/usersContext";
