@@ -1,5 +1,18 @@
 import axios from "axios";
 
+/**
+ * Submits the registration form with the provided values.
+ *
+ * @param {Object} values - The form values.
+ * @param {Function} setSubmitting - A function to set the submitting state.
+ * @param {Function} setSubmitError - A function to set the submit error message.
+ * @param {Function} saveUser - A function to save the user data.
+ * @param {Function} navigate - A function to navigate to a different page.
+ * @param {string} captchaValue - The value of the reCAPTCHA.
+ * @param {Object} recaptchaRef - A reference to the reCAPTCHA component.
+ * @param {Function} setCaptchaError - A function to set the captcha error message.
+ * @returns {Promise<void>} - A promise that resolves when the registration is submitted.
+ */
 export const submitRegistration = async (
   values,
   setSubmitting,

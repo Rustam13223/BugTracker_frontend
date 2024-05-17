@@ -1,9 +1,21 @@
 import React from "react";
 import Select from "react-select";
 
-const CustomSelect = ({ onChange, value, label, options }) => {
+const CustomSelect = ({
+  onChange,
+  value,
+  label,
+  options,
+  disabled = false,
+  placeholder = "Select...",
+}) => {
   // Custom styles for the select
 
+  /**
+   * Custom styles for the select component.
+   *
+   * @type {Object}
+   */
   const customStyles = {
     control: (base, state) => ({
       ...base,
@@ -66,7 +78,8 @@ const CustomSelect = ({ onChange, value, label, options }) => {
         options={options}
         onChange={onChange}
         value={options.find((option) => option.value === value)}
-        placeholder="Select..."
+        placeholder={placeholder}
+        isDisabled={disabled}
       />
     </div>
   );

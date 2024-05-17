@@ -4,6 +4,10 @@ import FadeIn from "@/components/animations/FadeIn";
 import { useUserContext } from "@/context/userContext";
 import Authenticated from "../../../components/redirects/Authenticated/Authenticated";
 
+/**
+ * Renders the login page.
+ * @component
+ */
 const LoginPage = () => {
   const { user } = useUserContext();
   return (

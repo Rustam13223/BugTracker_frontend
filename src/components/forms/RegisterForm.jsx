@@ -11,6 +11,15 @@ import { submitRegistration } from "@/utils/FormUtils/submitRegistration";
 import { RegisterValidation } from "../../utils/FormUtils/Schemas/RegisterValidation";
 import ReCaptcha from "./Inputs/ReCaptcha";
 
+/**
+ * RegisterForm component.
+ *
+ * @component
+ * @example
+ * return (
+ *   <RegisterForm />
+ * )
+ */
 const RegisterForm = () => {
   const { theme } = useTheme();
   const [captchaValue, setCaptchaValue] = useState(null);

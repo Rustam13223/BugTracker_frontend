@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: utils/FormUtils/submitRegistration.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: utils/FormUtils/submitRegistration.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import axios from "axios";
+
+/**
+ * Submits the registration form with the provided values.
+ *
+ * @param {Object} values - The form values.
+ * @param {Function} setSubmitting - A function to set the submitting state.
+ * @param {Function} setSubmitError - A function to set the submit error message.
+ * @param {Function} saveUser - A function to save the user data.
+ * @param {Function} navigate - A function to navigate to a different page.
+ * @param {string} captchaValue - The value of the reCAPTCHA.
+ * @param {Object} recaptchaRef - A reference to the reCAPTCHA component.
+ * @param {Function} setCaptchaError - A function to set the captcha error message.
+ * @returns {Promise&lt;void>} - A promise that resolves when the registration is submitted.
+ */
+export const submitRegistration = async (
+  values,
+  setSubmitting,
+  setSubmitError,
+  saveUser,
+  navigate,
+  captchaValue,
+  recaptchaRef,
+  setCaptchaError
+) => {
+  if (!captchaValue) {
+    setCaptchaError("reCAPTCHA is required");
+    setSubmitting(false);
+    return;
+  }
+  try {
+    const response = await axios.post("api/auth/register", {
+      firstName: values.firstName,
+      secondName: values.lastName,
+      email: values.email,
+      password: values.password,
+      token: captchaValue,
+    });
+    if (response.data.error) {
+      setSubmitError(response.data.error);
+    } else if (response.data.accessToken) {
+      saveUser(response.data);
+      navigate("/dashboard");
+    }
+  } catch (error) {
+    if (error.response) {
+      setSubmitError(
+        error.response.data.error ||
+          "An error occurred. Please try again later."
+      );
+    } else if (error.request) {
+      console.log(error.request);
+      setSubmitError("No response from server. Check your network connection.");
+    } else {
+      console.log("Error", error.message);
+      setSubmitError("An error occurred. Please try again later.");
+    }
+  }
+  recaptchaRef.current.reset();
+  setSubmitting(false);
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Main.html">Main</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AllIssues">AllIssues</a></li><li><a href="global.html#AuthLayout">AuthLayout</a></li><li><a href="global.html#Authenticated">Authenticated</a></li><li><a href="global.html#ConfirmRoleChange">ConfirmRoleChange</a></li><li><a href="global.html#ContactSection">ContactSection</a></li><li><a href="global.html#CreatedByUser">CreatedByUser</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#FadeIn">FadeIn</a></li><li><a href="global.html#FeaturesSection">FeaturesSection</a></li><li><a href="global.html#FilterBar">FilterBar</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#FooterLinks">FooterLinks</a></li><li><a href="global.html#FormInput">FormInput</a></li><li><a href="global.html#HeroSection">HeroSection</a></li><li><a href="global.html#Issue">Issue</a></li><li><a href="global.html#IssueFilterProvider">IssueFilterProvider</a></li><li><a href="global.html#IssueModal">IssueModal</a></li><li><a href="global.html#IssuesPage">IssuesPage</a></li><li><a href="global.html#IssuesProvider">IssuesProvider</a></li><li><a href="global.html#LandingPage">LandingPage</a></li><li><a href="global.html#ListIssues">ListIssues</a></li><li><a href="global.html#LoginForm">LoginForm</a></li><li><a href="global.html#LoginPage">LoginPage</a></li><li><a href="global.html#MainLayout">MainLayout</a></li><li><a href="global.html#MobileNav">MobileNav</a></li><li><a href="global.html#MobileNavbar">MobileNavbar</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#NavbarLinks">NavbarLinks</a></li><li><a href="global.html#NotAuthenticated">NotAuthenticated</a></li><li><a href="global.html#ReCaptcha">ReCaptcha</a></li><li><a href="global.html#RegisterForm">RegisterForm</a></li><li><a href="global.html#RegisterPage">RegisterPage</a></li><li><a href="global.html#Router">Router</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#SingleIssuePage">SingleIssuePage</a></li><li><a href="global.html#SlideIn">SlideIn</a></li><li><a href="global.html#SortBar">SortBar</a></li><li><a href="global.html#SubmitButton">SubmitButton</a></li><li><a href="global.html#SubmitIssueForm">SubmitIssueForm</a></li><li><a href="global.html#SubmitIssuePage">SubmitIssuePage</a></li><li><a href="global.html#SubmitSuccessful">SubmitSuccessful</a></li><li><a href="global.html#TableLabels">TableLabels</a></li><li><a href="global.html#Testimonial">Testimonial</a></li><li><a href="global.html#TestimonialSection">TestimonialSection</a></li><li><a href="global.html#ThemeProvider">ThemeProvider</a></li><li><a href="global.html#ToggleThemeButton">ToggleThemeButton</a></li><li><a href="global.html#TypingText">TypingText</a></li><li><a href="global.html#User">User</a></li><li><a href="global.html#UserIssues">UserIssues</a></li><li><a href="global.html#UserProvider">UserProvider</a></li><li><a href="global.html#UsersList">UsersList</a></li><li><a href="global.html#UsersPage">UsersPage</a></li><li><a href="global.html#UsersProvider">UsersProvider</a></li><li><a href="global.html#severityStyles">severityStyles</a></li><li><a href="global.html#sortIssues">sortIssues</a></li><li><a href="global.html#sortIssuesOptions">sortIssuesOptions</a></li><li><a href="global.html#submitLogin">submitLogin</a></li><li><a href="global.html#submitRegistration">submitRegistration</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Sun May 12 2024 19:34:52 GMT+0200 (czas środkowoeuropejski letni)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

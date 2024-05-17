@@ -1,3 +1,13 @@
+/**
+ * FILEPATH: /c:/Users/kubah/Desktop/BugTracker/BugTracker_frontend/src/global.css
+ * 
+ * This CSS file contains global styles and theme variables for the BugTracker frontend application.
+ * It imports fonts from Google Fonts and defines color variables for both dark and light themes.
+ * The color variables include primary colors, surface colors, and mixed surface colors.
+ * It also defines variables for severity colors, status colors, border radius, and box shadow.
+ * The body element has a linear gradient background and uses the Raleway font family.
+ * The file also includes styles for scrollbars, links, buttons, and flex containers.
+ */
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
@@ -69,6 +79,8 @@
   --color-severity-high: #d63031;
   --color-status-open: #00b894;
   --color-status-closed: #d63031;
+  --color-status-in-progress: #ffa500:
+  --color-status-done: #00b894;
   --border-radius: 0.2rem;
   --shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
   
@@ -82,8 +94,7 @@ body {
   );
   color: var(--color-surface-900);
   font-family: "Raleway", sans-serif;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-attachment: fixed;
   
 }
 

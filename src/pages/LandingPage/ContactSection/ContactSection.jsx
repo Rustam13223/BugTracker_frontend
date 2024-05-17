@@ -9,6 +9,15 @@ import FooterLinks from "@/components/Footer/FooterLinks";
 import SlideIn from "../../../components/animations/SlideIn";
 import FadeIn from "../../../components/animations/FadeIn";
 
+/**
+ * Renders the contact section of the landing page.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {number} props.offset - The offset value for the ParallaxLayer.
+ * @param {number} props.speed - The speed value for the ParallaxLayer.
+ * @returns {JSX.Element} The rendered ContactSection component.
+ */
 const ContactSection = ({ offset, speed }) => {
   return (
     <>

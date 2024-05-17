@@ -1,5 +1,10 @@
 import { Link } from "react-router-dom";
 
+/**
+ * Renders the navigation links for the navbar.
+ *
+ * @returns {JSX.Element} The rendered NavbarLinks component.
+ */
 const NavbarLinks = () => {
   const links = [
     {

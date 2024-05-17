@@ -4,6 +4,11 @@ import NotAuthenticated from "../../components/redirects/NotAuthenticated/NotAut
 import AssignedForUser from "../../components/issues/DashboardIssues/AssignedForUser";
 import CreatedByUser from "../../components/issues/DashboardIssues/CreatedByUser";
 
+/**
+ * Renders the Dashboard component.
+ *
+ * @returns {JSX.Element} The rendered Dashboard component.
+ */
 function Dashboard() {
   const { user } = useUserContext();
   if (!user) return <NotAuthenticated />;

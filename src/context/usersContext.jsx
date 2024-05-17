@@ -5,6 +5,14 @@ import { useUserContext } from "./userContext";
 const UsersContext = createContext();
 const useUsersContext = () => useContext(UsersContext);
 
+/**
+ * Provides user-related data and functionality to its children components.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {ReactNode} props.children - The child components.
+ * @returns {ReactNode} The rendered component.
+ */
 const UsersProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -27,6 +35,27 @@ const UsersProvider = ({ children }) => {
     }
   };
 
+  const updateUsersRole = async (id, role) => {
+    try {
+      const response = await axios.patch(
+        `/api/users/${id}`,
+        { role },
+        {
+          headers: {
+            Authorization: `Bearer ${user.accessToken}`,
+          },
+        }
+      );
+      if (response.data.error) {
+        setError(response.data.error);
+      } else {
+        fetchUsers();
+      }
+    } catch (error) {
+      setError(error);
+    }
+  };
+
   useEffect(() => {
     if (!loadingUser && user) {
       fetchUsers();
@@ -34,7 +63,7 @@ const UsersProvider = ({ children }) => {
   }, [user, loadingUser]);
 
   return (
-    <UsersContext.Provider value={{ users, loading, error }}>
+    <UsersContext.Provider value={{ users, loading, error, updateUsersRole }}>
       {children}
     </UsersContext.Provider>
   );

@@ -4,6 +4,14 @@ import SlideIn from "@/components/animations/SlideIn";
 import BugtrackerSvg from "@/assets/BugtrackerSvg";
 import { Link } from "react-router-dom";
 
+/**
+ * Renders the HeroSection component.
+ *
+ * @param {Object} props - The component props.
+ * @param {number} props.offset - The offset value for the ParallaxLayer.
+ * @param {number} props.speed - The speed value for the ParallaxLayer.
+ * @returns {JSX.Element} The rendered HeroSection component.
+ */
 const HeroSection = ({ offset, speed }) => {
   return (
     <>

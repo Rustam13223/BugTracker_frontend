@@ -11,6 +11,11 @@ import SortBar from "./SortBar/SortBar";
 import TableLabels from "./TableLabels";
 import { sortIssues } from "../../../utils/IssueUtils/sortIssues";
 
+/**
+ * Renders the component that displays all the issues.
+ *
+ * @returns {JSX.Element} The rendered AllIssues component.
+ */
 const AllIssues = () => {
   const { issues, loading: loadingIssues, error } = useIssuesContext();
   const [filteredIssues, setFilteredIssues] = useState([]);

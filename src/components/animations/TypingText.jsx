@@ -1,6 +1,15 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
+/**
+ * Renders a typing animation effect for the given text.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {string} props.text - The text to be displayed in the typing animation.
+ * @param {number} [props.speed=200] - The speed of the typing animation in milliseconds.
+ * @returns {JSX.Element} The TypingText component.
+ */
 const TypingText = ({ text, speed = 200 }) => {
   const [state, setState] = useState({ visibleText: "", index: 0 });
 

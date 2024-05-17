@@ -7,6 +7,23 @@ import { Link } from "react-router-dom";
 import BugtrackerSvg from "@/assets/BugtrackerSvg";
 import { statusStyles, severityStyles } from "@/utils/IssueUtils/tagsStyles";
 
+/**
+ * Renders a modal component for displaying issue details.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {Object} props.issue - The issue object containing details like id, title, description, reporter, created, status, severity, and assigned_to.
+ * @param {string} props.issue.id - The unique identifier of the issue.
+ * @param {string} props.issue.title - The title of the issue.
+ * @param {string} props.issue.description - The description of the issue.
+ * @param {string} props.issue.reporter - The name of the person who reported the issue.
+ * @param {string} props.issue.created - The timestamp when the issue was created.
+ * @param {string} props.issue.status - The status of the issue.
+ * @param {string} props.issue.severity - The severity level of the issue.
+ * @param {string} props.issue.assigned_to - The name of the person assigned to the issue.
+ * @param {Function} props.onClose - The function to be called when the modal is closed.
+ * @returns {JSX.Element} The rendered IssueModal component.
+ */
 const IssueModal = ({
   issue: {
     id,
