@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useIssueFilterContext } from "../../../../context/issueFilterContext";
 import styles from "./SearchBar.module.css";
 
@@ -13,6 +13,7 @@ const SearchBar = () => {
 
   return (
     <input
+      data-testid="search-bar"
       className={styles.searchBar}
       value={search} // Controlled component
       onChange={handleChange}

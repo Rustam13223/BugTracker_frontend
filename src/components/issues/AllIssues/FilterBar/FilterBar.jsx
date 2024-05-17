@@ -1,5 +1,6 @@
+import React from "react";
 import styles from "./FilterBar.module.css";
-import { useIssueFilterContext } from "@/context/issueFilterContext";
+import { useIssueFilterContext } from "../../../../context/issueFilterContext";
 
 const FilterBar = () => {
   const { filters, setFilters } = useIssueFilterContext();
@@ -44,7 +45,7 @@ const FilterBar = () => {
     console.log(filters);
   };
   return (
-    <div className={styles.filterBar}>
+    <div data-testid="filter-bar" className={styles.filterBar}>
       <ul>
         {/* Apply 'active' class dynamically based on the current filter */}
         <li

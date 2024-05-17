@@ -1,7 +1,15 @@
+import React from "react";
+import { Link } from "react-router-dom";
 const NotAuthenticated = () => {
   return (
     <div>
-      <h1>Not Authenticated</h1>
+      <h1>You need to be logged in to view this page</h1>
+      <p>
+        Login <Link to="/login">Here</Link>
+      </p>
+      <p>
+        Or <Link to="/register">Create an account</Link>
+      </p>
     </div>
   );
 };
