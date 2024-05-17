@@ -18,6 +18,11 @@ import { UserProvider } from "./context/userContext";
 import { UsersProvider } from "./context/usersContext";
 import { IssuesProvider } from "./context/issuesContext";
 
+/**
+ * Renders the application router.
+ *
+ * @returns {JSX.Element} The router component.
+ */
 function Router() {
   return (
     <BrowserRouter>

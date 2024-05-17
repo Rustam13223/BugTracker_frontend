@@ -1,10 +1,18 @@
-import { useContext, useEffect, useState, createContext } from "react";
+import React, { useContext, useEffect, useState, createContext } from "react";
 import axios from "axios";
 import { useUserContext } from "./userContext"; // Import user context
 
 const IssuesContext = createContext();
 const useIssuesContext = () => useContext(IssuesContext);
 
+/**
+ * Provides a context for managing issues.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {ReactNode} props.children - The child components.
+ * @returns {ReactNode} The rendered component.
+ */
 const IssuesProvider = ({ children }) => {
   const [issues, setIssues] = useState([]);
   const [loading, setLoadingIssues] = useState(false);
@@ -55,6 +63,29 @@ const IssuesProvider = ({ children }) => {
     return response;
   };
 
+  const updateIssue = async (id, issueData) => {
+    if (!user) return; // Only update issues if there is a user
+    let response;
+    try {
+      setLoadingIssues(true);
+      response = await axios.patch(`/api/bugs/${id}`, issueData, {
+        headers: {
+          Authorization: `Bearer ${user.accessToken}`, // Assuming accessToken is available on user
+        },
+      });
+      if (response.data.error) {
+        setError(response.data.error);
+      } else {
+        fetchIssues(); // Re-fetch issues after updating an issue
+      }
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoadingIssues(false);
+    }
+    return response;
+  };
+
   // Effect to fetch issues when user data is loaded and user is authenticated
   useEffect(() => {
     if (!loadingUser && user) {
@@ -63,7 +94,9 @@ const IssuesProvider = ({ children }) => {
   }, [user, loadingUser]); // Re-fetch issues when user or their loading state changes
 
   return (
-    <IssuesContext.Provider value={{ issues, error, loading, createIssue }}>
+    <IssuesContext.Provider
+      value={{ issues, error, loading, createIssue, updateIssue }}
+    >
       {children}
     </IssuesContext.Provider>
   );

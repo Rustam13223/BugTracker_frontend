@@ -1,9 +1,18 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomSelect from "../../../forms/Inputs/CustomSelect";
 import { useIssueFilterContext } from "../../../../context/issueFilterContext";
 import { useUsersContext } from "../../../../context/usersContext";
 import styles from "./SortBar.module.css";
 
+/**
+ * Renders a SortBar component that allows sorting and filtering of issues.
+ *
+ * @component
+ * @example
+ * return (
+ *   <SortBar />
+ * )
+ */
 const SortBar = () => {
   const { setSortBy, setFilters, filters } = useIssueFilterContext();
   const [selectedUser, setSelectedUser] = useState(null);

@@ -1,5 +1,15 @@
 import styles from "./TestimonialSection.module.css";
 
+/**
+ * Renders a testimonial component.
+ *
+ * @component
+ * @param {Object} testimonial - The testimonial object.
+ * @param {string} testimonial.image - The image URL for the testimonial.
+ * @param {string} testimonial.name - The name of the person giving the testimonial.
+ * @param {string} testimonial.content - The content of the testimonial.
+ * @returns {JSX.Element} The rendered testimonial component.
+ */
 const Testimonial = ({ testimonial }) => {
   return (
     <div className={styles.testimonial}>

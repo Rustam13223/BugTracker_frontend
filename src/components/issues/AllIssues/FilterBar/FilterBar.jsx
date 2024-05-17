@@ -1,56 +1,56 @@
+import React from "react";
 import styles from "./FilterBar.module.css";
-import { useIssueFilterContext } from "@/context/issueFilterContext";
+import { useIssueFilterContext } from "../../../../context/issueFilterContext";
 
+/**
+ * FilterBar component displays a list of filters for issue status and severity.
+ * It allows the user to select and apply filters to the issues.
+ */
 const FilterBar = () => {
   const { filters, setFilters } = useIssueFilterContext();
   const handleClick = (filter) => {
     setFilters((prevFilters) => {
-      // Determine if the filter is for issue status or severity
-      if (filter === "opened" || filter === "closed") {
-        // Manage issue status filters: only one can be active, mutually exclusive
-        const newFilters = prevFilters.filter(
-          (f) => f !== "opened" && f !== "closed"
-        );
-        if (!prevFilters.includes(filter)) {
-          return [...newFilters, filter];
-        }
-        return newFilters;
-      } else if (filter === "") {
-        const newFilters = prevFilters.filter(
-          (f) =>
-            f !== "opened" &&
-            f !== "closed" &&
-            f !== "low" &&
-            f !== "medium" &&
-            f !== "high"
-        );
-        if (!prevFilters.includes(filter)) {
-          return [...newFilters];
-        }
-        return newFilters;
-      } else {
-        // Manage severity filters: "low", "medium", "high" - only one can be active
-        const severityFilters = ["low", "medium", "high"];
-        const newFilters = prevFilters.filter(
-          (f) => !severityFilters.includes(f)
-        ); // Remove all severity filters
-        if (!prevFilters.includes(filter)) {
-          return [...newFilters, filter]; // Add the selected severity filter
-        }
+      // Status filters that should be mutually exclusive
+      const statusFilters = ["opened", "in progress", "done", "closed"];
 
-        return newFilters; // If already included, return without re-adding (acts as toggle)
+      if (statusFilters.includes(filter)) {
+        // If the filter clicked is one of the status filters
+        if (prevFilters.includes(filter)) {
+          // If filter is already active, deactivate it
+          return prevFilters.filter((f) => f !== filter);
+        } else {
+          // Deactivate all other status filters and activate the clicked one
+          return prevFilters
+            .filter((f) => !statusFilters.includes(f)) // Remove any active status filters
+            .concat(filter); // Add the clicked filter
+        }
+      } else if (filter === "") {
+        // Clear all filters
+        return [];
+      } else {
+        // Handle severity filters: toggle behavior
+        const severityFilters = ["low", "medium", "high"];
+        if (prevFilters.includes(filter)) {
+          return prevFilters.filter((f) => f !== filter);
+        } else {
+          return prevFilters
+            .filter((f) => !severityFilters.includes(f)) // Remove other severity filters
+            .concat(filter); // Add the clicked severity filter
+        }
       }
     });
-    console.log(filters);
   };
+
   return (
-    <div className={styles.filterBar}>
+    <div data-testid="filter-bar" className={styles.filterBar}>
       <ul>
         {/* Apply 'active' class dynamically based on the current filter */}
         <li
           className={
             !filters.includes("opened") &&
             !filters.includes("closed") &&
+            !filters.includes("in progress") &&
+            !filters.includes("done") &&
             !filters.includes("low") &&
             !filters.includes("medium") &&
             !filters.includes("high")
@@ -68,6 +68,22 @@ const FilterBar = () => {
           onClick={() => handleClick("opened")}
         >
           Open
+        </li>
+        <li
+          className={
+            filters.includes("in progress") ? styles.active : styles.notActive
+          }
+          onClick={() => handleClick("in progress")}
+        >
+          In progress
+        </li>
+        <li
+          className={
+            filters.includes("done") ? styles.active : styles.notActive
+          }
+          onClick={() => handleClick("done")}
+        >
+          Done
         </li>
         <li
           className={

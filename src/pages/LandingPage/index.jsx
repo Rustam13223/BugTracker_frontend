@@ -14,6 +14,12 @@ import ContactSection from "./ContactSection/ContactSection";
 import MobileNav from "./MobileNav/MobileNav";
 import { useUserContext } from "../../context/userContext";
 
+/**
+ * LandingPage component represents the landing page of the BugTracker application.
+ * It displays a header with a logo and navigation buttons, as well as sections for hero, features, testimonials, and contact.
+ * Users can scroll to different sections using the navigation buttons.
+ * If a user is logged in, they can also navigate to the dashboard.
+ */
 const LandingPage = () => {
   const [mobileNavVisible, setMobileNavVisible] = useState(false);
   const { user } = useUserContext();

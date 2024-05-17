@@ -6,6 +6,15 @@ import Slider from "react-slick";
 import Testimonial from "./Testimonial";
 import PropTypes from "prop-types";
 
+/**
+ * Renders the TestimonialSection component.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {number} props.offset - The offset value for the ParallaxLayer.
+ * @param {number} props.speed - The speed value for the ParallaxLayer.
+ * @returns {JSX.Element} The TestimonialSection component.
+ */
 const TestimonialSection = ({ offset, speed }) => {
   const sliderRef = useRef(null);
   const settings = {

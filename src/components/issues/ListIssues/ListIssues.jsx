@@ -4,6 +4,14 @@ import Issue from "./Issue/Issue";
 import IssueModal from "../../modals/IssueModal/IssueModal";
 import styles from "./ListIssues.module.css";
 
+/**
+ * Renders a list of issues and handles the selection of an issue to display in a modal.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {Array} props.items - The array of issues to render.
+ * @returns {JSX.Element} The rendered ListIssues component.
+ */
 const ListIssues = ({ items: issues }) => {
   const [selectedId, setSelectedId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);

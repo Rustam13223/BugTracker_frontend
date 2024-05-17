@@ -1,5 +1,14 @@
 import { Link } from "react-router-dom";
 
+/**
+ * Renders a list of footer links.
+ *
+ * @component
+ * @example
+ * return (
+ *   <FooterLinks />
+ * )
+ */
 const FooterLinks = () => {
   const links = [
     {

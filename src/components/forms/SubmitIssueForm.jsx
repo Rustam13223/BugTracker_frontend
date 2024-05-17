@@ -10,6 +10,17 @@ import { useIssuesContext } from "@/context/issuesContext";
 import SubmitSuccessful from "../modals/SubmitSuccessful/SubmitSuccessful";
 import { IssueValidation } from "../../utils/FormUtils/Schemas/IssueValidation";
 
+/**
+ * SubmitIssueForm component.
+ *
+ * This component renders a form for submitting an issue.
+ *
+ * @component
+ * @example
+ * return (
+ *   <SubmitIssueForm />
+ * )
+ */
 const SubmitIssueForm = () => {
   const { users, loading: loadingUsers } = useUsersContext();
   const [submitError, setSubmitError] = useState(null);

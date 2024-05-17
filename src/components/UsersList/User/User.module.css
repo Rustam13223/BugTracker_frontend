@@ -1,0 +1,37 @@
+.container{
+    display: flex;
+    justify-content: space-between;   
+    flex-wrap: wrap;
+    gap: 2rem;
+    background: var(--color-surface-150);
+    padding: 1.5rem 1rem;
+    border-radius: 0.2rem;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    position: relative; /* Needed for absolute positioning of the pseudo-element */
+    justify-content: center;
+    font-size: 1.1rem;
+    border: 1px solid var(--color-surface-200);
+    color: var(--color-surface-700);
+}
+
+
+.container p{
+    flex: 1;
+    text-wrap: wrap;
+    text-align: center;
+}
+
+.container .id{
+    max-width: 50px;
+}
+
+.role{
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.2s;
+    color: white;
+    text-transform: uppercase;
+}

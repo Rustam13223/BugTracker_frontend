@@ -6,6 +6,14 @@ import { RiFlowChart } from "react-icons/ri";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { PiUsersThreeLight } from "react-icons/pi";
 
+/**
+ * Renders the FeaturesSection component.
+ *
+ * @param {Object} props - The component props.
+ * @param {number} props.offset - The offset value for the ParallaxLayer.
+ * @param {number} props.speed - The speed value for the ParallaxLayer.
+ * @returns {JSX.Element} The rendered FeaturesSection component.
+ */
 const FeaturesSection = ({ offset, speed }) => {
   return (
     <ParallaxLayer

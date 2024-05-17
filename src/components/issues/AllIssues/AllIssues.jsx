@@ -1,16 +1,21 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useIssuesContext } from "../../../context/issuesContext";
 import FilterBar from "./FilterBar/FilterBar";
 import styles from "./AllIssues.module.css";
-import { useIssueFilterContext } from "@/context/issueFilterContext";
+import { useIssueFilterContext } from "../../../context/issueFilterContext";
 import { useState } from "react";
-import SlideIn from "@/components/animations/SlideIn";
+import SlideIn from "../../animations/SlideIn";
 import Issue from "./Issue/Issue";
 import SearchBar from "./SearchBar/SearchBar";
 import SortBar from "./SortBar/SortBar";
 import TableLabels from "./TableLabels";
 import { sortIssues } from "../../../utils/IssueUtils/sortIssues";
 
+/**
+ * Renders the component that displays all the issues.
+ *
+ * @returns {JSX.Element} The rendered AllIssues component.
+ */
 const AllIssues = () => {
   const { issues, loading: loadingIssues, error } = useIssuesContext();
   const [filteredIssues, setFilteredIssues] = useState([]);

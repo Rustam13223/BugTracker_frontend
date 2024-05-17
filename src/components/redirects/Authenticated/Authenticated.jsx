@@ -2,6 +2,13 @@ import styles from "./Authenticated.module.css";
 import { Link } from "react-router-dom";
 import { useUserContext } from "@/context/userContext";
 
+/**
+ * Renders a component for authenticated users.
+ * Displays a message indicating that the user is already logged in,
+ * along with options to navigate to the dashboard or logout.
+ * @component
+ * @returns {JSX.Element} The rendered Authenticated component.
+ */
 const Authenticated = () => {
   const { logout } = useUserContext();
   return (

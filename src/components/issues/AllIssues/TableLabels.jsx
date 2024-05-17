@@ -1,5 +1,11 @@
+import React from "react";
 import styles from "./AllIssues.module.css";
 
+/**
+ * Renders the table labels for the issues table.
+ *
+ * @returns {JSX.Element} The table labels component.
+ */
 function TableLabels() {
   return (
     <div className={styles.tableLabels}>
