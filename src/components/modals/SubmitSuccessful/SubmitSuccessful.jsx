@@ -3,6 +3,15 @@ import { motion } from "framer-motion";
 import { Checkmark } from "react-checkmark";
 import { Link } from "react-router-dom";
 
+/**
+ * Renders a modal component to display a successful submission message.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {boolean} props.open - Determines whether the modal is open or not.
+ * @param {function} props.setOpen - Callback function to set the open state of the modal.
+ * @returns {JSX.Element} The SubmitSuccessful component.
+ */
 const SubmitSuccessful = ({ open, setOpen }) => {
   return (
     <>

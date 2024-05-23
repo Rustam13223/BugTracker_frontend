@@ -10,6 +10,15 @@ import { useState } from "react";
 import MobileNavbar from "./MobileNavbar/MobileNavbar";
 import NavbarLinks from "./NavbarLinks";
 
+/**
+ * Renders the navigation bar component.
+ *
+ * @component
+ * @example
+ * return (
+ *   <Navbar />
+ * )
+ */
 const Navbar = () => {
   const { user, logout } = useUserContext();
   const [mobileNavVisible, setMobileNavVisible] = useState(false);

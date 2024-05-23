@@ -2,6 +2,15 @@ import React, { useState } from "react";
 import { useIssueFilterContext } from "../../../../context/issueFilterContext";
 import styles from "./SearchBar.module.css";
 
+/**
+ * SearchBar component for filtering issues.
+ *
+ * @component
+ * @example
+ * return (
+ *   <SearchBar />
+ * )
+ */
 const SearchBar = () => {
   const { searchTerm, setSearchTerm } = useIssueFilterContext(); // Get setSearchTerm from context
   const [search, setSearch] = useState(searchTerm); // Initialize with the current searchTerm

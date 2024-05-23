@@ -4,6 +4,10 @@ import styles from "./MainLayout.module.css";
 import { Outlet } from "react-router-dom";
 import SlideIn from "../../animations/SlideIn";
 
+/**
+ * MainLayout component represents the main layout of the application.
+ * It includes a navbar, main content area, and a footer.
+ */
 const MainLayout = () => {
   return (
     <div className={styles.container}>

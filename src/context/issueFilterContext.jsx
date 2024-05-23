@@ -5,6 +5,14 @@ import { useState } from "react";
 const IssueFilterContext = createContext();
 const useIssueFilterContext = () => useContext(IssueFilterContext);
 
+/**
+ * Provides context for managing issue filters and search term.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {ReactNode} props.children - The child components.
+ * @returns {JSX.Element} The rendered component.
+ */
 const IssueFilterProvider = ({ children }) => {
   const [filters, setFilters] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");

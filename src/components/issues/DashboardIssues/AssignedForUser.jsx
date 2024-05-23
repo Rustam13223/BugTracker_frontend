@@ -4,6 +4,12 @@ import { useIssuesContext } from "../../../context/issuesContext";
 import { sortIssues } from "../../../utils/IssueUtils/sortIssues";
 import { sortIssuesOptions } from "../../../utils/IssueUtils/sortIssuesOptions";
 import DashboardIssues from "./DashboardIssues";
+/**
+ * Renders a component that displays issues assigned to the current user.
+ *
+ * @component
+ * @returns {JSX.Element} The AssignedForUser component.
+ */
 const AssignedForUser = () => {
   const { user } = useUserContext();
   const { issues, loading: loadingIssues, error } = useIssuesContext();

@@ -1,3 +1,8 @@
+/**
+ * An array of options for sorting issues.
+ *
+ * @type {Array<{ value: string, label: string }>}
+ */
 export const sortIssuesOptions = [
   { value: "newest", label: "Newest" },
   { value: "oldest", label: "Oldest" },

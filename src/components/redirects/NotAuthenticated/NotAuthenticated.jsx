@@ -1,5 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+/**
+ * Renders a component to display a message when the user is not authenticated.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered NotAuthenticated component.
+ */
 const NotAuthenticated = () => {
   return (
     <div>

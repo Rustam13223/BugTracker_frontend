@@ -6,6 +6,14 @@ import ToggleThemeButton from "../../buttons/ToggleThemeButton";
 import { IoClose } from "react-icons/io5";
 import NavbarLinks from "../NavbarLinks";
 
+/**
+ * Renders the mobile navigation bar component.
+ *
+ * @param {Object} props - The component props.
+ * @param {boolean} props.mobileNavVisible - Indicates whether the mobile navigation is visible.
+ * @param {function} props.setmobileNavVisible - Callback function to set the visibility of the mobile navigation.
+ * @returns {JSX.Element} The mobile navigation bar component.
+ */
 const MobileNavbar = ({ mobileNavVisible, setmobileNavVisible }) => {
   const Navigate = useNavigate();
   const { user, logout } = useUserContext();

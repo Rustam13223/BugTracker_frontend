@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/LandingPage/index.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/LandingPage/index.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useRef, useState } from "react";
+import { Parallax } from "@react-spring/parallax";
+import { IoMenu } from "react-icons/io5";
+import { Link } from "react-router-dom";
+
+import styles from "./LandingPage.module.css";
+import ToggleThemeButton from "@/components/buttons/ToggleThemeButton";
+import BugtrackerSvg from "../../assets/BugtrackerSvg";
+
+import HeroSection from "./HeroSection/HeroSection";
+import FeaturesSection from "./FeaturesSection/FeaturesSection";
+import TestimonialSection from "./TestimonialSection/TestimonialSection";
+import ContactSection from "./ContactSection/ContactSection";
+import MobileNav from "./MobileNav/MobileNav";
+import { useUserContext } from "../../context/userContext";
+
+/**
+ * LandingPage component represents the landing page of the BugTracker application.
+ * It displays a header with a logo and navigation buttons, as well as sections for hero, features, testimonials, and contact.
+ * Users can scroll to different sections using the navigation buttons.
+ * If a user is logged in, they can also navigate to the dashboard.
+ */
+const LandingPage = () => {
+  const [mobileNavVisible, setMobileNavVisible] = useState(false);
+  const { user } = useUserContext();
+  const parallax = useRef(null);
+  const scroll = (to) => {
+    if (parallax.current) {
+      parallax.current.scrollTo(to);
+    }
+  };
+  return (
+    &lt;div className={styles.container}>
+      &lt;header className={styles.header}>
+        &lt;div onClick={() => scroll(0)} className={styles.logo}>
+          &lt;BugtrackerSvg size="60px" />
+          &lt;h1>BugTracker&lt;/h1>
+        &lt;/div>
+        &lt;nav className={styles.nav}>
+          &lt;button className={styles.navBtn} onClick={() => scroll(0)}>
+            Start
+          &lt;/button>
+          &lt;button className={styles.navBtn} onClick={() => scroll(1)}>
+            Features
+          &lt;/button>
+          &lt;button className={styles.navBtn} onClick={() => scroll(2)}>
+            Testimonials
+          &lt;/button>
+          &lt;button className={styles.navBtn} onClick={() => scroll(3)}>
+            Contact
+          &lt;/button>
+          {user ? (
+            &lt;Link to="/dashboard">
+              &lt;button className={styles.dashboardBtn}>Go To Dashboard&lt;/button>
+            &lt;/Link>
+          ) : (
+            &lt;>
+              &lt;Link to="/login">
+                &lt;button className={styles.loginBtn}>Sign in&lt;/button>
+              &lt;/Link>
+              &lt;Link to="/register">
+                &lt;button className={styles.registerBtn}>Sign up&lt;/button>
+              &lt;/Link>
+            &lt;/>
+          )}
+          &lt;ToggleThemeButton
+            color="white"
+            position="static"
+            left="2rem"
+            bottom="2rem"
+          />
+        &lt;/nav>
+        &lt;button
+          onClick={() => setMobileNavVisible((prev) => !prev)}
+          className={styles.mobileNavBtn}
+        >
+          &lt;IoMenu size={"3em"} />
+        &lt;/button>
+
+        &lt;MobileNav
+          setMobileNavVisible={setMobileNavVisible}
+          mobileNavVisible={mobileNavVisible}
+          scroll={scroll}
+        />
+      &lt;/header>
+      &lt;Parallax
+        pages={4}
+        style={{
+          top: "0",
+          left: "0",
+          background:
+            "linear-gradient(45deg,var(--color-surface-100),var(--color-surface-200),var(--color-primary-100))",
+        }}
+        ref={parallax}
+      >
+        &lt;HeroSection offset={0} speed={0.5} />
+        &lt;FeaturesSection offset={1} speed={0.5} />
+        &lt;TestimonialSection offset={2} speed={0.5} />
+        &lt;ContactSection offset={3} speed={0.5} />
+      &lt;/Parallax>
+    &lt;/div>
+  );
+};
+
+export default LandingPage;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Main.html">Main</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AllIssues">AllIssues</a></li><li><a href="global.html#AuthLayout">AuthLayout</a></li><li><a href="global.html#Authenticated">Authenticated</a></li><li><a href="global.html#ConfirmRoleChange">ConfirmRoleChange</a></li><li><a href="global.html#ContactSection">ContactSection</a></li><li><a href="global.html#CreatedByUser">CreatedByUser</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#FadeIn">FadeIn</a></li><li><a href="global.html#FeaturesSection">FeaturesSection</a></li><li><a href="global.html#FilterBar">FilterBar</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#FooterLinks">FooterLinks</a></li><li><a href="global.html#FormInput">FormInput</a></li><li><a href="global.html#HeroSection">HeroSection</a></li><li><a href="global.html#Issue">Issue</a></li><li><a href="global.html#IssueFilterProvider">IssueFilterProvider</a></li><li><a href="global.html#IssueModal">IssueModal</a></li><li><a href="global.html#IssuesPage">IssuesPage</a></li><li><a href="global.html#IssuesProvider">IssuesProvider</a></li><li><a href="global.html#LandingPage">LandingPage</a></li><li><a href="global.html#ListIssues">ListIssues</a></li><li><a href="global.html#LoginForm">LoginForm</a></li><li><a href="global.html#LoginPage">LoginPage</a></li><li><a href="global.html#MainLayout">MainLayout</a></li><li><a href="global.html#MobileNav">MobileNav</a></li><li><a href="global.html#MobileNavbar">MobileNavbar</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#NavbarLinks">NavbarLinks</a></li><li><a href="global.html#NotAuthenticated">NotAuthenticated</a></li><li><a href="global.html#ReCaptcha">ReCaptcha</a></li><li><a href="global.html#RegisterForm">RegisterForm</a></li><li><a href="global.html#RegisterPage">RegisterPage</a></li><li><a href="global.html#Router">Router</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#SingleIssuePage">SingleIssuePage</a></li><li><a href="global.html#SlideIn">SlideIn</a></li><li><a href="global.html#SortBar">SortBar</a></li><li><a href="global.html#SubmitButton">SubmitButton</a></li><li><a href="global.html#SubmitIssueForm">SubmitIssueForm</a></li><li><a href="global.html#SubmitIssuePage">SubmitIssuePage</a></li><li><a href="global.html#SubmitSuccessful">SubmitSuccessful</a></li><li><a href="global.html#TableLabels">TableLabels</a></li><li><a href="global.html#Testimonial">Testimonial</a></li><li><a href="global.html#TestimonialSection">TestimonialSection</a></li><li><a href="global.html#ThemeProvider">ThemeProvider</a></li><li><a href="global.html#ToggleThemeButton">ToggleThemeButton</a></li><li><a href="global.html#TypingText">TypingText</a></li><li><a href="global.html#User">User</a></li><li><a href="global.html#UserIssues">UserIssues</a></li><li><a href="global.html#UserProvider">UserProvider</a></li><li><a href="global.html#UsersList">UsersList</a></li><li><a href="global.html#UsersPage">UsersPage</a></li><li><a href="global.html#UsersProvider">UsersProvider</a></li><li><a href="global.html#severityStyles">severityStyles</a></li><li><a href="global.html#sortIssues">sortIssues</a></li><li><a href="global.html#sortIssuesOptions">sortIssuesOptions</a></li><li><a href="global.html#submitLogin">submitLogin</a></li><li><a href="global.html#submitRegistration">submitRegistration</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Sun May 12 2024 19:34:52 GMT+0200 (czas środkowoeuropejski letni)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

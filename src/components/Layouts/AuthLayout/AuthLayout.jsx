@@ -5,6 +5,15 @@ import FooterLinks from "@/components/Footer/FooterLinks";
 import BugtrackerSvg from "../../../assets/BugtrackerSvg";
 import ToggleThemeButton from "@/components/buttons/ToggleThemeButton";
 
+/**
+ * AuthLayout component renders the layout for authentication pages.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {ReactNode} props.children - The child components to be rendered within the layout.
+ * @param {string} props.page - The current page name.
+ * @returns {JSX.Element} The rendered AuthLayout component.
+ */
 const AuthLayout = ({ children, page }) => {
   return (
     <>

@@ -10,6 +10,15 @@ import { submitLogin } from "../../utils/FormUtils/submitLogin";
 import { LoginValidation } from "../../utils/FormUtils/Schemas/LoginValidation";
 import ReCaptcha from "./Inputs/ReCaptcha";
 
+/**
+ * LoginForm component represents a form for user login.
+ *
+ * @component
+ * @example
+ * return (
+ *   <LoginForm />
+ * )
+ */
 const LoginForm = () => {
   const { theme } = useTheme();
   const [captchaValue, setCaptchaValue] = useState(null);

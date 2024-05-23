@@ -4,6 +4,17 @@ import { useIssuesContext } from "@/context/issuesContext";
 import SingleIssue from "../../components/SingleIssue/SingleIssue";
 import { useUserContext } from "../../context/userContext";
 import NotAuthenticated from "../../components/redirects/NotAuthenticated/NotAuthenticated";
+
+/**
+ * Renders a page for displaying a single issue.
+ *
+ * @component
+ * @example
+ * return (
+ *   <SingleIssuePage />
+ * )
+ */
+
 const SingleIssuePage = () => {
   const { issues } = useIssuesContext();
   const { issueId } = useParams(); // Extract issueId from URL parameters

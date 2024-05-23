@@ -1,6 +1,18 @@
 import styles from "./Issue.module.css";
 import { statusStyles, severityStyles } from "@/utils/IssueUtils/tagsStyles";
 
+/**
+ * Renders an issue component.
+ *
+ * @component
+ * @param {Object} issue - The issue object.
+ * @param {string} issue.title - The title of the issue.
+ * @param {string} issue.reporter - The name of the reporter.
+ * @param {string} issue.created - The creation date of the issue.
+ * @param {string} issue.status - The status of the issue.
+ * @param {string} issue.severity - The severity of the issue.
+ * @returns {JSX.Element} The rendered Issue component.
+ */
 const Issue = ({ issue: { title, reporter, created, status, severity } }) => {
   return (
     <div className={styles.container}>

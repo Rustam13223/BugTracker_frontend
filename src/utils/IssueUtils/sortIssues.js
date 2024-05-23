@@ -1,3 +1,10 @@
+/**
+ * Sorts an array of issues based on the specified sorting criteria.
+ *
+ * @param {Array} issues - The array of issues to be sorted.
+ * @param {string} sortBy - The sorting criteria. Possible values: "newest", "oldest", "severity", "status".
+ * @returns {Array} - The sorted array of issues.
+ */
 export const sortIssues = (issues, sortBy) => {
   const severityLevels = {
     low: 1,

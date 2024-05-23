@@ -4,6 +4,16 @@ import ToggleThemeButton from "@/components/buttons/ToggleThemeButton";
 import { useUserContext } from "../../../context/userContext";
 import { Link } from "react-router-dom";
 
+/**
+ * Mobile navigation component.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {boolean} props.mobileNavVisible - Flag indicating whether the mobile navigation is visible.
+ * @param {function} props.setMobileNavVisible - Function to toggle the visibility of the mobile navigation.
+ * @param {function} props.scroll - Function to scroll to a specific section.
+ * @returns {JSX.Element} The MobileNav component.
+ */
 const MobileNav = ({ mobileNavVisible, setMobileNavVisible, scroll }) => {
   const { user } = useUserContext();
   return (

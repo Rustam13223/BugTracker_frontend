@@ -5,6 +5,11 @@ import { sortIssues } from "../../../utils/IssueUtils/sortIssues";
 import { sortIssuesOptions } from "../../../utils/IssueUtils/sortIssuesOptions";
 import DashboardIssues from "./DashboardIssues";
 
+/**
+ * Renders a component that displays issues submitted by the current user.
+ *
+ * @returns {JSX.Element} The rendered component.
+ */
 const CreatedByUser = () => {
   const { user } = useUserContext();
   const { issues, loading: loadingIssues, error } = useIssuesContext();

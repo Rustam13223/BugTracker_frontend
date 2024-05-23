@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/modals/IssueModal/IssueModal.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/modals/IssueModal/IssueModal.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { motion } from "framer-motion";
+import styles from "./IssueModal.module.css";
+import issueStyles from "../../issues/ListIssues/Issue/Issue.module.css";
+import { IoClose } from "react-icons/io5";
+import SubmitButton from "@/components/buttons/SubmitButton";
+import { Link } from "react-router-dom";
+import BugtrackerSvg from "@/assets/BugtrackerSvg";
+import { statusStyles, severityStyles } from "@/utils/IssueUtils/tagsStyles";
+
+/**
+ * Renders a modal component for displaying issue details.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {Object} props.issue - The issue object containing details like id, title, description, reporter, created, status, severity, and assigned_to.
+ * @param {string} props.issue.id - The unique identifier of the issue.
+ * @param {string} props.issue.title - The title of the issue.
+ * @param {string} props.issue.description - The description of the issue.
+ * @param {string} props.issue.reporter - The name of the person who reported the issue.
+ * @param {string} props.issue.created - The timestamp when the issue was created.
+ * @param {string} props.issue.status - The status of the issue.
+ * @param {string} props.issue.severity - The severity level of the issue.
+ * @param {string} props.issue.assigned_to - The name of the person assigned to the issue.
+ * @param {Function} props.onClose - The function to be called when the modal is closed.
+ * @returns {JSX.Element} The rendered IssueModal component.
+ */
+const IssueModal = ({
+  issue: {
+    id,
+    title,
+    description,
+    reporter,
+    created,
+    status,
+    severity,
+    assigned_to,
+  },
+  onClose,
+}) => {
+  const handleClickInside = (e) => {
+    e.stopPropagation(); // Prevents the click from propagating to the backdrop
+  };
+
+  return (
+    &lt;motion.div
+      className={styles.backdrop}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+    >
+      &lt;div className={styles.modal} onClick={handleClickInside}>
+        &lt;div className={styles.buttons}>
+          &lt;BugtrackerSvg size={"2.5rem"} />
+          &lt;button className={styles.closeBtn} onClick={onClose}>
+            &lt;IoClose />
+          &lt;/button>
+        &lt;/div>
+        &lt;div className={styles.top}>
+          &lt;div className={styles.header}>
+            &lt;h2>{title}&lt;/h2>
+
+            &lt;div className={styles.tags}>
+              &lt;p
+                className={issueStyles.tag}
+                style={{ ...statusStyles(status) }}
+              >
+                Status: {status.toUpperCase()}
+              &lt;/p>
+              &lt;p
+                className={issueStyles.tag}
+                style={{ ...severityStyles(severity) }}
+              >
+                Severity: {severity.toUpperCase()}
+              &lt;/p>
+            &lt;/div>
+          &lt;/div>
+          &lt;p>{`${created.slice(0, 10)} ${created.slice(12, 16)}`}&lt;/p>
+          &lt;p>Reported by: {reporter}&lt;/p>
+
+          &lt;p>
+            {assigned_to ? &lt;>Assigned to: {assigned_to}&lt;/> : "Not assigned"}
+          &lt;/p>
+          &lt;h3>Description&lt;/h3>
+          &lt;p>{description}&lt;/p>
+        &lt;/div>
+        &lt;Link to={`/issue/${id}`}>
+          &lt;SubmitButton>Go to the issue page&lt;/SubmitButton>
+        &lt;/Link>
+      &lt;/div>
+    &lt;/motion.div>
+  );
+};
+
+export default IssueModal;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Main.html">Main</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AllIssues">AllIssues</a></li><li><a href="global.html#AuthLayout">AuthLayout</a></li><li><a href="global.html#Authenticated">Authenticated</a></li><li><a href="global.html#ConfirmRoleChange">ConfirmRoleChange</a></li><li><a href="global.html#ContactSection">ContactSection</a></li><li><a href="global.html#CreatedByUser">CreatedByUser</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#FadeIn">FadeIn</a></li><li><a href="global.html#FeaturesSection">FeaturesSection</a></li><li><a href="global.html#FilterBar">FilterBar</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#FooterLinks">FooterLinks</a></li><li><a href="global.html#FormInput">FormInput</a></li><li><a href="global.html#HeroSection">HeroSection</a></li><li><a href="global.html#Issue">Issue</a></li><li><a href="global.html#IssueFilterProvider">IssueFilterProvider</a></li><li><a href="global.html#IssueModal">IssueModal</a></li><li><a href="global.html#IssuesPage">IssuesPage</a></li><li><a href="global.html#IssuesProvider">IssuesProvider</a></li><li><a href="global.html#LandingPage">LandingPage</a></li><li><a href="global.html#ListIssues">ListIssues</a></li><li><a href="global.html#LoginForm">LoginForm</a></li><li><a href="global.html#LoginPage">LoginPage</a></li><li><a href="global.html#MainLayout">MainLayout</a></li><li><a href="global.html#MobileNav">MobileNav</a></li><li><a href="global.html#MobileNavbar">MobileNavbar</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#NavbarLinks">NavbarLinks</a></li><li><a href="global.html#NotAuthenticated">NotAuthenticated</a></li><li><a href="global.html#ReCaptcha">ReCaptcha</a></li><li><a href="global.html#RegisterForm">RegisterForm</a></li><li><a href="global.html#RegisterPage">RegisterPage</a></li><li><a href="global.html#Router">Router</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#SingleIssuePage">SingleIssuePage</a></li><li><a href="global.html#SlideIn">SlideIn</a></li><li><a href="global.html#SortBar">SortBar</a></li><li><a href="global.html#SubmitButton">SubmitButton</a></li><li><a href="global.html#SubmitIssueForm">SubmitIssueForm</a></li><li><a href="global.html#SubmitIssuePage">SubmitIssuePage</a></li><li><a href="global.html#SubmitSuccessful">SubmitSuccessful</a></li><li><a href="global.html#TableLabels">TableLabels</a></li><li><a href="global.html#Testimonial">Testimonial</a></li><li><a href="global.html#TestimonialSection">TestimonialSection</a></li><li><a href="global.html#ThemeProvider">ThemeProvider</a></li><li><a href="global.html#ToggleThemeButton">ToggleThemeButton</a></li><li><a href="global.html#TypingText">TypingText</a></li><li><a href="global.html#User">User</a></li><li><a href="global.html#UserIssues">UserIssues</a></li><li><a href="global.html#UserProvider">UserProvider</a></li><li><a href="global.html#UsersList">UsersList</a></li><li><a href="global.html#UsersPage">UsersPage</a></li><li><a href="global.html#UsersProvider">UsersProvider</a></li><li><a href="global.html#severityStyles">severityStyles</a></li><li><a href="global.html#sortIssues">sortIssues</a></li><li><a href="global.html#sortIssuesOptions">sortIssuesOptions</a></li><li><a href="global.html#submitLogin">submitLogin</a></li><li><a href="global.html#submitRegistration">submitRegistration</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Sun May 12 2024 19:34:52 GMT+0200 (czas środkowoeuropejski letni)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
