@@ -10,6 +10,7 @@ import { useIssuesContext } from "@/context/issuesContext";
 import SubmitSuccessful from "../modals/SubmitSuccessful/SubmitSuccessful";
 import { IssueValidation } from "../../utils/FormUtils/Schemas/IssueValidation";
 
+import CustomSelect from "@/components/forms/Inputs/CustomSelect";
 /**
  * SubmitIssueForm component.
  *
@@ -27,6 +28,15 @@ const SubmitIssueForm = () => {
   const { createIssue, error } = useIssuesContext();
   const [programmers, setProgrammers] = useState([]);
   const [success, setSuccess] = useState(false);
+  const severityOptions = [
+    { label: "Low", value: "low" },
+    { label: "Medium", value: "medium" },
+    { label: "High", value: "high" },
+  ];
+  const assignedToOptions = programmers.map((programmer) => ({
+    label: `${programmer.first_name} ${programmer.second_name}`,
+    value: programmer.email,
+  }));
 
   useEffect(() => {
     if (!loadingUsers) {
@@ -34,6 +44,7 @@ const SubmitIssueForm = () => {
       setProgrammers(programmers);
     }
   }, [users, loadingUsers]);
+
   return (
     <>
       <SubmitSuccessful open={success} setOpen={setSuccess} />
@@ -49,71 +60,69 @@ const SubmitIssueForm = () => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             try {
               await createIssue(values);
+              setSuccess(true);
             } catch (error) {
               setSubmitError(error.message);
             } finally {
               setSubmitting(false);
               resetForm();
-              setSuccess(true);
             }
           }}
         >
-          {({ isSubmitting, handleSubmit, handleChange }) => (
+          {({ isSubmitting, handleSubmit }) => (
             <form className={styles.issueForm} onSubmit={handleSubmit}>
               <label htmlFor="title">Title</label>
-              <Field
-                onChange={handleChange}
-                placeholder="Title"
-                type="text"
-                name="title"
-              />
+              <Field placeholder="Title" type="text" name="title" />
               <p className={styles.error}>
                 <ErrorMessage name="title" />
               </p>
               <label htmlFor="description">Description</label>
-              <Field onChange={handleChange} as="textarea" name="description" />
-              <ErrorMessage name="description" />
-              <label htmlFor="severity">Severity</label>
-              <Field
-                onChange={handleChange}
-                as="select"
-                name="severity"
-                className={styles.select}
-              >
-                <option value="">Select severity</option>
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-              </Field>
+              <Field as="textarea" name="description" />
               <p className={styles.error}>
-                <ErrorMessage name="severity" />
+                <ErrorMessage name="description" />
               </p>
-              <label
-                htmlFor="assignedTo
-            "
-              >
-                Assignee
-              </label>
-              <Field
-                onChange={handleChange}
-                as="select"
-                name="assignedTo"
-                className={styles.select}
-              >
-                <option value="">Select assignee</option>
-                <UsersProvider>
-                  {programmers.map((user) => (
-                    <option key={user.id} value={user.email}>
-                      {`${user.first_name} ${user.second_name} ${user.email}`}
-                    </option>
-                  ))}
-                </UsersProvider>
-              </Field>
-              <ErrorMessage name="assignedTo" />
+              <div className={styles.selects}>
+                <div>
+                  <label htmlFor="severity">Severity</label>
+                  <Field name="severity">
+                    {({ field, form }) => (
+                      <CustomSelect
+                        {...field}
+                        options={severityOptions}
+                        placeholder="Select severity"
+                        onChange={(option) =>
+                          form.setFieldValue(field.name, option.value)
+                        }
+                      />
+                    )}
+                  </Field>
+                  <p className={styles.error}>
+                    <ErrorMessage name="severity" />
+                  </p>
+                </div>
+                <div>
+                  <label htmlFor="assignedTo">Assign to</label>
+                  <Field name="assignedTo">
+                    {({ field, form }) => (
+                      <CustomSelect
+                        {...field}
+                        options={assignedToOptions}
+                        placeholder="Select assignee"
+                        onChange={(option) =>
+                          form.setFieldValue(field.name, option.value)
+                        }
+                      />
+                    )}
+                  </Field>
+                  <p className={styles.error}>
+                    <ErrorMessage name="assignedTo" />
+                  </p>
+                </div>
+              </div>
               <SubmitButton height={"40px"} disabled={isSubmitting}>
                 Submit
               </SubmitButton>
-              {submitError && <p className={styles.error}>{error}</p>}
+              {submitError && <p className={styles.error}>{submitError}</p>}
             </form>
           )}
         </Formik>
