@@ -19,30 +19,32 @@ const IssueFilterProvider = ({ children }) => {
   const [sortBy, setSortBy] = useState("newest");
 
   const filterIssues = (issues) => {
+    if (filters.length === 0) return issues;
+
     return issues.filter((issue) => {
+      const statusFilters = ["opened", "in progress", "done", "closed"];
+      const severityFilters = ["low", "medium", "high"];
+
       const issueTags = [
-        issue.title,
-        issue.description,
-        issue.reported,
-        issue.assigned_to,
-        issue.status,
-        issue.severity,
-      ]
-        .filter((tag) => tag !== undefined && tag !== null)
-        .map((tag) => tag.toString().toLowerCase());
+        issue.status.toLowerCase(),
+        issue.severity.toLowerCase(),
+      ];
 
-      const lowerCaseFilters = filters.map((filter) => {
-        // Check if the filter is an object with a value property
-        if (typeof filter === "object" && filter.value) {
-          return filter.value.toLowerCase();
-        }
-        // Otherwise, assume it's a string
-        return filter.toLowerCase();
-      });
-
-      return lowerCaseFilters.every((filterValue) =>
-        issueTags.some((tag) => tag.includes(filterValue))
+      const statusFilter = filters.find((filter) =>
+        statusFilters.includes(filter)
       );
+      const severityFilter = filters.find((filter) =>
+        severityFilters.includes(filter)
+      );
+
+      const statusMatch = statusFilter
+        ? issueTags.includes(statusFilter)
+        : true;
+      const severityMatch = severityFilter
+        ? issueTags.includes(severityFilter)
+        : true;
+
+      return statusMatch && severityMatch;
     });
   };
 

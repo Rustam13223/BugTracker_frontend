@@ -8,35 +8,37 @@ import { useIssueFilterContext } from "../../../../context/issueFilterContext";
  */
 const FilterBar = () => {
   const { filters, setFilters } = useIssueFilterContext();
+
   const handleClick = (filter) => {
     setFilters((prevFilters) => {
-      // Status filters that should be mutually exclusive
       const statusFilters = ["opened", "in progress", "done", "closed"];
+      const severityFilters = ["low", "medium", "high"];
 
       if (statusFilters.includes(filter)) {
         // If the filter clicked is one of the status filters
         if (prevFilters.includes(filter)) {
-          // If filter is already active, deactivate it
           return prevFilters.filter((f) => f !== filter);
         } else {
-          // Deactivate all other status filters and activate the clicked one
-          return prevFilters
-            .filter((f) => !statusFilters.includes(f)) // Remove any active status filters
-            .concat(filter); // Add the clicked filter
+          // Remove all status filters and add the new one
+          return [
+            ...prevFilters.filter((f) => !statusFilters.includes(f)),
+            filter,
+          ];
         }
-      } else if (filter === "") {
-        // Clear all filters
-        return [];
-      } else {
+      } else if (severityFilters.includes(filter)) {
         // Handle severity filters: toggle behavior
-        const severityFilters = ["low", "medium", "high"];
         if (prevFilters.includes(filter)) {
           return prevFilters.filter((f) => f !== filter);
         } else {
-          return prevFilters
-            .filter((f) => !severityFilters.includes(f)) // Remove other severity filters
-            .concat(filter); // Add the clicked severity filter
+          // Remove all severity filters and add the new one
+          return [
+            ...prevFilters.filter((f) => !severityFilters.includes(f)),
+            filter,
+          ];
         }
+      } else {
+        // Clear all filters
+        return [];
       }
     });
   };
@@ -44,19 +46,8 @@ const FilterBar = () => {
   return (
     <div data-testid="filter-bar" className={styles.filterBar}>
       <ul>
-        {/* Apply 'active' class dynamically based on the current filter */}
         <li
-          className={
-            !filters.includes("opened") &&
-            !filters.includes("closed") &&
-            !filters.includes("in progress") &&
-            !filters.includes("done") &&
-            !filters.includes("low") &&
-            !filters.includes("medium") &&
-            !filters.includes("high")
-              ? styles.active
-              : styles.notActive
-          }
+          className={filters.length === 0 ? styles.active : styles.notActive}
           onClick={() => handleClick("")}
         >
           All issues
@@ -95,7 +86,7 @@ const FilterBar = () => {
         </li>
         <li
           className={filters.includes("low") ? styles.active : styles.notActive}
-          onClick={(e) => handleClick(e.target.innerText.toLowerCase())}
+          onClick={() => handleClick("low")}
         >
           Low
         </li>
@@ -103,7 +94,7 @@ const FilterBar = () => {
           className={
             filters.includes("medium") ? styles.active : styles.notActive
           }
-          onClick={(e) => handleClick(e.target.innerText.toLowerCase())}
+          onClick={() => handleClick("medium")}
         >
           Medium
         </li>
@@ -111,7 +102,7 @@ const FilterBar = () => {
           className={
             filters.includes("high") ? styles.active : styles.notActive
           }
-          onClick={(e) => handleClick(e.target.innerText.toLowerCase())}
+          onClick={() => handleClick("high")}
         >
           High
         </li>
