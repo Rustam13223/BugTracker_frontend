@@ -216,7 +216,7 @@ const SingleIssue = ({
             <p>{newDescription}</p>
           )}
         </div>
-        <CommentSection></CommentSection>
+        <CommentSection issueId={id}></CommentSection>
       </div>
     </div>
   );

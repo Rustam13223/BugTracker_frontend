@@ -1,0 +1,24 @@
+.comment{
+    display: flex;
+    margin: 10px 0;
+    width: 100%;
+    background-color: var(--color-surface-200);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.comment > p:first-child{
+    font-weight: 700;
+    border-bottom: 2px solid var(--color-surface-600);
+    width: fit-content;
+    padding: 0 1rem 0.5rem 0;
+}
+
+.comment > p:last-child{
+    font-weight: 300;
+    font-size: 0.8rem;
+    color: var(--color-surface-700);
+}

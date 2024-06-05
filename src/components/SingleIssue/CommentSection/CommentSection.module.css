@@ -19,3 +19,28 @@
     font-size: 1.5rem;
     font-weight: 700;
 }
+.addComment{
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.addComment textarea{
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--color-surface-300);
+    border-radius: 5px;
+    background-color: var(--color-surface-150);
+    color: var(--color-on-surface-100);
+}
+
+.addComment button{
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color-primary-300);
+    color: var(--color-on-primary-500);
+    font-weight: 700;
+    cursor: pointer;
+    max-height: 70px;
+}
