@@ -1,64 +1,22 @@
 {
-    "testimonials": [
-      {
-        "id": 1,
-        "name": "John Doe",
-        "content": "This tool has transformed our debugging process. It's quick, easy, and reliable!",
-        "image": "https://via.placeholder.com/150"
-      },
-      {
-        "id": 2,
-        "name": "Alice Brown",
-        "content": "Absolutely essential for keeping track of software bugs. Very intuitive interface.",
-        "image": "https://via.placeholder.com/150"
-      },
-      {
-        "id": 3,
-        "name": "Mohammed Ali",
-        "content": "Helps our team stay on top of all our issues. The workflow integration is flawless.",
-        "image": "https://via.placeholder.com/150"
-      },
-      {
-        "id": 4,
-        "name": "Linda White",
-        "content": "I recommend this bug tracker to all developers. It's made our processes so much smoother.",
-        "image": "https://via.placeholder.com/150"
-      },
-      {
-        "id": 5,
-        "name": "Chris Green",
-        "content": "Robust and detailed. It gives us great oversight over our projects.",
-        "image": "https://via.placeholder.com/150"
-      },
-      {
-        "id": 6,
-        "name": "Jessica Yellow",
-        "content": "A must-have tool for development teams. It has made bug tracking a breeze.",
-        "image": "https://via.placeholder.com/150"
-      },
-      {
-        "id": 7,
-        "name": "Robert Black",
-        "content": "The support team is fantastic and the product itself is very effective.",
-        "image": "https://via.placeholder.com/150"
-      },
-      {
-        "id": 8,
-        "name": "Sophia Blue",
-        "content": "Efficient, user-friendly, and reliable. Makes bug management easy!",
-        "image": "https://via.placeholder.com/150"
-      },
-      {
-        "id": 9,
-        "name": "Michael Orange",
-        "content": "It's a game-changer. We've significantly reduced our bug resolution times.",
-        "image": "https://via.placeholder.com/150"
-      },
-      {
-        "id": 10,
-        "name": "Sarah Purple",
-        "content": "Great features, great support, great product. A top-notch bug tracker.",
-        "image": "https://via.placeholder.com/150"
-      }
-    ]
-  }
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Anonymous",
+      "content": "This tool has transformed our debugging process. It's quick, easy, and reliable!",
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 2,
+      "name": "Anonymous",
+      "content": "Absolutely essential for keeping track of software bugs. Very intuitive interface.",
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 3,
+      "name": "Anonymous",
+      "content": "Helps our team stay on top of all our issues. The workflow integration is flawless.",
+      "image": "https://via.placeholder.com/150"
+    }
+  ]
+}

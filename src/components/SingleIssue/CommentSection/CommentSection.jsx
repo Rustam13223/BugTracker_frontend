@@ -26,7 +26,9 @@ function CommentSection({ issueId }) {
       }
       setComments(response.data.comments);
       console.log(response.data.comments);
-    } catch (error) {}
+    } catch (error) {
+      //@TODO: Handle error
+    }
   };
 
   const handleAddComment = async () => {
