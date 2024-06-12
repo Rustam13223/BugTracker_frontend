@@ -476,6 +476,116 @@
     
 
     
+    <h4 class="name" id="AssignedForUser"><span class="type-signature"></span>AssignedForUser<span class="signature">()</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Renders a component that displays issues assigned to the current user.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_issues_DashboardIssues_AssignedForUser.jsx.html">components/issues/DashboardIssues/AssignedForUser.jsx</a>, <a href="components_issues_DashboardIssues_AssignedForUser.jsx.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The AssignedForUser component.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="AuthLayout"><span class="type-signature"></span>AuthLayout<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
     
 
@@ -791,6 +901,375 @@ along with options to navigate to the dashboard or logout.</p>
         
 <div class="param-desc">
     <p>The rendered Authenticated component.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="Comment"><span class="type-signature"></span>Comment<span class="signature">(comment)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Renders a single comment with user information, comment content, and creation date.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>comment</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The comment object containing comment, userId, and createdAt properties.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_SingleIssue_CommentSection_Comment_Comment.jsx.html">components/SingleIssue/CommentSection/Comment/Comment.jsx</a>, <a href="components_SingleIssue_CommentSection_Comment_Comment.jsx.html#line11">line 11</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>The rendered Comment component.</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="CommentSection"><span class="type-signature"></span>CommentSection<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Renders a comment section for a specific issue.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The component props.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>issueId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the issue.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_SingleIssue_CommentSection_CommentSection.jsx.html">components/SingleIssue/CommentSection/CommentSection.jsx</a>, <a href="components_SingleIssue_CommentSection_CommentSection.jsx.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The rendered CommentSection component.</p>
 </div>
 
 
@@ -4244,7 +4723,7 @@ It allows the user to select and apply filters to the issues.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_IssuesPage_index.jsx.html">pages/IssuesPage/index.jsx</a>, <a href="pages_IssuesPage_index.jsx.html#line10">line 10</a>
+        <a href="pages_IssuesPage_index.jsx.html">pages/IssuesPage/index.jsx</a>, <a href="pages_IssuesPage_index.jsx.html#line12">line 12</a>
     </li></ul></dd>
     
 
@@ -6583,6 +7062,424 @@ It includes a navbar, main content area, and a footer.</p>
     
 
     
+    <h4 class="name" id="SingleIssue"><span class="type-signature"></span>SingleIssue<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Renders a single issue with its details and allows editing of certain fields.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The component props.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>issue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The issue object containing the issue details.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The title of the issue.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reporter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The email of the reporter of the issue.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>description</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The description of the issue.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>created</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The timestamp when the issue was created.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>assigned_to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The email of the user assigned to the issue.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>status</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The status of the issue.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>severity</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The severity of the issue.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The unique ID of the issue.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_SingleIssue_SingleIssue.jsx.html">components/SingleIssue/SingleIssue.jsx</a>, <a href="components_SingleIssue_SingleIssue.jsx.html#line27">line 27</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The rendered SingleIssue component.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="SingleIssuePage"><span class="type-signature"></span>SingleIssuePage<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
@@ -6635,7 +7532,7 @@ It includes a navbar, main content area, and a footer.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_SingleIssuePage_index.jsx.html">pages/SingleIssuePage/index.jsx</a>, <a href="pages_SingleIssuePage_index.jsx.html#line16">line 16</a>
+        <a href="pages_SingleIssuePage_index.jsx.html">pages/SingleIssuePage/index.jsx</a>, <a href="pages_SingleIssuePage_index.jsx.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -7182,6 +8079,226 @@ It includes a navbar, main content area, and a footer.</p>
     
 
     
+    <h4 class="name" id="StatisticsPage"><span class="type-signature"></span>StatisticsPage<span class="signature">()</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Renders the StatisticsPage component.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="pages_StatisticsPage_index.jsx.html">pages/StatisticsPage/index.jsx</a>, <a href="pages_StatisticsPage_index.jsx.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The rendered StatisticsPage component.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="Stats"><span class="type-signature"></span>Stats<span class="signature">()</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Renders a list of top programmers and the number of issues they have solved.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_Stats_Stats.jsx.html">components/Stats/Stats.jsx</a>, <a href="components_Stats_Stats.jsx.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The rendered Stats component.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="SubmitButton"><span class="type-signature"></span>SubmitButton<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
     
 
@@ -7650,7 +8767,7 @@ It includes a navbar, main content area, and a footer.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_forms_SubmitIssueForm.jsx.html">components/forms/SubmitIssueForm.jsx</a>, <a href="components_forms_SubmitIssueForm.jsx.html#line24">line 24</a>
+        <a href="components_forms_SubmitIssueForm.jsx.html">components/forms/SubmitIssueForm.jsx</a>, <a href="components_forms_SubmitIssueForm.jsx.html#line25">line 25</a>
     </li></ul></dd>
     
 
@@ -7743,7 +8860,7 @@ It includes a navbar, main content area, and a footer.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_SubmitIssuePage_index.jsx.html">pages/SubmitIssuePage/index.jsx</a>, <a href="pages_SubmitIssuePage_index.jsx.html#line9">line 9</a>
+        <a href="pages_SubmitIssuePage_index.jsx.html">pages/SubmitIssuePage/index.jsx</a>, <a href="pages_SubmitIssuePage_index.jsx.html#line11">line 11</a>
     </li></ul></dd>
     
 
@@ -10536,7 +11653,7 @@ It includes a navbar, main content area, and a footer.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_UsersPage_index.jsx.html">pages/UsersPage/index.jsx</a>, <a href="pages_UsersPage_index.jsx.html#line8">line 8</a>
+        <a href="pages_UsersPage_index.jsx.html">pages/UsersPage/index.jsx</a>, <a href="pages_UsersPage_index.jsx.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -10903,7 +12020,7 @@ It includes a navbar, main content area, and a footer.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_IssueUtils_tagsStyles.js.html">utils/IssueUtils/tagsStyles.js</a>, <a href="utils_IssueUtils_tagsStyles.js.html#line14">line 14</a>
+        <a href="utils_IssueUtils_tagsStyles.js.html">utils/IssueUtils/tagsStyles.js</a>, <a href="utils_IssueUtils_tagsStyles.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -10973,13 +12090,13 @@ It includes a navbar, main content area, and a footer.</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Main.html">Main</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AllIssues">AllIssues</a></li><li><a href="global.html#AuthLayout">AuthLayout</a></li><li><a href="global.html#Authenticated">Authenticated</a></li><li><a href="global.html#ConfirmRoleChange">ConfirmRoleChange</a></li><li><a href="global.html#ContactSection">ContactSection</a></li><li><a href="global.html#CreatedByUser">CreatedByUser</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#FadeIn">FadeIn</a></li><li><a href="global.html#FeaturesSection">FeaturesSection</a></li><li><a href="global.html#FilterBar">FilterBar</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#FooterLinks">FooterLinks</a></li><li><a href="global.html#FormInput">FormInput</a></li><li><a href="global.html#HeroSection">HeroSection</a></li><li><a href="global.html#Issue">Issue</a></li><li><a href="global.html#IssueFilterProvider">IssueFilterProvider</a></li><li><a href="global.html#IssueModal">IssueModal</a></li><li><a href="global.html#IssuesPage">IssuesPage</a></li><li><a href="global.html#IssuesProvider">IssuesProvider</a></li><li><a href="global.html#LandingPage">LandingPage</a></li><li><a href="global.html#ListIssues">ListIssues</a></li><li><a href="global.html#LoginForm">LoginForm</a></li><li><a href="global.html#LoginPage">LoginPage</a></li><li><a href="global.html#MainLayout">MainLayout</a></li><li><a href="global.html#MobileNav">MobileNav</a></li><li><a href="global.html#MobileNavbar">MobileNavbar</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#NavbarLinks">NavbarLinks</a></li><li><a href="global.html#NotAuthenticated">NotAuthenticated</a></li><li><a href="global.html#ReCaptcha">ReCaptcha</a></li><li><a href="global.html#RegisterForm">RegisterForm</a></li><li><a href="global.html#RegisterPage">RegisterPage</a></li><li><a href="global.html#Router">Router</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#SingleIssuePage">SingleIssuePage</a></li><li><a href="global.html#SlideIn">SlideIn</a></li><li><a href="global.html#SortBar">SortBar</a></li><li><a href="global.html#SubmitButton">SubmitButton</a></li><li><a href="global.html#SubmitIssueForm">SubmitIssueForm</a></li><li><a href="global.html#SubmitIssuePage">SubmitIssuePage</a></li><li><a href="global.html#SubmitSuccessful">SubmitSuccessful</a></li><li><a href="global.html#TableLabels">TableLabels</a></li><li><a href="global.html#Testimonial">Testimonial</a></li><li><a href="global.html#TestimonialSection">TestimonialSection</a></li><li><a href="global.html#ThemeProvider">ThemeProvider</a></li><li><a href="global.html#ToggleThemeButton">ToggleThemeButton</a></li><li><a href="global.html#TypingText">TypingText</a></li><li><a href="global.html#User">User</a></li><li><a href="global.html#UserIssues">UserIssues</a></li><li><a href="global.html#UserProvider">UserProvider</a></li><li><a href="global.html#UsersList">UsersList</a></li><li><a href="global.html#UsersPage">UsersPage</a></li><li><a href="global.html#UsersProvider">UsersProvider</a></li><li><a href="global.html#severityStyles">severityStyles</a></li><li><a href="global.html#sortIssues">sortIssues</a></li><li><a href="global.html#sortIssuesOptions">sortIssuesOptions</a></li><li><a href="global.html#submitLogin">submitLogin</a></li><li><a href="global.html#submitRegistration">submitRegistration</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Main.html">Main</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AllIssues">AllIssues</a></li><li><a href="global.html#AssignedForUser">AssignedForUser</a></li><li><a href="global.html#AuthLayout">AuthLayout</a></li><li><a href="global.html#Authenticated">Authenticated</a></li><li><a href="global.html#Comment">Comment</a></li><li><a href="global.html#CommentSection">CommentSection</a></li><li><a href="global.html#ConfirmRoleChange">ConfirmRoleChange</a></li><li><a href="global.html#ContactSection">ContactSection</a></li><li><a href="global.html#CreatedByUser">CreatedByUser</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#FadeIn">FadeIn</a></li><li><a href="global.html#FeaturesSection">FeaturesSection</a></li><li><a href="global.html#FilterBar">FilterBar</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#FooterLinks">FooterLinks</a></li><li><a href="global.html#FormInput">FormInput</a></li><li><a href="global.html#HeroSection">HeroSection</a></li><li><a href="global.html#Issue">Issue</a></li><li><a href="global.html#IssueFilterProvider">IssueFilterProvider</a></li><li><a href="global.html#IssueModal">IssueModal</a></li><li><a href="global.html#IssuesPage">IssuesPage</a></li><li><a href="global.html#IssuesProvider">IssuesProvider</a></li><li><a href="global.html#LandingPage">LandingPage</a></li><li><a href="global.html#ListIssues">ListIssues</a></li><li><a href="global.html#LoginForm">LoginForm</a></li><li><a href="global.html#LoginPage">LoginPage</a></li><li><a href="global.html#MainLayout">MainLayout</a></li><li><a href="global.html#MobileNav">MobileNav</a></li><li><a href="global.html#MobileNavbar">MobileNavbar</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#NavbarLinks">NavbarLinks</a></li><li><a href="global.html#NotAuthenticated">NotAuthenticated</a></li><li><a href="global.html#ReCaptcha">ReCaptcha</a></li><li><a href="global.html#RegisterForm">RegisterForm</a></li><li><a href="global.html#RegisterPage">RegisterPage</a></li><li><a href="global.html#Router">Router</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#SingleIssue">SingleIssue</a></li><li><a href="global.html#SingleIssuePage">SingleIssuePage</a></li><li><a href="global.html#SlideIn">SlideIn</a></li><li><a href="global.html#SortBar">SortBar</a></li><li><a href="global.html#StatisticsPage">StatisticsPage</a></li><li><a href="global.html#Stats">Stats</a></li><li><a href="global.html#SubmitButton">SubmitButton</a></li><li><a href="global.html#SubmitIssueForm">SubmitIssueForm</a></li><li><a href="global.html#SubmitIssuePage">SubmitIssuePage</a></li><li><a href="global.html#SubmitSuccessful">SubmitSuccessful</a></li><li><a href="global.html#TableLabels">TableLabels</a></li><li><a href="global.html#Testimonial">Testimonial</a></li><li><a href="global.html#TestimonialSection">TestimonialSection</a></li><li><a href="global.html#ThemeProvider">ThemeProvider</a></li><li><a href="global.html#ToggleThemeButton">ToggleThemeButton</a></li><li><a href="global.html#TypingText">TypingText</a></li><li><a href="global.html#User">User</a></li><li><a href="global.html#UserIssues">UserIssues</a></li><li><a href="global.html#UserProvider">UserProvider</a></li><li><a href="global.html#UsersList">UsersList</a></li><li><a href="global.html#UsersPage">UsersPage</a></li><li><a href="global.html#UsersProvider">UsersProvider</a></li><li><a href="global.html#severityStyles">severityStyles</a></li><li><a href="global.html#sortIssues">sortIssues</a></li><li><a href="global.html#sortIssuesOptions">sortIssuesOptions</a></li><li><a href="global.html#submitLogin">submitLogin</a></li><li><a href="global.html#submitRegistration">submitRegistration</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Sun May 12 2024 19:34:52 GMT+0200 (czas środkowoeuropejski letni)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Wed Jun 12 2024 08:51:33 GMT+0200 (czas środkowoeuropejski letni)
 </footer>
 
 <script> prettyPrint(); </script>

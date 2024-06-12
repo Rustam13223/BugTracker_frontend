@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/Footer/Footer.jsx</title>
+    <title>JSDoc: Source: components/SingleIssue/CommentSection/Comment/Comment.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/Footer/Footer.jsx</h1>
+    <h1 class="page-title">Source: components/SingleIssue/CommentSection/Comment/Comment.jsx</h1>
 
     
 
@@ -26,23 +26,32 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import styles from "./Footer.module.css";
-import FooterLinks from "./FooterLinks";
-
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import styles from "./Comment.module.css";
+import { useUsersContext } from "../../../../context/usersContext";
 /**
- * Footer component.
+ * Renders a single comment with user information, comment content, and creation date.
  *
- * @returns {JSX.Element} The rendered Footer component.
+ * @component
+ * @param {Object} comment - The comment object containing comment, userId, and createdAt properties.
+ * @returns {JSX.Element} - The rendered Comment component.
  */
-const Footer = () => {
+const Comment = ({ comment: { comment, userId, createdAt } }) => {
+  const { users } = useUsersContext();
+  const user = users.find((user) => user.id === userId);
+
   return (
-    &lt;footer className={styles.footer}>
-      &lt;FooterLinks />
-    &lt;/footer>
+    &lt;div className={styles.comment}>
+      &lt;p>
+        {user.first_name} {user.second_name}
+      &lt;/p>
+      &lt;p>{comment}&lt;/p>
+      &lt;p>{new Date(createdAt).toLocaleString()}&lt;/p>
+    &lt;/div>
   );
 };
 
-export default Footer;
+export default Comment;
 </code></pre>
         </article>
     </section>

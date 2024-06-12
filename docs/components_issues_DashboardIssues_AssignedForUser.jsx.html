@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/Footer/Footer.jsx</title>
+    <title>JSDoc: Source: components/issues/DashboardIssues/AssignedForUser.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/Footer/Footer.jsx</h1>
+    <h1 class="page-title">Source: components/issues/DashboardIssues/AssignedForUser.jsx</h1>
 
     
 
@@ -26,23 +26,53 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import styles from "./Footer.module.css";
-import FooterLinks from "./FooterLinks";
-
+            <pre class="prettyprint source linenums"><code>import { useEffect, useState } from "react";
+import { useUserContext } from "../../../context/userContext";
+import { useIssuesContext } from "../../../context/issuesContext";
+import { sortIssues } from "../../../utils/IssueUtils/sortIssues";
+import { sortIssuesOptions } from "../../../utils/IssueUtils/sortIssuesOptions";
+import DashboardIssues from "./DashboardIssues";
 /**
- * Footer component.
+ * Renders a component that displays issues assigned to the current user.
  *
- * @returns {JSX.Element} The rendered Footer component.
+ * @component
+ * @returns {JSX.Element} The AssignedForUser component.
  */
-const Footer = () => {
+const AssignedForUser = () => {
+  const { user } = useUserContext();
+  const { issues, loading: loadingIssues, error } = useIssuesContext();
+  const [sortBy, setSortBy] = useState("newest"); // [1
+  const [assignedIssues, setAssignedIssues] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleChange = (option) => {
+    setSelectedOption(option);
+    setSortBy(option.value);
+  };
+  useEffect(() => {
+    if (!loadingIssues &amp;&amp; user) {
+      const assignedIssues = issues.filter(
+        (issue) => issue?.assigned_to === user?.email
+      );
+      const sortedIssues = sortIssues(assignedIssues, sortBy);
+      setAssignedIssues(sortedIssues);
+    }
+  }, [issues, user, loadingIssues, sortBy]);
+
   return (
-    &lt;footer className={styles.footer}>
-      &lt;FooterLinks />
-    &lt;/footer>
+    &lt;DashboardIssues
+      title="Issues assigned to you"
+      issues={assignedIssues}
+      error={error}
+      sortBy={sortBy}
+      handleChange={handleChange}
+      selectedOption={selectedOption}
+      sortIssuesOptions={sortIssuesOptions}
+    />
   );
 };
 
-export default Footer;
+export default AssignedForUser;
 </code></pre>
         </article>
     </section>

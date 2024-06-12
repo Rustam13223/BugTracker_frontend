@@ -4,10 +4,19 @@ import { useState, useEffect } from "react";
 import { useUserContext } from "../../../context/userContext";
 import Comment from "./Comment/Comment";
 
+/**
+ * Renders a comment section for a specific issue.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {string} props.issueId - The ID of the issue.
+ * @returns {JSX.Element} The rendered CommentSection component.
+ */
 function CommentSection({ issueId }) {
   const [comment, setComment] = useState("");
   const { user } = useUserContext();
   const [comments, setComments] = useState([]);
+  const [error, setError] = useState(null);
 
   const handleCommentChange = (e) => {
     setComment(e.target.value);
@@ -21,13 +30,12 @@ function CommentSection({ issueId }) {
         },
       });
       if (response.data.error) {
-        console.error(response.data.error);
+        setError(response.data.error);
         return;
       }
       setComments(response.data.comments);
-      console.log(response.data.comments);
     } catch (error) {
-      //@TODO: Handle error
+      setError("An error occurred while fetching comments.");
     }
   };
 
@@ -76,6 +84,7 @@ function CommentSection({ issueId }) {
       {comments?.map((comment) => (
         <Comment key={comment.comment} comment={comment} />
       ))}
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 }

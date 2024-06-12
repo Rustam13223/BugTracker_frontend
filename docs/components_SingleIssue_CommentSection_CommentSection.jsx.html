@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/Footer/Footer.jsx</title>
+    <title>JSDoc: Source: components/SingleIssue/CommentSection/CommentSection.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/Footer/Footer.jsx</h1>
+    <h1 class="page-title">Source: components/SingleIssue/CommentSection/CommentSection.jsx</h1>
 
     
 
@@ -26,23 +26,98 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import styles from "./Footer.module.css";
-import FooterLinks from "./FooterLinks";
+            <pre class="prettyprint source linenums"><code>import styles from "./CommentSection.module.css";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { useUserContext } from "../../../context/userContext";
+import Comment from "./Comment/Comment";
 
 /**
- * Footer component.
+ * Renders a comment section for a specific issue.
  *
- * @returns {JSX.Element} The rendered Footer component.
+ * @component
+ * @param {Object} props - The component props.
+ * @param {string} props.issueId - The ID of the issue.
+ * @returns {JSX.Element} The rendered CommentSection component.
  */
-const Footer = () => {
-  return (
-    &lt;footer className={styles.footer}>
-      &lt;FooterLinks />
-    &lt;/footer>
-  );
-};
+function CommentSection({ issueId }) {
+  const [comment, setComment] = useState("");
+  const { user } = useUserContext();
+  const [comments, setComments] = useState([]);
+  const [error, setError] = useState(null);
 
-export default Footer;
+  const handleCommentChange = (e) => {
+    setComment(e.target.value);
+  };
+
+  const fetchComments = async () => {
+    try {
+      const response = await axios.get(`/api/bugs/${issueId}/comments`, {
+        headers: {
+          Authorization: `Bearer ${user.accessToken}`,
+        },
+      });
+      if (response.data.error) {
+        setError(response.data.error);
+        return;
+      }
+      setComments(response.data.comments);
+    } catch (error) {
+      setError("An error occurred while fetching comments.");
+    }
+  };
+
+  const handleAddComment = async () => {
+    try {
+      const response = await axios.post(
+        `/api/bugs/${issueId}/comments/create`,
+        {
+          comment,
+          userId: user.id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${user.accessToken}`,
+          },
+        }
+      );
+      if (response.data.error) {
+        console.error(response.data.error);
+        return;
+      }
+      fetchComments();
+      setComment("");
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    fetchComments();
+  }, [issueId]);
+
+  return (
+    &lt;div className={styles.comments}>
+      &lt;h3>Comments&lt;/h3>
+      &lt;div className={styles.addComment}>
+        &lt;textarea
+          type="text"
+          value={comment}
+          onChange={handleCommentChange}
+          placeholder="Add a comment..."
+          className={styles.input}
+        />
+        &lt;button className={styles.submitBtn} onClick={handleAddComment}>
+          Add Comment
+        &lt;/button>
+      &lt;/div>
+      {comments?.map((comment) => (
+        &lt;Comment key={comment.comment} comment={comment} />
+      ))}
+      {error &amp;&amp; &lt;div className={styles.error}>{error}&lt;/div>}
+    &lt;/div>
+  );
+}
+
+export default CommentSection;
 </code></pre>
         </article>
     </section>

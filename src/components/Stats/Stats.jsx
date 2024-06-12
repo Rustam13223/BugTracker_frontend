@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useUserContext } from "../../context/userContext";
 import { useUsersContext } from "../../context/usersContext";
+import styles from "./Stats.module.css";
 
+/**
+ * Renders a list of top programmers and the number of issues they have solved.
+ * @returns {JSX.Element} The rendered Stats component.
+ */
 const Stats = () => {
   const { user } = useUserContext();
   const { users } = useUsersContext();
@@ -44,6 +49,8 @@ const Stats = () => {
         const user = users.find((user) => user.id === stat.user_id);
         return { ...user, solved: stat.solved_bugs };
       });
+      // Sort programmers by solved issues in descending order
+      programmers.sort((a, b) => b.solved - a.solved);
       setTopProgrammers(programmers);
     }
   }, [stats, users]);
@@ -52,14 +59,17 @@ const Stats = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <ol>
-      {topProgrammers.map((programmer) => (
-        <li key={programmer.id}>
-          {programmer.first_name} {programmer.last_name} - solved{" "}
-          {programmer.solved} issues
-        </li>
-      ))}
-    </ol>
+    <div className={styles.container}>
+      <h2>Top Programmers</h2>
+      <ol className={styles.list}>
+        {topProgrammers.map((programmer) => (
+          <li key={programmer.id}>
+            {programmer.first_name} {programmer.last_name} - solved{" "}
+            {programmer.solved} issues
+          </li>
+        ))}
+      </ol>
+    </div>
   );
 };
 

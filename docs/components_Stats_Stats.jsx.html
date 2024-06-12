@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/Footer/Footer.jsx</title>
+    <title>JSDoc: Source: components/Stats/Stats.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/Footer/Footer.jsx</h1>
+    <h1 class="page-title">Source: components/Stats/Stats.jsx</h1>
 
     
 
@@ -26,23 +26,76 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import styles from "./Footer.module.css";
-import FooterLinks from "./FooterLinks";
+            <pre class="prettyprint source linenums"><code>import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useUserContext } from "../../context/userContext";
+import { useUsersContext } from "../../context/usersContext";
 
 /**
- * Footer component.
- *
- * @returns {JSX.Element} The rendered Footer component.
+ * Renders a list of top programmers and the number of issues they have solved.
+ * @returns {JSX.Element} The rendered Stats component.
  */
-const Footer = () => {
+const Stats = () => {
+  const { user } = useUserContext();
+  const { users } = useUsersContext();
+  const [topProgrammers, setTopProgrammers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [stats, setStats] = useState([]);
+  const [error, setError] = useState(null);
+
+  const fetchStats = async () => {
+    try {
+      const response = await axios.get("/api/stats", {
+        headers: {
+          Authorization: `Bearer ${user.accessToken}`,
+        },
+      });
+      if (response.data.error) {
+        setError(response.data.error);
+        console.log(response.data.error);
+        setLoading(false);
+        return;
+      }
+      setStats(response.data.stats);
+      console.log(response.data.stats);
+    } catch (error) {
+      setError("An error occurred while fetching stats.");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchStats();
+  }, []);
+
+  useEffect(() => {
+    if (stats.length > 0 &amp;&amp; users.length > 0) {
+      const programmers = stats.map((stat) => {
+        const user = users.find((user) => user.id === stat.user_id);
+        return { ...user, solved: stat.solved_bugs };
+      });
+      setTopProgrammers(programmers);
+    }
+  }, [stats, users]);
+
+  if (loading) return &lt;div>Loading...&lt;/div>;
+  if (error) return &lt;div>Error: {error}&lt;/div>;
+
   return (
-    &lt;footer className={styles.footer}>
-      &lt;FooterLinks />
-    &lt;/footer>
+    &lt;ol>
+      {topProgrammers.map((programmer) => (
+        &lt;li key={programmer.id}>
+          {programmer.first_name} {programmer.last_name} - solved{" "}
+          {programmer.solved} issues
+        &lt;/li>
+      ))}
+    &lt;/ol>
   );
 };
 
-export default Footer;
+export default Stats;
 </code></pre>
         </article>
     </section>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/SingleIssue/SingleIssue.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/SingleIssue/SingleIssue.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import styles from "./SingleIssue.module.css";
+import { severityStyles, statusStyles } from "@/utils/IssueUtils/tagsStyles";
+import { useUserContext } from "@/context/userContext";
+import CommentSection from "./CommentSection/CommentSection";
+import { FaRegEdit } from "react-icons/fa";
+import { useState } from "react";
+import { useUsersContext } from "../../context/usersContext";
+import CustomSelect from "@/components/forms/Inputs/CustomSelect";
+import { useIssuesContext } from "../../context/issuesContext";
+/**
+ * Renders a single issue with its details and allows editing of certain fields.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {Object} props.issue - The issue object containing the issue details.
+ * @param {string} props.issue.title - The title of the issue.
+ * @param {string} props.issue.reporter - The email of the reporter of the issue.
+ * @param {string} props.issue.description - The description of the issue.
+ * @param {string} props.issue.created - The timestamp when the issue was created.
+ * @param {string} props.issue.assigned_to - The email of the user assigned to the issue.
+ * @param {string} props.issue.status - The status of the issue.
+ * @param {string} props.issue.severity - The severity of the issue.
+ * @param {string} props.issue.id - The unique ID of the issue.
+ * @returns {JSX.Element} The rendered SingleIssue component.
+ */
+const SingleIssue = ({
+  issue: {
+    title,
+    reporter,
+    description,
+    created,
+    assigned_to,
+    status,
+    severity,
+    id,
+  },
+}) => {
+  const { updateIssue } = useIssuesContext();
+  const { user } = useUserContext();
+  const { users } = useUsersContext();
+  const programmers = users.filter((user) => user.role === "programmer");
+  const [showEditDescription, setShowEditDescription] = useState(false);
+  const [showEditTitle, setShowEditTitle] = useState(false);
+  const [newDescription, setNewDescription] = useState(description);
+  const [newTitle, setNewTitle] = useState(title);
+  const [changes, setChanges] = useState({});
+  const [newAssignee, setNewAssignee] = useState(assigned_to);
+  const [newStatus, setNewStatus] = useState(status);
+  const [newSeverity, setNewSeverity] = useState(severity);
+  const [savedSuccessfully, setSavedSuccessfully] = useState(false);
+
+  const canEdit = reporter === user.email;
+  const isAssigned = assigned_to === user.email;
+  const assigneeOptions = programmers.map((programmer) => ({
+    value: programmer.id,
+    label: `${programmer.first_name} ${programmer.second_name}`,
+  }));
+  const statusOptions = [
+    { value: "opened", label: "Open" },
+    { value: "in progress", label: "In Progress" },
+    { value: "closed", label: "Closed" },
+    { value: "done", label: "Done" },
+  ];
+  const severityOptions = [
+    { value: "low", label: "Low" },
+    { value: "medium", label: "Medium" },
+    { value: "high", label: "High" },
+  ];
+  const handleDescriptionChange = (e) => {
+    setNewDescription(e.target.value);
+    setChanges((prev) => ({ ...prev, description: e.target.value }));
+  };
+  const handleTitleChange = (e) => {
+    setNewTitle(e.target.value);
+    setChanges((prev) => ({ ...prev, title: e.target.value }));
+  };
+  const handleAssigneeChange = (selectedOption) => {
+    setNewAssignee(selectedOption.value);
+    setChanges((prev) => ({ ...prev, assigned_to: selectedOption.value }));
+  };
+  const handleStatusChange = (selectedOption) => {
+    setNewStatus(selectedOption.value);
+    setChanges((prev) => ({ ...prev, status: selectedOption.value }));
+  };
+  const handleSeverityChange = (selectedOption) => {
+    setNewSeverity(selectedOption.value);
+    setChanges((prev) => ({ ...prev, severity: selectedOption.value }));
+  };
+  const handleSave = async () => {
+    try {
+      const response = await updateIssue(id, { ...changes });
+      if (!response.data.error) {
+        setSavedSuccessfully(true);
+        setChanges({});
+        setTimeout(() => {
+          setSavedSuccessfully(false);
+        }, 3000);
+      } else {
+        console.log(response.data.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return (
+    &lt;div className={styles.container}>
+      &lt;div className={styles.id}>
+        &lt;p>Issue ID: #{id}&lt;/p>
+        &lt;p>Created: {new Date(created).toDateString()}&lt;/p>
+        {Object.keys(changes).length > 0 &amp;&amp; (
+          &lt;button className={styles.saveBtn} onClick={handleSave}>
+            Save
+          &lt;/button>
+        )}
+        {savedSuccessfully &amp;&amp; Object.keys(changes).length === 0 &amp;&amp; (
+          &lt;p className={styles.success}>Saved successfully&lt;/p>
+        )}
+      &lt;/div>
+      &lt;div className={styles.info}>
+        &lt;div className={styles.header}>
+          &lt;h2>
+            {showEditTitle ? (
+              &lt;input
+                type="text"
+                value={newTitle}
+                className={styles.editTitle}
+                onChange={(e) => handleTitleChange(e)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    setShowEditTitle(false); // Hide the input field
+                  }
+                }}
+              />
+            ) : (
+              newTitle
+            )}{" "}
+            {canEdit &amp;&amp; (
+              &lt;FaRegEdit
+                onClick={() => setShowEditTitle((prev) => !prev)}
+                className={styles.editIcon}
+              />
+            )}
+          &lt;/h2>
+          &lt;p>Reported by: {reporter}&lt;/p>
+          {canEdit ? (
+            &lt;CustomSelect
+              options={assigneeOptions}
+              value={newAssignee}
+              label="Assigned to"
+              placeholder={assigned_to}
+              onChange={(selectedOption) => {
+                handleAssigneeChange(selectedOption);
+              }}
+            />
+          ) : assigned_to ? (
+            &lt;p>{assigned_to}&lt;/p>
+          ) : (
+            "Not assigned"
+          )}
+          &lt;div className={styles.tags}>
+            {canEdit || isAssigned ? (
+              &lt;CustomSelect
+                label="Status"
+                options={statusOptions}
+                value={newStatus}
+                onChange={(selectedOption) => {
+                  handleStatusChange(selectedOption);
+                }}
+              />
+            ) : (
+              &lt;p className={styles.tag} style={{ ...statusStyles(status) }}>
+                {status}
+              &lt;/p>
+            )}
+
+            {canEdit ? (
+              &lt;CustomSelect
+                label="Severity"
+                options={severityOptions}
+                value={newSeverity}
+                onChange={(selectedOption) => {
+                  handleSeverityChange(selectedOption);
+                }}
+              />
+            ) : (
+              &lt;p className={styles.tag} style={{ ...severityStyles(severity) }}>
+                {severity}
+              &lt;/p>
+            )}
+          &lt;/div>
+        &lt;/div>
+        &lt;div className={styles.description}>
+          &lt;h3>
+            Description{" "}
+            {canEdit &amp;&amp; (
+              &lt;FaRegEdit
+                onClick={() => setShowEditDescription((prev) => !prev)}
+                className={styles.editIcon}
+              />
+            )}
+          &lt;/h3>
+          {showEditDescription ? (
+            &lt;textarea
+              className={styles.editDescription}
+              value={newDescription}
+              onChange={(e) => handleDescriptionChange(e)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" &amp;&amp; !e.shiftKey) {
+                  e.preventDefault();
+                  setShowEditDescription(false);
+                }
+              }}
+            >&lt;/textarea>
+          ) : (
+            &lt;p>{newDescription}&lt;/p>
+          )}
+        &lt;/div>
+        &lt;CommentSection issueId={id}>&lt;/CommentSection>
+      &lt;/div>
+    &lt;/div>
+  );
+};
+
+export default SingleIssue;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Main.html">Main</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AllIssues">AllIssues</a></li><li><a href="global.html#AssignedForUser">AssignedForUser</a></li><li><a href="global.html#AuthLayout">AuthLayout</a></li><li><a href="global.html#Authenticated">Authenticated</a></li><li><a href="global.html#Comment">Comment</a></li><li><a href="global.html#CommentSection">CommentSection</a></li><li><a href="global.html#ConfirmRoleChange">ConfirmRoleChange</a></li><li><a href="global.html#ContactSection">ContactSection</a></li><li><a href="global.html#CreatedByUser">CreatedByUser</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#FadeIn">FadeIn</a></li><li><a href="global.html#FeaturesSection">FeaturesSection</a></li><li><a href="global.html#FilterBar">FilterBar</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#FooterLinks">FooterLinks</a></li><li><a href="global.html#FormInput">FormInput</a></li><li><a href="global.html#HeroSection">HeroSection</a></li><li><a href="global.html#Issue">Issue</a></li><li><a href="global.html#IssueFilterProvider">IssueFilterProvider</a></li><li><a href="global.html#IssueModal">IssueModal</a></li><li><a href="global.html#IssuesPage">IssuesPage</a></li><li><a href="global.html#IssuesProvider">IssuesProvider</a></li><li><a href="global.html#LandingPage">LandingPage</a></li><li><a href="global.html#ListIssues">ListIssues</a></li><li><a href="global.html#LoginForm">LoginForm</a></li><li><a href="global.html#LoginPage">LoginPage</a></li><li><a href="global.html#MainLayout">MainLayout</a></li><li><a href="global.html#MobileNav">MobileNav</a></li><li><a href="global.html#MobileNavbar">MobileNavbar</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#NavbarLinks">NavbarLinks</a></li><li><a href="global.html#NotAuthenticated">NotAuthenticated</a></li><li><a href="global.html#ReCaptcha">ReCaptcha</a></li><li><a href="global.html#RegisterForm">RegisterForm</a></li><li><a href="global.html#RegisterPage">RegisterPage</a></li><li><a href="global.html#Router">Router</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#SingleIssue">SingleIssue</a></li><li><a href="global.html#SingleIssuePage">SingleIssuePage</a></li><li><a href="global.html#SlideIn">SlideIn</a></li><li><a href="global.html#SortBar">SortBar</a></li><li><a href="global.html#StatisticsPage">StatisticsPage</a></li><li><a href="global.html#Stats">Stats</a></li><li><a href="global.html#SubmitButton">SubmitButton</a></li><li><a href="global.html#SubmitIssueForm">SubmitIssueForm</a></li><li><a href="global.html#SubmitIssuePage">SubmitIssuePage</a></li><li><a href="global.html#SubmitSuccessful">SubmitSuccessful</a></li><li><a href="global.html#TableLabels">TableLabels</a></li><li><a href="global.html#Testimonial">Testimonial</a></li><li><a href="global.html#TestimonialSection">TestimonialSection</a></li><li><a href="global.html#ThemeProvider">ThemeProvider</a></li><li><a href="global.html#ToggleThemeButton">ToggleThemeButton</a></li><li><a href="global.html#TypingText">TypingText</a></li><li><a href="global.html#User">User</a></li><li><a href="global.html#UserIssues">UserIssues</a></li><li><a href="global.html#UserProvider">UserProvider</a></li><li><a href="global.html#UsersList">UsersList</a></li><li><a href="global.html#UsersPage">UsersPage</a></li><li><a href="global.html#UsersProvider">UsersProvider</a></li><li><a href="global.html#severityStyles">severityStyles</a></li><li><a href="global.html#sortIssues">sortIssues</a></li><li><a href="global.html#sortIssuesOptions">sortIssuesOptions</a></li><li><a href="global.html#submitLogin">submitLogin</a></li><li><a href="global.html#submitRegistration">submitRegistration</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Wed Jun 12 2024 08:51:33 GMT+0200 (czas środkowoeuropejski letni)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

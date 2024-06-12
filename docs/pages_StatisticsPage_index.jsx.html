@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/Footer/Footer.jsx</title>
+    <title>JSDoc: Source: pages/StatisticsPage/index.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/Footer/Footer.jsx</h1>
+    <h1 class="page-title">Source: pages/StatisticsPage/index.jsx</h1>
 
     
 
@@ -26,23 +26,20 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import styles from "./Footer.module.css";
-import FooterLinks from "./FooterLinks";
-
+            <pre class="prettyprint source linenums"><code>import NotAuthenticated from "../../components/redirects/NotAuthenticated/NotAuthenticated";
+import { useUserContext } from "../../context/userContext";
+import Stats from "../../components/Stats/Stats";
 /**
- * Footer component.
- *
- * @returns {JSX.Element} The rendered Footer component.
+ * Renders the StatisticsPage component.
+ * @returns {JSX.Element} The rendered StatisticsPage component.
  */
-const Footer = () => {
-  return (
-    &lt;footer className={styles.footer}>
-      &lt;FooterLinks />
-    &lt;/footer>
-  );
+const StatisticsPage = () => {
+  const { user } = useUserContext();
+  if (!user) return &lt;NotAuthenticated />;
+  return &lt;Stats />;
 };
 
-export default Footer;
+export default StatisticsPage;
 </code></pre>
         </article>
     </section>
