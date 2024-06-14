@@ -1,15 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useIssuesContext } from "../../../context/issuesContext";
 import FilterBar from "./FilterBar/FilterBar";
 import styles from "./AllIssues.module.css";
 import { useIssueFilterContext } from "../../../context/issueFilterContext";
-import { useState } from "react";
 import SlideIn from "../../animations/SlideIn";
 import Issue from "./Issue/Issue";
 import SearchBar from "./SearchBar/SearchBar";
 import SortBar from "./SortBar/SortBar";
 import TableLabels from "./TableLabels";
-import { sortIssues } from "../../../utils/IssueUtils/sortIssues";
 
 /**
  * Renders the component that displays all the issues.
@@ -19,8 +17,14 @@ import { sortIssues } from "../../../utils/IssueUtils/sortIssues";
 const AllIssues = () => {
   const { issues, loading: loadingIssues, error } = useIssuesContext();
   const [filteredIssues, setFilteredIssues] = useState([]);
-  const { filters, searchTerm, sortBy, filterIssues, filterBySearchTerm } =
-    useIssueFilterContext();
+  const {
+    filters,
+    searchTerm,
+    sortBy,
+    filterIssues,
+    filterBySearchTerm,
+    sortIssues,
+  } = useIssueFilterContext();
 
   useEffect(() => {
     if (!loadingIssues && issues.length > 0 && !error) {
@@ -40,7 +44,7 @@ const AllIssues = () => {
 
       <SortBar />
 
-      <TableLabels></TableLabels>
+      <TableLabels />
       {filteredIssues.map((issue) => (
         <Issue key={issue.id} issue={issue} />
       ))}

@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState, createContext } from "react";
 import axios from "axios";
 import { useUserContext } from "./userContext"; // Import user context
+import createIssue from "../utils/Issues/createIssue";
+import updateIssue from "../utils/Issues/updateIssue";
 
 const IssuesContext = createContext();
 const useIssuesContext = () => useContext(IssuesContext);
@@ -40,52 +42,6 @@ const IssuesProvider = ({ children }) => {
     }
   };
 
-  const createIssue = async (issueData) => {
-    if (!user) return; // Only create issues if there is a user
-    let response;
-    try {
-      setLoadingIssues(true);
-      response = await axios.post("/api/bugs/create", issueData, {
-        headers: {
-          Authorization: `Bearer ${user.accessToken}`, // Assuming accessToken is available on user
-        },
-      });
-      if (response.data.error) {
-        setError(response.data.error);
-      } else {
-        fetchIssues(); // Re-fetch issues after creating a new issue
-      }
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoadingIssues(false);
-    }
-    return response;
-  };
-
-  const updateIssue = async (id, issueData) => {
-    if (!user) return; // Only update issues if there is a user
-    let response;
-    try {
-      setLoadingIssues(true);
-      response = await axios.patch(`/api/bugs/${id}`, issueData, {
-        headers: {
-          Authorization: `Bearer ${user.accessToken}`, // Assuming accessToken is available on user
-        },
-      });
-      if (response.data.error) {
-        setError(response.data.error);
-      } else {
-        fetchIssues(); // Re-fetch issues after updating an issue
-      }
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoadingIssues(false);
-    }
-    return response;
-  };
-
   // Effect to fetch issues when user data is loaded and user is authenticated
   useEffect(() => {
     if (!loadingUser && user) {
@@ -95,7 +51,22 @@ const IssuesProvider = ({ children }) => {
 
   return (
     <IssuesContext.Provider
-      value={{ issues, error, loading, createIssue, updateIssue }}
+      value={{
+        issues,
+        error,
+        loading,
+        createIssue: (issueData) =>
+          createIssue(user, issueData, setLoadingIssues, setError, fetchIssues),
+        updateIssue: (id, issueData) =>
+          updateIssue(
+            user,
+            id,
+            issueData,
+            setLoadingIssues,
+            setError,
+            fetchIssues
+          ),
+      }}
     >
       {children}
     </IssuesContext.Provider>

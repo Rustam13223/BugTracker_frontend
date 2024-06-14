@@ -62,10 +62,13 @@ const Stats = () => {
     <div className={styles.container}>
       <h2>Top Programmers</h2>
       <ol className={styles.list}>
-        {topProgrammers.map((programmer) => (
+        {topProgrammers.map((programmer, index) => (
           <li key={programmer.id}>
-            {programmer.first_name} {programmer.last_name} - solved{" "}
-            {programmer.solved} issues
+            <p>{index + 1}</p>
+            <p>
+              {programmer.first_name} {programmer.second_name}
+            </p>
+            <p>{programmer.solved} issues solved</p>
           </li>
         ))}
       </ol>

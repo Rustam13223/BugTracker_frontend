@@ -1,5 +1,5 @@
 import styles from "./Issue.module.css";
-import { statusStyles, severityStyles } from "@/utils/IssueUtils/tagsStyles";
+import { statusStyles, severityStyles } from "@/utils/Issues/tagsStyles";
 
 /**
  * Renders an issue component.

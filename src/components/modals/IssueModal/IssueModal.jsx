@@ -5,7 +5,7 @@ import { IoClose } from "react-icons/io5";
 import SubmitButton from "@/components/buttons/SubmitButton";
 import { Link } from "react-router-dom";
 import BugtrackerSvg from "@/assets/BugtrackerSvg";
-import { statusStyles, severityStyles } from "@/utils/IssueUtils/tagsStyles";
+import { statusStyles, severityStyles } from "@/utils/Issues/tagsStyles";
 
 /**
  * Renders a modal component for displaying issue details.

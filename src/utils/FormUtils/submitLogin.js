@@ -47,10 +47,8 @@ export const submitLogin = async (
           "An error occurred. Please try again later."
       );
     } else if (error.request) {
-      console.log(error.request);
       setSubmitError("No response from server. Check your network connection.");
     } else {
-      console.log("Error", error.message);
       setSubmitError("An error occurred. Please try again later.");
     }
   }

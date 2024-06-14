@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
-import { createContext } from "react";
-import { useState } from "react";
+import React, { createContext, useState, useContext } from "react";
+import filterBySearchTerm from "../utils/Issues/filterBySearchTerm";
+import filterIssues from "../utils/Issues/filterIssues";
+import { sortIssues } from "../utils/Issues/sortIssues";
 
 const IssueFilterContext = createContext();
 const useIssueFilterContext = () => useContext(IssueFilterContext);
@@ -18,48 +19,6 @@ const IssueFilterProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("newest");
 
-  const filterIssues = (issues) => {
-    if (filters.length === 0) return issues;
-
-    return issues.filter((issue) => {
-      const statusFilters = ["opened", "in progress", "done", "closed"];
-      const severityFilters = ["low", "medium", "high"];
-
-      const issueTags = [
-        issue.status.toLowerCase(),
-        issue.severity.toLowerCase(),
-      ];
-
-      const statusFilter = filters.find((filter) =>
-        statusFilters.includes(filter)
-      );
-      const severityFilter = filters.find((filter) =>
-        severityFilters.includes(filter)
-      );
-
-      const statusMatch = statusFilter
-        ? issueTags.includes(statusFilter)
-        : true;
-      const severityMatch = severityFilter
-        ? issueTags.includes(severityFilter)
-        : true;
-
-      return statusMatch && severityMatch;
-    });
-  };
-
-  const filterBySearchTerm = (issues) => {
-    if (!searchTerm.trim()) return issues; // Return all issues if search term is empty
-    const lowerSearchTerm = searchTerm.toLowerCase();
-    return issues.filter((issue) => {
-      return (
-        issue.title.toLowerCase().includes(lowerSearchTerm) ||
-        (issue.description &&
-          issue.description.toLowerCase().includes(lowerSearchTerm))
-      );
-    });
-  };
-
   return (
     <IssueFilterContext.Provider
       value={{
@@ -69,8 +28,9 @@ const IssueFilterProvider = ({ children }) => {
         setSearchTerm,
         sortBy,
         setSortBy,
-        filterIssues,
-        filterBySearchTerm,
+        filterIssues: (issues) => filterIssues(issues, filters),
+        filterBySearchTerm: (issues) => filterBySearchTerm(issues, searchTerm),
+        sortIssues: (issues) => sortIssues(issues, sortBy),
       }}
     >
       {children}

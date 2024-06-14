@@ -142,7 +142,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_IssueUtils_sortIssues.js.html">utils/IssueUtils/sortIssues.js</a>, <a href="utils_IssueUtils_sortIssues.js.html#line8">line 8</a>
+        <a href="utils_Issues_sortIssues.js.html">utils/Issues/sortIssues.js</a>, <a href="utils_Issues_sortIssues.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -214,7 +214,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_IssueUtils_sortIssuesOptions.js.html">utils/IssueUtils/sortIssuesOptions.js</a>, <a href="utils_IssueUtils_sortIssuesOptions.js.html#line6">line 6</a>
+        <a href="utils_Issues_sortIssuesOptions.js.html">utils/Issues/sortIssuesOptions.js</a>, <a href="utils_Issues_sortIssuesOptions.js.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -4931,7 +4931,7 @@ It allows the user to select and apply filters to the issues.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="context_issuesContext.jsx.html">context/issuesContext.jsx</a>, <a href="context_issuesContext.jsx.html#line16">line 16</a>
+        <a href="context_issuesContext.jsx.html">context/issuesContext.jsx</a>, <a href="context_issuesContext.jsx.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -6911,7 +6911,7 @@ It includes a navbar, main content area, and a footer.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="App.jsx.html">App.jsx</a>, <a href="App.jsx.html#line26">line 26</a>
+        <a href="App.jsx.html">App.jsx</a>, <a href="App.jsx.html#line31">line 31</a>
     </li></ul></dd>
     
 
@@ -8241,7 +8241,7 @@ It includes a navbar, main content area, and a footer.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_Stats_Stats.jsx.html">components/Stats/Stats.jsx</a>, <a href="components_Stats_Stats.jsx.html#line10">line 10</a>
+        <a href="components_Stats_Stats.jsx.html">components/Stats/Stats.jsx</a>, <a href="components_Stats_Stats.jsx.html#line11">line 11</a>
     </li></ul></dd>
     
 
@@ -11861,7 +11861,7 @@ It includes a navbar, main content area, and a footer.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="context_usersContext.jsx.html">context/usersContext.jsx</a>, <a href="context_usersContext.jsx.html#line16">line 16</a>
+        <a href="context_usersContext.jsx.html">context/usersContext.jsx</a>, <a href="context_usersContext.jsx.html#line17">line 17</a>
     </li></ul></dd>
     
 
@@ -11902,6 +11902,623 @@ It includes a navbar, main content area, and a footer.</p>
     <dd>
         
 <span class="param-type">ReactNode</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="createIssue"><span class="type-signature">(async) </span>createIssue<span class="signature">(user, issueData, setLoadingIssues, setError, fetchIssues)</span><span class="type-signature"> &rarr; {Promise.&lt;Object>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Creates a new issue.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The user object.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>issueData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The data for the new issue.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setLoadingIssues</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set loading state.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setError</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set error state.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fetchIssues</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to fetch issues.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="utils_Issues_createIssue.js.html">utils/Issues/createIssue.js</a>, <a href="utils_Issues_createIssue.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>The response from the API.</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;Object></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="filterBySearchTerm"><span class="type-signature"></span>filterBySearchTerm<span class="signature">(issues, searchTerm)</span><span class="type-signature"> &rarr; {Array}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Filters issues based on the provided search term.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>issues</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The list of issues to filter.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>searchTerm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The search term to apply.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="utils_Issues_filterBySearchTerm.js.html">utils/Issues/filterBySearchTerm.js</a>, <a href="utils_Issues_filterBySearchTerm.js.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The filtered list of issues.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="filterIssues"><span class="type-signature"></span>filterIssues<span class="signature">(issues, filters)</span><span class="type-signature"> &rarr; {Array}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Filters issues based on the provided filters.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>issues</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The list of issues to filter.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>filters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The filters to apply.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="utils_Issues_filterIssues.js.html">utils/Issues/filterIssues.js</a>, <a href="utils_Issues_filterIssues.js.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The filtered list of issues.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
 
 
     </dd>
@@ -12020,7 +12637,7 @@ It includes a navbar, main content area, and a footer.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils_IssueUtils_tagsStyles.js.html">utils/IssueUtils/tagsStyles.js</a>, <a href="utils_IssueUtils_tagsStyles.js.html#line18">line 18</a>
+        <a href="utils_Issues_tagsStyles.js.html">utils/Issues/tagsStyles.js</a>, <a href="utils_Issues_tagsStyles.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -12075,6 +12692,535 @@ It includes a navbar, main content area, and a footer.</p>
 
 
         
+            
+
+    
+
+    
+    <h4 class="name" id="updateIssue"><span class="type-signature">(async) </span>updateIssue<span class="signature">(user, id, issueData, setLoadingIssues, setError, fetchIssues)</span><span class="type-signature"> &rarr; {Promise.&lt;Object>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Updates an existing issue.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The user object.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the issue to update.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>issueData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The data to update the issue with.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setLoadingIssues</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set loading state.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setError</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set error state.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fetchIssues</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to fetch issues.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="utils_Issues_updateIssue.js.html">utils/Issues/updateIssue.js</a>, <a href="utils_Issues_updateIssue.js.html#line14">line 14</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>The response from the API.</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;Object></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="updateUsersRole"><span class="type-signature">(async) </span>updateUsersRole<span class="signature">(user, id, role, setError, fetchUsers)</span><span class="type-signature"> &rarr; {Promise.&lt;Object>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Updates the role of a user.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The current user object.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the user to update.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>role</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The new role to assign to the user.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setError</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set error state.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fetchUsers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to fetch users.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="utils_Users_updateUsersRole.js.html">utils/Users/updateUsersRole.js</a>, <a href="utils_Users_updateUsersRole.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>The response from the API.</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;Object></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
     
 
     
@@ -12090,13 +13236,13 @@ It includes a navbar, main content area, and a footer.</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Main.html">Main</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AllIssues">AllIssues</a></li><li><a href="global.html#AssignedForUser">AssignedForUser</a></li><li><a href="global.html#AuthLayout">AuthLayout</a></li><li><a href="global.html#Authenticated">Authenticated</a></li><li><a href="global.html#Comment">Comment</a></li><li><a href="global.html#CommentSection">CommentSection</a></li><li><a href="global.html#ConfirmRoleChange">ConfirmRoleChange</a></li><li><a href="global.html#ContactSection">ContactSection</a></li><li><a href="global.html#CreatedByUser">CreatedByUser</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#FadeIn">FadeIn</a></li><li><a href="global.html#FeaturesSection">FeaturesSection</a></li><li><a href="global.html#FilterBar">FilterBar</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#FooterLinks">FooterLinks</a></li><li><a href="global.html#FormInput">FormInput</a></li><li><a href="global.html#HeroSection">HeroSection</a></li><li><a href="global.html#Issue">Issue</a></li><li><a href="global.html#IssueFilterProvider">IssueFilterProvider</a></li><li><a href="global.html#IssueModal">IssueModal</a></li><li><a href="global.html#IssuesPage">IssuesPage</a></li><li><a href="global.html#IssuesProvider">IssuesProvider</a></li><li><a href="global.html#LandingPage">LandingPage</a></li><li><a href="global.html#ListIssues">ListIssues</a></li><li><a href="global.html#LoginForm">LoginForm</a></li><li><a href="global.html#LoginPage">LoginPage</a></li><li><a href="global.html#MainLayout">MainLayout</a></li><li><a href="global.html#MobileNav">MobileNav</a></li><li><a href="global.html#MobileNavbar">MobileNavbar</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#NavbarLinks">NavbarLinks</a></li><li><a href="global.html#NotAuthenticated">NotAuthenticated</a></li><li><a href="global.html#ReCaptcha">ReCaptcha</a></li><li><a href="global.html#RegisterForm">RegisterForm</a></li><li><a href="global.html#RegisterPage">RegisterPage</a></li><li><a href="global.html#Router">Router</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#SingleIssue">SingleIssue</a></li><li><a href="global.html#SingleIssuePage">SingleIssuePage</a></li><li><a href="global.html#SlideIn">SlideIn</a></li><li><a href="global.html#SortBar">SortBar</a></li><li><a href="global.html#StatisticsPage">StatisticsPage</a></li><li><a href="global.html#Stats">Stats</a></li><li><a href="global.html#SubmitButton">SubmitButton</a></li><li><a href="global.html#SubmitIssueForm">SubmitIssueForm</a></li><li><a href="global.html#SubmitIssuePage">SubmitIssuePage</a></li><li><a href="global.html#SubmitSuccessful">SubmitSuccessful</a></li><li><a href="global.html#TableLabels">TableLabels</a></li><li><a href="global.html#Testimonial">Testimonial</a></li><li><a href="global.html#TestimonialSection">TestimonialSection</a></li><li><a href="global.html#ThemeProvider">ThemeProvider</a></li><li><a href="global.html#ToggleThemeButton">ToggleThemeButton</a></li><li><a href="global.html#TypingText">TypingText</a></li><li><a href="global.html#User">User</a></li><li><a href="global.html#UserIssues">UserIssues</a></li><li><a href="global.html#UserProvider">UserProvider</a></li><li><a href="global.html#UsersList">UsersList</a></li><li><a href="global.html#UsersPage">UsersPage</a></li><li><a href="global.html#UsersProvider">UsersProvider</a></li><li><a href="global.html#severityStyles">severityStyles</a></li><li><a href="global.html#sortIssues">sortIssues</a></li><li><a href="global.html#sortIssuesOptions">sortIssuesOptions</a></li><li><a href="global.html#submitLogin">submitLogin</a></li><li><a href="global.html#submitRegistration">submitRegistration</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Main.html">Main</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AllIssues">AllIssues</a></li><li><a href="global.html#AssignedForUser">AssignedForUser</a></li><li><a href="global.html#AuthLayout">AuthLayout</a></li><li><a href="global.html#Authenticated">Authenticated</a></li><li><a href="global.html#Comment">Comment</a></li><li><a href="global.html#CommentSection">CommentSection</a></li><li><a href="global.html#ConfirmRoleChange">ConfirmRoleChange</a></li><li><a href="global.html#ContactSection">ContactSection</a></li><li><a href="global.html#CreatedByUser">CreatedByUser</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#FadeIn">FadeIn</a></li><li><a href="global.html#FeaturesSection">FeaturesSection</a></li><li><a href="global.html#FilterBar">FilterBar</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#FooterLinks">FooterLinks</a></li><li><a href="global.html#FormInput">FormInput</a></li><li><a href="global.html#HeroSection">HeroSection</a></li><li><a href="global.html#Issue">Issue</a></li><li><a href="global.html#IssueFilterProvider">IssueFilterProvider</a></li><li><a href="global.html#IssueModal">IssueModal</a></li><li><a href="global.html#IssuesPage">IssuesPage</a></li><li><a href="global.html#IssuesProvider">IssuesProvider</a></li><li><a href="global.html#LandingPage">LandingPage</a></li><li><a href="global.html#ListIssues">ListIssues</a></li><li><a href="global.html#LoginForm">LoginForm</a></li><li><a href="global.html#LoginPage">LoginPage</a></li><li><a href="global.html#MainLayout">MainLayout</a></li><li><a href="global.html#MobileNav">MobileNav</a></li><li><a href="global.html#MobileNavbar">MobileNavbar</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#NavbarLinks">NavbarLinks</a></li><li><a href="global.html#NotAuthenticated">NotAuthenticated</a></li><li><a href="global.html#ReCaptcha">ReCaptcha</a></li><li><a href="global.html#RegisterForm">RegisterForm</a></li><li><a href="global.html#RegisterPage">RegisterPage</a></li><li><a href="global.html#Router">Router</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#SingleIssue">SingleIssue</a></li><li><a href="global.html#SingleIssuePage">SingleIssuePage</a></li><li><a href="global.html#SlideIn">SlideIn</a></li><li><a href="global.html#SortBar">SortBar</a></li><li><a href="global.html#StatisticsPage">StatisticsPage</a></li><li><a href="global.html#Stats">Stats</a></li><li><a href="global.html#SubmitButton">SubmitButton</a></li><li><a href="global.html#SubmitIssueForm">SubmitIssueForm</a></li><li><a href="global.html#SubmitIssuePage">SubmitIssuePage</a></li><li><a href="global.html#SubmitSuccessful">SubmitSuccessful</a></li><li><a href="global.html#TableLabels">TableLabels</a></li><li><a href="global.html#Testimonial">Testimonial</a></li><li><a href="global.html#TestimonialSection">TestimonialSection</a></li><li><a href="global.html#ThemeProvider">ThemeProvider</a></li><li><a href="global.html#ToggleThemeButton">ToggleThemeButton</a></li><li><a href="global.html#TypingText">TypingText</a></li><li><a href="global.html#User">User</a></li><li><a href="global.html#UserIssues">UserIssues</a></li><li><a href="global.html#UserProvider">UserProvider</a></li><li><a href="global.html#UsersList">UsersList</a></li><li><a href="global.html#UsersPage">UsersPage</a></li><li><a href="global.html#UsersProvider">UsersProvider</a></li><li><a href="global.html#createIssue">createIssue</a></li><li><a href="global.html#filterBySearchTerm">filterBySearchTerm</a></li><li><a href="global.html#filterIssues">filterIssues</a></li><li><a href="global.html#severityStyles">severityStyles</a></li><li><a href="global.html#sortIssues">sortIssues</a></li><li><a href="global.html#sortIssuesOptions">sortIssuesOptions</a></li><li><a href="global.html#submitLogin">submitLogin</a></li><li><a href="global.html#submitRegistration">submitRegistration</a></li><li><a href="global.html#updateIssue">updateIssue</a></li><li><a href="global.html#updateUsersRole">updateUsersRole</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Wed Jun 12 2024 08:51:33 GMT+0200 (czas środkowoeuropejski letni)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Thu Jun 13 2024 20:03:43 GMT+0200 (czas środkowoeuropejski letni)
 </footer>
 
 <script> prettyPrint(); </script>

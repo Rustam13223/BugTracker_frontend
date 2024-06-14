@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./SingleIssue.module.css";
-import { severityStyles, statusStyles } from "@/utils/IssueUtils/tagsStyles";
+import { severityStyles, statusStyles } from "@/utils/Issues/tagsStyles";
 import { useUserContext } from "@/context/userContext";
 import CommentSection from "./CommentSection/CommentSection";
 import { FaRegEdit } from "react-icons/fa";

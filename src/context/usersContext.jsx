@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useUserContext } from "./userContext";
+import updateUsersRole from "../utils/Users/updateUsersRole";
 
 const UsersContext = createContext();
 const useUsersContext = () => useContext(UsersContext);
@@ -35,27 +36,6 @@ const UsersProvider = ({ children }) => {
     }
   };
 
-  const updateUsersRole = async (id, role) => {
-    try {
-      const response = await axios.patch(
-        `/api/users/${id}`,
-        { role },
-        {
-          headers: {
-            Authorization: `Bearer ${user.accessToken}`,
-          },
-        }
-      );
-      if (response.data.error) {
-        setError(response.data.error);
-      } else {
-        fetchUsers();
-      }
-    } catch (error) {
-      setError(error);
-    }
-  };
-
   useEffect(() => {
     if (!loadingUser && user) {
       fetchUsers();
@@ -64,7 +44,15 @@ const UsersProvider = ({ children }) => {
   }, [user, loadingUser]);
 
   return (
-    <UsersContext.Provider value={{ users, loading, error, updateUsersRole }}>
+    <UsersContext.Provider
+      value={{
+        users,
+        loading,
+        error,
+        updateUsersRole: (id, role) =>
+          updateUsersRole(user, id, role, setError, fetchUsers),
+      }}
+    >
       {children}
     </UsersContext.Provider>
   );

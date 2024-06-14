@@ -38,16 +38,16 @@ Nasze biura są otwarte od poniedziałku do piątku, w godzinach od 9:00 do 17:0
 
 Jeśli wolisz, możesz skorzystać z naszego formularza kontaktowego na stronie internetowej. Wypełnij wszystkie wymagane pola, a my skontaktujemy się z Tobą tak szybko, jak to możliwe.
 
-[Formularz Kontaktowy](https://www.BugTracker.com/contact)
+[Formularz Kontaktowy]
 
 ### Media społecznościowe
 
 Możesz również skontaktować się z nami za pośrednictwem naszych mediów społecznościowych:
 
-- [Facebook](https://www.facebook.com/BugTracker)
-- [Twitter](https://www.twitter.com/BugTracker)
-- [LinkedIn](https://www.linkedin.com/company/BugTracker)
-- [Instagram](https://www.instagram.com/BugTracker)
+- [Facebook]
+- [Twitter]
+- [LinkedIn]
+- [Instagram]
 
 ### Adresy biur regionalnych
 
@@ -67,7 +67,7 @@ Polska
 
 ### Mapy i wskazówki dojazdu
 
-Aby uzyskać wskazówki dojazdu do naszych biur, odwiedź naszą stronę [Lokalizacje](https://www.BugTracker.com/locations) i wybierz odpowiednie biuro.
+Aby uzyskać wskazówki dojazdu do naszych biur, odwiedź naszą stronę [Lokalizacje] i wybierz odpowiednie biuro.
 
 ## Czekamy na kontakt!
 

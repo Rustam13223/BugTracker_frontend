@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useUserContext } from "../../../context/userContext";
 import { useIssuesContext } from "../../../context/issuesContext";
-import { sortIssues } from "../../../utils/IssueUtils/sortIssues";
-import { sortIssuesOptions } from "../../../utils/IssueUtils/sortIssuesOptions";
+import { sortIssues } from "../../../utils/Issues/sortIssues";
+import { sortIssuesOptions } from "../../../utils/Issues/sortIssuesOptions";
 import DashboardIssues from "./DashboardIssues";
 /**
  * Renders a component that displays issues assigned to the current user.

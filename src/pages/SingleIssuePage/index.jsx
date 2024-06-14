@@ -4,7 +4,7 @@ import { useIssuesContext } from "@/context/issuesContext";
 import SingleIssue from "../../components/SingleIssue/SingleIssue";
 import { useUserContext } from "../../context/userContext";
 import NotAuthenticated from "../../components/redirects/NotAuthenticated/NotAuthenticated";
-
+import Unauthorized from "../../components/redirects/Unathorized/Unauthorized";
 /**
  * Renders a page for displaying a single issue.
  *
@@ -30,6 +30,7 @@ const SingleIssuePage = () => {
 
   const { user } = useUserContext();
   if (!user) return <NotAuthenticated />;
+  if (!user.role) return <Unauthorized />;
   return <div>{issue && <SingleIssue issue={issue} />}</div>;
 };
 

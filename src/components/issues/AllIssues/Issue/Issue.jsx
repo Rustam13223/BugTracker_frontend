@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import {
   statusStyles,
   severityStyles,
-} from "../../../../utils/IssueUtils/tagsStyles";
+} from "../../../../utils/Issues/tagsStyles";
 
 /**
  * Renders an individual issue.
