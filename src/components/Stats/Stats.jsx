@@ -30,10 +30,8 @@ const Stats = () => {
         return;
       }
       setStats(response.data.stats);
-      console.log(response.data.stats);
     } catch (error) {
       setError("An error occurred while fetching stats.");
-      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -72,6 +70,8 @@ const Stats = () => {
           </li>
         ))}
       </ol>
+      {topProgrammers.length === 0 && <p>No programmers found</p>}
+      {error && <p>Error: {error}</p>}
     </div>
   );
 };

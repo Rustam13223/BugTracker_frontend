@@ -40,7 +40,6 @@ const UsersProvider = ({ children }) => {
     if (!loadingUser && user) {
       fetchUsers();
     }
-    console.log(users);
   }, [user, loadingUser]);
 
   return (
