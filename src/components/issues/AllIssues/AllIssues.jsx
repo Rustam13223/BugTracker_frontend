@@ -27,7 +27,7 @@ const AllIssues = () => {
   } = useIssueFilterContext();
 
   useEffect(() => {
-    if (!loadingIssues && issues.length > 0 && !error) {
+    if (!loadingIssues && issues?.length > 0 && !error) {
       let result = filterIssues(issues); // First apply the filters based on tags
       result = filterBySearchTerm(result); // Then filter the already filtered result by search term
       result = sortIssues(result, sortBy); // Finally, sort the result
@@ -45,7 +45,7 @@ const AllIssues = () => {
       <SortBar />
 
       <TableLabels />
-      {filteredIssues.map((issue) => (
+      {filteredIssues?.map((issue) => (
         <Issue key={issue.id} issue={issue} />
       ))}
     </div>

@@ -22,7 +22,7 @@ const AssignedForUser = () => {
     setSortBy(option.value);
   };
   useEffect(() => {
-    if (!loadingIssues && user) {
+    if (!loadingIssues && user && issues) {
       const assignedIssues = issues.filter(
         (issue) => issue?.assigned_to === user?.email
       );

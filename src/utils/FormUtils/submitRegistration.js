@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API_URL } from "../config";
 
 /**
  * Submits the registration form with the provided values.
@@ -29,19 +30,20 @@ export const submitRegistration = async (
     return;
   }
   try {
-    const response = await axios.post("api/auth/register", {
+    const response = await axios.post(`${API_URL}/auth/register`, {
       firstName: values.firstName,
-      secondName: values.lastName,
+      lastName: values.lastName,
       email: values.email,
       password: values.password,
-      token: captchaValue,
+      captchaToken: captchaValue,
     });
     if (response.data.error) {
       setSubmitError(response.data.error);
-    } else if (response.data.accessToken) {
-      saveUser(response.data);
+    } else if (response.data.token) {
+      saveUser(response.data.userData, response.data.token);
       navigate("/dashboard");
     }
+    console.log(response);
   } catch (error) {
     if (error.response) {
       setSubmitError(

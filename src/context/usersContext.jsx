@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useUserContext } from "./userContext";
 import updateUsersRole from "../utils/Users/updateUsersRole";
+import { API_URL } from "../utils/config";
 
 const UsersContext = createContext();
 const useUsersContext = () => useContext(UsersContext);
@@ -23,12 +24,12 @@ const UsersProvider = ({ children }) => {
   const fetchUsers = async () => {
     try {
       if (!user) return;
-      const response = await axios.get("/api/users", {
+      const response = await axios.get(`${API_URL}/users`, {
         headers: {
-          Authorization: `Bearer ${user.accessToken}`,
+          Authorization: `Bearer ${user.token}`,
         },
       });
-      setUsers(response.data.users);
+      setUsers(response.data);
     } catch (error) {
       setError(error);
     } finally {

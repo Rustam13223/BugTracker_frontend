@@ -25,7 +25,8 @@ const UserProvider = ({ children }) => {
     setLoading(false); // Set loading to false after attempting to fetch user data
   }, []);
 
-  const saveUser = (user) => {
+  const saveUser = (user, token) => {
+    user.token = token;
     const userString = JSON.stringify(user);
     localStorage.setItem("user", userString);
     setUser(user);
@@ -39,7 +40,7 @@ const UserProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (user && user.role === "admin") {
+    if (user && user.role === "ADMIN") {
       setIsAdmin(true);
     } else {
       setIsAdmin(false);

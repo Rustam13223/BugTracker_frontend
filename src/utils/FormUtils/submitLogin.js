@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API_URL } from "../config";
 
 /**
  * Submits login credentials to the server for authentication.
@@ -13,6 +14,7 @@ import axios from "axios";
  * @param {Function} setCaptchaError - A function to set the captcha error message.
  * @returns {void}
  */
+
 export const submitLogin = async (
   values,
   setSubmitting,
@@ -29,15 +31,15 @@ export const submitLogin = async (
     return;
   }
   try {
-    const response = await axios.post("api/auth/login", {
+    const response = await axios.post(`${API_URL}/auth/login`, {
       email: values.email,
       password: values.password,
-      token: captchaValue,
+      captchaToken: captchaValue,
     });
     if (response.data.error) {
       setSubmitError(response.data.error);
-    } else if (response.data.accessToken) {
-      saveUser(response.data);
+    } else if (response.data.token) {
+      saveUser(response.data.userData, response.data.token);
       navigate("/dashboard");
     }
   } catch (error) {

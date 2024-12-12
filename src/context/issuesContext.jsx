@@ -3,6 +3,7 @@ import axios from "axios";
 import { useUserContext } from "./userContext"; // Import user context
 import createIssue from "../utils/Issues/createIssue";
 import updateIssue from "../utils/Issues/updateIssue";
+import { API_URL } from "../utils/config";
 
 const IssuesContext = createContext();
 const useIssuesContext = () => useContext(IssuesContext);
@@ -25,9 +26,9 @@ const IssuesProvider = ({ children }) => {
     if (!user) return; // Only fetch issues if there is a user
     try {
       setLoadingIssues(true);
-      const response = await axios.get("/api/bugs", {
+      const response = await axios.get(`${API_URL}/bugs`, {
         headers: {
-          Authorization: `Bearer ${user.accessToken}`, // Assuming accessToken is available on user
+          Authorization: `Bearer ${user.token}`,
         },
       });
       if (response.data.error) {
