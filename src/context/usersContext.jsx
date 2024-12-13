@@ -29,7 +29,7 @@ const UsersProvider = ({ children }) => {
           Authorization: `Bearer ${user.token}`,
         },
       });
-      setUsers(response.data);
+      setUsers(mapUserData(response.data));
     } catch (error) {
       setError(error);
     } finally {
@@ -42,6 +42,18 @@ const UsersProvider = ({ children }) => {
       fetchUsers();
     }
   }, [user, loadingUser]);
+
+  const mapUserData = (users) => {
+    return users.map((user) => {
+      return {
+        first_name: user.firstName,
+        second_name: user.lastName,
+        role: user.role,
+        email: user.email,
+        id: user.id,
+      };
+    });
+  };
 
   return (
     <UsersContext.Provider

@@ -25,14 +25,14 @@ const User = ({ user: { first_name, second_name, role, email, id } }) => {
   const [showConfirmRoleChange, setShowConfirmRoleChange] = useState(false);
   const rolesOptions = [
     {
-      value: "admin",
+      value: "ADMIN",
       label: "Admin",
     },
     {
-      value: "programmer",
+      value: "PROGRAMMER",
       label: "Programmer",
     },
-    { value: "support", label: "Support" },
+    { value: "SUPPORT", label: "Support" },
   ];
   const handleRoleChange = (selectedOption) => {
     if (selectedOption.value === role) return;
@@ -73,7 +73,7 @@ const User = ({ user: { first_name, second_name, role, email, id } }) => {
             options={rolesOptions}
             value={selectedRole}
             placeholder="Select role"
-            disabled={role === "admin"}
+            disabled={role === "ADMIN"}
             onChange={(selectedOption) => handleRoleChange(selectedOption)}
           />
         ) : (

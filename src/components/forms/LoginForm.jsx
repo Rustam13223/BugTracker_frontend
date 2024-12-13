@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik } from "formik";
 import { useTheme } from "@/context/themeContext";
@@ -28,6 +28,10 @@ const LoginForm = () => {
   const { saveUser } = useUserContext();
   const navigate = useNavigate();
   const recaptchaRef = useRef(null);
+
+  useEffect(() => {
+    console.log(captchaValue);
+  }, [captchaValue]);
 
   return (
     <Formik

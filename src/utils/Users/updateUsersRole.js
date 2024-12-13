@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API_URL } from "../config";
 
 /**
  * Updates the role of a user.
@@ -13,11 +14,11 @@ import axios from "axios";
 const updateUsersRole = async (user, id, role, setError, fetchUsers) => {
   try {
     const response = await axios.patch(
-      `/api/users/${id}`,
-      { role },
+      `${API_URL}/users/${id}?role=${role}`,
+      null,
       {
         headers: {
-          Authorization: `Bearer ${user.accessToken}`,
+          Authorization: `Bearer ${user.token}`,
         },
       }
     );
