@@ -3,6 +3,7 @@ import axios from "axios";
 import { useUserContext } from "../../context/userContext";
 import { useUsersContext } from "../../context/usersContext";
 import styles from "./Stats.module.css";
+import { API_URL } from "../../utils/config";
 
 /**
  * Renders a list of top programmers and the number of issues they have solved.
@@ -18,9 +19,9 @@ const Stats = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await axios.get("/api/stats", {
+      const response = await axios.get(`${API_URL}/stats`, {
         headers: {
-          Authorization: `Bearer ${user.accessToken}`,
+          Authorization: `Bearer ${user.token}`,
         },
       });
       if (response.data.error) {
@@ -29,7 +30,7 @@ const Stats = () => {
         setLoading(false);
         return;
       }
-      setStats(response.data.stats);
+      setStats(response.data);
     } catch (error) {
       setError("An error occurred while fetching stats.");
     } finally {
@@ -43,13 +44,7 @@ const Stats = () => {
 
   useEffect(() => {
     if (stats.length > 0 && users.length > 0) {
-      const programmers = stats.map((stat) => {
-        const user = users.find((user) => user.id === stat.user_id);
-        return { ...user, solved: stat.solved_bugs };
-      });
-      // Sort programmers by solved issues in descending order
-      programmers.sort((a, b) => b.solved - a.solved);
-      setTopProgrammers(programmers);
+      setTopProgrammers(stats);
     }
   }, [stats, users]);
 
@@ -61,12 +56,12 @@ const Stats = () => {
       <h2>Top Programmers</h2>
       <ol className={styles.list}>
         {topProgrammers.map((programmer, index) => (
-          <li key={programmer.id}>
+          <li key={programmer.userId}>
             <p>{index + 1}</p>
             <p>
-              {programmer.first_name} {programmer.second_name}
+              {programmer.user.firstName} {programmer.user.secondName}
             </p>
-            <p>{programmer.solved} issues solved</p>
+            <p>{programmer.solvedBugs} issues solved</p>
           </li>
         ))}
       </ol>

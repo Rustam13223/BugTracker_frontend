@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API_URL } from "../config";
 
 /**
  * Creates a new issue.
@@ -21,9 +22,9 @@ const createIssue = async (
   let response;
   try {
     setLoadingIssues(true);
-    response = await axios.post("/api/bugs/create", issueData, {
+    response = await axios.post(`${API_URL}/bugs/create`, issueData, {
       headers: {
-        Authorization: `Bearer ${user.accessToken}`, // Assuming accessToken is available on user
+        Authorization: `Bearer ${user.token}`, // Assuming accessToken is available on user
       },
     });
     if (response.data.error) {
@@ -33,6 +34,7 @@ const createIssue = async (
     }
   } catch (error) {
     setError(error.message);
+    console.error(error);
   } finally {
     setLoadingIssues(false);
   }

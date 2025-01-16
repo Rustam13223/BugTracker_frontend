@@ -18,7 +18,7 @@ import { useIssuesContext } from "../../context/issuesContext";
  * @param {string} props.issue.reporter - The email of the reporter of the issue.
  * @param {string} props.issue.description - The description of the issue.
  * @param {string} props.issue.created - The timestamp when the issue was created.
- * @param {string} props.issue.assigned_to - The email of the user assigned to the issue.
+ * @param {string} props.issue.assignedTo - The email of the user assigned to the issue.
  * @param {string} props.issue.status - The status of the issue.
  * @param {string} props.issue.severity - The severity of the issue.
  * @param {string} props.issue.id - The unique ID of the issue.
@@ -30,7 +30,7 @@ const SingleIssue = ({
     reporter,
     description,
     created,
-    assigned_to,
+    assignedTo,
     status,
     severity,
     id,
@@ -39,21 +39,21 @@ const SingleIssue = ({
   const { updateIssue } = useIssuesContext();
   const { user } = useUserContext();
   const { users } = useUsersContext();
-  const programmers = users.filter((user) => user.role === "programmer");
+  const programmers = users.filter((user) => user.role === "PROGRAMMER");
   const [showEditDescription, setShowEditDescription] = useState(false);
   const [showEditTitle, setShowEditTitle] = useState(false);
   const [newDescription, setNewDescription] = useState(description);
   const [newTitle, setNewTitle] = useState(title);
   const [changes, setChanges] = useState({});
-  const [newAssignee, setNewAssignee] = useState(assigned_to);
-  const [newStatus, setNewStatus] = useState(status);
+  const [newAssignee, setNewAssignee] = useState(assignedTo?.email);
+  const [newStatus, setNewStatus] = useState(status.toLowerCase());
   const [newSeverity, setNewSeverity] = useState(severity);
   const [savedSuccessfully, setSavedSuccessfully] = useState(false);
 
-  const canEdit = reporter === user.email;
-  const isAssigned = assigned_to === user.email;
+  const canEdit = reporter.email === user.email;
+  const isAssigned = assignedTo === user.email;
   const assigneeOptions = programmers.map((programmer) => ({
-    value: programmer.id,
+    value: programmer.email,
     label: `${programmer.first_name} ${programmer.second_name}`,
   }));
   const statusOptions = [
@@ -77,7 +77,7 @@ const SingleIssue = ({
   };
   const handleAssigneeChange = (selectedOption) => {
     setNewAssignee(selectedOption.value);
-    setChanges((prev) => ({ ...prev, assigned_to: selectedOption.value }));
+    setChanges((prev) => ({ ...prev, assignedTo: selectedOption.value }));
   };
   const handleStatusChange = (selectedOption) => {
     setNewStatus(selectedOption.value);
@@ -142,19 +142,19 @@ const SingleIssue = ({
               />
             )}
           </h2>
-          <p>Reported by: {reporter}</p>
+          <p>Reported by: {reporter.email}</p>
           {canEdit ? (
             <CustomSelect
               options={assigneeOptions}
               value={newAssignee}
               label="Assigned to"
-              placeholder={assigned_to}
+              placeholder={assignedTo?.email}
               onChange={(selectedOption) => {
                 handleAssigneeChange(selectedOption);
               }}
             />
-          ) : assigned_to ? (
-            <p>{assigned_to}</p>
+          ) : assignedTo ? (
+            <p>{assignedTo.email}</p>
           ) : (
             "Not assigned"
           )}

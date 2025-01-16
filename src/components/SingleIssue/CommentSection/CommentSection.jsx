@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useUserContext } from "../../../context/userContext";
 import Comment from "./Comment/Comment";
+import { API_URL } from "../../../utils/config";
 
 /**
  * Renders a comment section for a specific issue.
@@ -24,16 +25,16 @@ function CommentSection({ issueId }) {
 
   const fetchComments = async () => {
     try {
-      const response = await axios.get(`/api/bugs/${issueId}/comments`, {
+      const response = await axios.get(`${API_URL}/bugs/${issueId}/comments`, {
         headers: {
-          Authorization: `Bearer ${user.accessToken}`,
+          Authorization: `Bearer ${user.token}`,
         },
       });
       if (response.data.error) {
         setError(response.data.error);
         return;
       }
-      setComments(response.data.comments);
+      setComments(response.data);
     } catch (error) {
       setError("An error occurred while fetching comments.");
     }
@@ -42,14 +43,14 @@ function CommentSection({ issueId }) {
   const handleAddComment = async () => {
     try {
       const response = await axios.post(
-        `/api/bugs/${issueId}/comments/create`,
+        `${API_URL}/bugs/${issueId}/comments/create`,
         {
           comment,
           userId: user.id,
         },
         {
           headers: {
-            Authorization: `Bearer ${user.accessToken}`,
+            Authorization: `Bearer ${user.token}`,
           },
         }
       );

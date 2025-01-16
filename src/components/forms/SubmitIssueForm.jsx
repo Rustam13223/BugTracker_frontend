@@ -40,7 +40,7 @@ const SubmitIssueForm = () => {
 
   useEffect(() => {
     if (!loadingUsers) {
-      const programmers = users.filter((user) => user.role === "programmer");
+      const programmers = users.filter((user) => user.role === "PROGRAMMER");
       setProgrammers(programmers);
     }
   }, [users, loadingUsers]);

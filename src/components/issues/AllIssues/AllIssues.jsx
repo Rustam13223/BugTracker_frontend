@@ -32,6 +32,7 @@ const AllIssues = () => {
       result = filterBySearchTerm(result); // Then filter the already filtered result by search term
       result = sortIssues(result, sortBy); // Finally, sort the result
       setFilteredIssues(result); // Set the filtered and sorted issues
+      console.log(result);
     }
   }, [issues, filters, searchTerm, sortBy, loadingIssues, error]);
 

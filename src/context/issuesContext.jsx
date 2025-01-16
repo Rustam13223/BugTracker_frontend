@@ -35,7 +35,7 @@ const IssuesProvider = ({ children }) => {
         setError(response.data.error);
         return { error: response.data.error };
       }
-      setIssues(response.data.bugs);
+      setIssues(response.data);
     } catch (error) {
       setError(error.message);
     } finally {

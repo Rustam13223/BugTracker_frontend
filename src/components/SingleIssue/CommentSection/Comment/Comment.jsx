@@ -8,14 +8,11 @@ import { useUsersContext } from "../../../../context/usersContext";
  * @param {Object} comment - The comment object containing comment, userId, and createdAt properties.
  * @returns {JSX.Element} - The rendered Comment component.
  */
-const Comment = ({ comment: { comment, userId, createdAt } }) => {
-  const { users } = useUsersContext();
-  const user = users.find((user) => user.id === userId);
-
+const Comment = ({ comment: { comment, user, createdAt } }) => {
   return (
     <div className={styles.comment}>
       <p>
-        {user.first_name} {user.second_name}
+        {user.firstName} {user.secondName}
       </p>
       <p>{comment}</p>
       <p>{new Date(createdAt).toLocaleString()}</p>

@@ -19,7 +19,7 @@ const Issue = ({ issue: { title, reporter, created, status, severity } }) => {
       <div className={styles.info}>
         <h3>{title}</h3>
         <p>{`${created.slice(0, 10)} ${created.slice(12, 16)}`}</p>
-        <p>Reported by: {reporter}</p>
+        <p>Reported by: {reporter.email}</p>
       </div>
       <div className={styles.tags}>
         <p className={styles.tag} style={{ ...statusStyles(status) }}>

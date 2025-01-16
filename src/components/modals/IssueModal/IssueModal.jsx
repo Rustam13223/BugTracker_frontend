@@ -76,7 +76,7 @@ const IssueModal = ({
             </div>
           </div>
           <p>{`${created.slice(0, 10)} ${created.slice(12, 16)}`}</p>
-          <p>Reported by: {reporter}</p>
+          <p>Reported by: {reporter.email}</p>
 
           <p>
             {assigned_to ? <>Assigned to: {assigned_to}</> : "Not assigned"}

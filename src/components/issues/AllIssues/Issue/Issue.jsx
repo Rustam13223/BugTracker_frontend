@@ -23,7 +23,7 @@ import {
  * @returns {JSX.Element} The rendered Issue component.
  */
 const Issue = ({
-  issue: { id, title, status, severity, created, assigned_to, reporter },
+  issue: { id, title, status, severity, created, assignedTo, reporter },
 }) => {
   const navigate = useNavigate();
   return (
@@ -35,12 +35,12 @@ const Issue = ({
       <p className={styles.id}>{id}</p>
       <p>{title}</p>
       <p>
-        Created by <span>{reporter}</span>
+        Created by <span>{reporter.email}</span>
       </p>
       <p>
-        {assigned_to ? (
+        {assignedTo?.email ? (
           <>
-            Assigned to <span>{assigned_to}</span>
+            Assigned to <span>{assignedTo.email}</span>
           </>
         ) : (
           "Not assigned"

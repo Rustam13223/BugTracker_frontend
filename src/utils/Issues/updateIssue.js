@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API_URL } from "../config";
 
 /**
  * Updates an existing issue.
@@ -23,9 +24,21 @@ const updateIssue = async (
   let response;
   try {
     setLoadingIssues(true);
-    response = await axios.patch(`/api/bugs/${id}`, issueData, {
+
+    let bug_status_dict = {
+      "open": "OPEN",
+      "in progress": "IN_PROGRESS",
+      "closed": "CLOSED",
+      "done": "DONE"
+    }
+
+    if (issueData.status) {
+      issueData.status = bug_status_dict[issueData.status];
+    }
+
+    response = await axios.patch(`${API_URL}/bugs/${id}`, issueData, {
       headers: {
-        Authorization: `Bearer ${user.accessToken}`, // Assuming accessToken is available on user
+        Authorization: `Bearer ${user.token}`, // Assuming accessToken is available on user
       },
     });
     if (response.data.error) {
