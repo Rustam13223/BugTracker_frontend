@@ -24,7 +24,7 @@ const AssignedForUser = () => {
   useEffect(() => {
     if (!loadingIssues && user && issues) {
       const assignedIssues = issues.filter(
-        (issue) => issue?.assignedTo.email === user?.email
+        (issue) => issue?.assignedTo?.email === user?.email
       );
       const sortedIssues = sortIssues(assignedIssues, sortBy);
       setAssignedIssues(sortedIssues);

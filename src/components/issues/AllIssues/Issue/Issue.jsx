@@ -40,7 +40,7 @@ const Issue = ({
       <p>
         {assignedTo?.email ? (
           <>
-            Assigned to <span>{assignedTo.email}</span>
+            Assigned to <span>{assignedTo?.email}</span>
           </>
         ) : (
           "Not assigned"

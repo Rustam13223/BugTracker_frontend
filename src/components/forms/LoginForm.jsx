@@ -31,6 +31,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     console.log(captchaValue);
+    console.log(import.meta.env.VITE_CAPTCHA_KEY);
   }, [captchaValue]);
 
   return (

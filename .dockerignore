@@ -1,0 +1,50 @@
+# Ignore node_modules
+node_modules/
+
+# Ignore build output
+dist/
+build/
+out/
+
+# Ignore local environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Ignore IDE/editor configurations
+*.iml
+.idea/
+.vscode/
+*.swp
+
+# Ignore logs
+logs/
+*.log
+*.log.*
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore Git files
+.git
+.gitignore
+
+# Ignore temporary files
+*.tmp
+*.bak
+*.old
+
+# Ignore test reports and coverage data
+coverage/
+test-output/
+*.xml
+*.out
+
+# Ignore cached files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json

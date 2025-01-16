@@ -1,0 +1,20 @@
+# Use a Node.js base image
+FROM node:16
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package files first for caching
+COPY package.json ./
+
+# Install development dependencies for testing
+RUN npm install
+
+# Copy the entire application code
+COPY . .
+
+# Set environment variable for the test environment
+ENV NODE_ENV=test
+
+# Default command to run frontend unit tests
+CMD ["npm", "test"]

@@ -1,0 +1,24 @@
+# Use Node.js image for development
+FROM node:18-alpine
+
+# Set the working directory
+WORKDIR /app
+
+# Install dependencies
+COPY package.json ./
+RUN npm install
+
+ARG VITE_CAPTCHA_KEY
+ARG VITE_API_URL
+
+ENV VITE_CAPTCHA_KEY=${VITE_CAPTCHA_KEY}
+ENV VITE_API_URL=${VITE_API_URL}
+
+# Copy the application code (optional for initial build; live sync uses volumes)
+COPY . .
+
+# Expose the port Vite uses
+EXPOSE 5173
+
+# Run the development server
+CMD ["npm", "run", "dev"]

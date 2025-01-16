@@ -154,7 +154,7 @@ const SingleIssue = ({
               }}
             />
           ) : assignedTo ? (
-            <p>{assignedTo.email}</p>
+            <p>{assignedTo?.email}</p>
           ) : (
             "Not assigned"
           )}
